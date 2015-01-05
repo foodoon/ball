@@ -1,0 +1,52 @@
+$!challenge详情
+  <table class="table">
+                <tr>
+              <td>球队ID</td>
+              <td>
+                  $!challengeDO.teamId
+              </td>
+          </tr>
+
+                <tr>
+              <td>场地ID</td>
+              <td>
+                  $!challengeDO.courtId
+              </td>
+          </tr>
+
+                <tr>
+              <td>约战日期</td>
+              <td>
+                  $!challengeDO.challengeTime
+              </td>
+          </tr>
+
+                <tr>
+              <td>约战条件</td>
+              <td>
+                  $!challengeDO.challengeDesc
+              </td>
+          </tr>
+
+                <tr>
+              <td>约战结果</td>
+              <td>
+                  $!challengeDO.challengeResult
+              </td>
+          </tr>
+
+                <tr>
+              <td>比赛进球数</td>
+              <td>
+                  $!challengeDO.goalCount
+              </td>
+          </tr>
+
+                <tr>
+              <td>是否接受应战</td>
+              <td>
+                  $!challengeDO.status
+              </td>
+          </tr>
+
+        </table>

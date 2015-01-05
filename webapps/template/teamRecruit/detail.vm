@@ -1,0 +1,17 @@
+$!teamRecruit详情
+  <table class="table">
+                <tr>
+              <td>用户ID</td>
+              <td>
+                  $!teamRecruitDO.userId
+              </td>
+          </tr>
+
+                <tr>
+              <td>招募宣言</td>
+              <td>
+                  $!teamRecruitDO.recruitDesc
+              </td>
+          </tr>
+
+        </table>

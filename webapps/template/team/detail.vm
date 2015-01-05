@@ -1,0 +1,31 @@
+$!team详情
+  <table class="table">
+                <tr>
+              <td>球队名</td>
+              <td>
+                  $!teamDO.name
+              </td>
+          </tr>
+
+                <tr>
+              <td>简单介绍</td>
+              <td>
+                  $!teamDO.teamDesc
+              </td>
+          </tr>
+
+                <tr>
+              <td>是否开放加入</td>
+              <td>
+                  $!teamDO.canJoin
+              </td>
+          </tr>
+
+                <tr>
+              <td>用户ID</td>
+              <td>
+                  $!teamDO.userId
+              </td>
+          </tr>
+
+        </table>

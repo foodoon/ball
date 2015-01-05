@@ -1,0 +1,60 @@
+编辑
+
+<form name="orderEditForm" action="$!homeServer.getURI("order/doUpdate.htm")" method="post">
+  <table class="table">
+  #springBind("orderEditForm.id")
+  <input type="hidden" name="${status.expression}" value="$!status.value" />
+                #springBind("orderEditForm.goodsId")
+          <tr>
+              <td>商品ID</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("orderEditForm.leaveMsg")
+          <tr>
+              <td>留言</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("orderEditForm.deliveryTime")
+          <tr>
+              <td>配送时间</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("orderEditForm.buyerId")
+          <tr>
+              <td>买家ID</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("orderEditForm.sellerId")
+          <tr>
+              <td>卖家ID</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("orderEditForm.status")
+          <tr>
+              <td>订单状态</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+      	  <tr>
+	  <td colspan="2">
+	  <input type="submit" class="btn" value="提交"/></td>
+	  </tr>
+  </table>
+</form>

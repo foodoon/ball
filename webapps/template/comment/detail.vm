@@ -1,0 +1,38 @@
+$!comment详情
+  <table class="table">
+                <tr>
+              <td>约战ID</td>
+              <td>
+                  $!commentDO.challengeId
+              </td>
+          </tr>
+
+                <tr>
+              <td>评论内容</td>
+              <td>
+                  $!commentDO.msg
+              </td>
+          </tr>
+
+                <tr>
+              <td>用户ID</td>
+              <td>
+                  $!commentDO.userId
+              </td>
+          </tr>
+
+                <tr>
+              <td>被评论ID（球员，球场，比赛）</td>
+              <td>
+                  $!commentDO.commentId
+              </td>
+          </tr>
+
+                <tr>
+              <td>被评论类型（球员，球场，比赛）</td>
+              <td>
+                  $!commentDO.commentType
+              </td>
+          </tr>
+
+        </table>

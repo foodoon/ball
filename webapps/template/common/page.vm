@@ -1,0 +1,34 @@
+<div >
+    <ul class="pager">
+        #if($query.pageNo == 1)
+            <li class="disabled"><a>首页</a></li>
+        #else
+            <li><a href="$homeServer.getURI("$!{path}?pageNo=1")">首页</a></li>
+        #end
+        #if($query.hasPrevPage())
+
+            <li><a href="$homeServer.getURI("$!{path}?pageNo=$query.getPrevPage()")" >上一页</a></li>
+        #else
+            <li class="disabled"><a>上一页</a></li>
+        #end
+        #foreach($p in $query.pages)
+            #if($p==$query.pageNo)
+                <li class="disabled"><a>$p</a></li>
+            #else
+                <li><a href="$homeServer.getURI("$!{path}?pageNo=$p")">$p</a></li>
+            #end
+        #end
+        #if($query.hasNextPage())
+            <li><a href="$homeServer.getURI("$!{path}?pageNo=$query.getNextPage()")">下一页</a></li>
+            <li><a href="$homeServer.getURI("$!{path}?pageNo=$query.getMaxPage()")">末页</a></li>
+        #else
+            <li class="disabled"><a>下一页</a></li>
+            <li class="disabled"><a>末页</a></li>
+        #end
+        #if($query.pageNo == $query.totalPage)
+
+        #else
+
+        #end
+    </ul>
+</div>

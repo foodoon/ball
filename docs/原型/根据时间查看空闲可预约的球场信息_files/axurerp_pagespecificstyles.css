@@ -1,0 +1,356 @@
+﻿body {
+    margin: 0px;
+}
+
+div {
+    background-repeat: no-repeat;
+}
+
+.raw_image {
+    width: 100%;
+    height: 100%;
+}
+
+.preload {
+    display: none;
+}
+#main_container {
+}
+
+.form_sketch {
+    border-color: transparent;
+    background-color: transparent;
+}
+
+#u0 {
+    position:absolute;
+    left:132px;
+    top:75px;
+    width:383px;
+    height:93px
+}
+
+.u1_normal {
+    background-image: url('../根据时间查看空闲可预约的球场信息_files/u1_normal.png');
+}
+
+.u1_container {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:154px;
+    height:21px;
+}
+
+#u1_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:160px;
+    height:27px;
+}
+
+.u2 {
+    position:absolute;
+    left:2px;
+    top:2px;
+    width:150px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u3_normal {
+    background-image: url('../根据时间查看空闲可预约的球场信息_files/u3_normal.png');
+}
+
+.u3_container {
+    position:absolute;
+    left:154px;
+    top:0px;
+    width:108px;
+    height:21px;
+}
+
+#u3_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:114px;
+    height:27px;
+}
+
+.u4 {
+    position:absolute;
+    left:2px;
+    top:2px;
+    width:104px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u5_normal {
+    background-image: url('../根据时间查看空闲可预约的球场信息_files/u5_normal.png');
+}
+
+.u5_container {
+    position:absolute;
+    left:262px;
+    top:0px;
+    width:116px;
+    height:21px;
+}
+
+#u5_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:122px;
+    height:27px;
+}
+
+.u6 {
+    position:absolute;
+    left:2px;
+    top:2px;
+    width:112px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u7_normal {
+    background-image: url('../根据时间查看空闲可预约的球场信息_files/u7_normal.png');
+}
+
+.u7_container {
+    position:absolute;
+    left:0px;
+    top:21px;
+    width:154px;
+    height:36px;
+}
+
+#u7_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:160px;
+    height:42px;
+}
+
+.u8 {
+    position:absolute;
+    left:2px;
+    top:2px;
+    width:150px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u9_normal {
+    background-image: url('../根据时间查看空闲可预约的球场信息_files/u9_normal.png');
+}
+
+.u9_container {
+    position:absolute;
+    left:154px;
+    top:21px;
+    width:108px;
+    height:36px;
+}
+
+#u9_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:114px;
+    height:42px;
+}
+
+.u10 {
+    position:absolute;
+    left:2px;
+    top:2px;
+    width:104px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u11_normal {
+    background-image: url('../根据时间查看空闲可预约的球场信息_files/u11_normal.png');
+}
+
+.u11_container {
+    position:absolute;
+    left:262px;
+    top:21px;
+    width:116px;
+    height:36px;
+}
+
+#u11_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:122px;
+    height:42px;
+}
+
+.u12 {
+    position:absolute;
+    left:2px;
+    top:2px;
+    width:112px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u13_normal {
+    background-image: url('../根据时间查看空闲可预约的球场信息_files/u13_normal.png');
+}
+
+.u13_container {
+    position:absolute;
+    left:0px;
+    top:57px;
+    width:154px;
+    height:31px;
+}
+
+#u13_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:160px;
+    height:37px;
+}
+
+.u14 {
+    position:absolute;
+    left:2px;
+    top:2px;
+    width:150px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u15_normal {
+    background-image: url('../根据时间查看空闲可预约的球场信息_files/u15_normal.png');
+}
+
+.u15_container {
+    position:absolute;
+    left:154px;
+    top:57px;
+    width:108px;
+    height:31px;
+}
+
+#u15_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:114px;
+    height:37px;
+}
+
+.u16 {
+    position:absolute;
+    left:2px;
+    top:2px;
+    width:104px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u17_normal {
+    background-image: url('../根据时间查看空闲可预约的球场信息_files/u17_normal.png');
+}
+
+.u17_container {
+    position:absolute;
+    left:262px;
+    top:57px;
+    width:116px;
+    height:31px;
+}
+
+#u17_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:122px;
+    height:37px;
+}
+
+.u18 {
+    position:absolute;
+    left:2px;
+    top:2px;
+    width:112px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u19 {
+    position:absolute;
+    left:132px;
+    top:224px;
+    width:100px;
+    height:25px;
+    ;
+    ;
+    text-align: center;;
+    font-family:'Arial';
+    font-size: 13px;
+    color:#000000;
+    font-style:normal;
+    font-weight:normal;
+    text-decoration:none;
+    
+}
+

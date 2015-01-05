@@ -1,0 +1,36 @@
+编辑
+
+<form name="challengeCommentEditForm" action="$!homeServer.getURI("challengeComment/doUpdate.htm")" method="post">
+  <table class="table">
+  #springBind("challengeCommentEditForm.id")
+  <input type="hidden" name="${status.expression}" value="$!status.value" />
+                #springBind("challengeCommentEditForm.challengeId")
+          <tr>
+              <td>约战ID</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("challengeCommentEditForm.msg")
+          <tr>
+              <td>评论内容</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("challengeCommentEditForm.userId")
+          <tr>
+              <td>用户ID</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+      	  <tr>
+	  <td colspan="2">
+	  <input type="submit" class="btn" value="提交"/></td>
+	  </tr>
+  </table>
+</form>

@@ -1,0 +1,44 @@
+编辑
+
+<form name="teamEditForm" action="$!homeServer.getURI("team/doUpdate.htm")" method="post">
+  <table class="table">
+  #springBind("teamEditForm.id")
+  <input type="hidden" name="${status.expression}" value="$!status.value" />
+                #springBind("teamEditForm.name")
+          <tr>
+              <td>球队名</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("teamEditForm.teamDesc")
+          <tr>
+              <td>简单介绍</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("teamEditForm.canJoin")
+          <tr>
+              <td>是否开放加入</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("teamEditForm.userId")
+          <tr>
+              <td>用户ID</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+      	  <tr>
+	  <td colspan="2">
+	  <input type="submit" class="btn" value="提交"/></td>
+	  </tr>
+  </table>
+</form>

@@ -1,0 +1,80 @@
+$!user详情
+  <table class="table">
+                <tr>
+              <td>登录名</td>
+              <td>
+                  $!userDO.userName
+              </td>
+          </tr>
+
+                <tr>
+              <td>真实姓名</td>
+              <td>
+                  $!userDO.realName
+              </td>
+          </tr>
+
+                <tr>
+              <td>电子邮箱</td>
+              <td>
+                  $!userDO.email
+              </td>
+          </tr>
+
+                <tr>
+              <td>住址</td>
+              <td>
+                  $!userDO.address
+              </td>
+          </tr>
+
+                <tr>
+              <td>密码</td>
+              <td>
+                  $!userDO.password
+              </td>
+          </tr>
+
+                <tr>
+              <td>手机号码</td>
+              <td>
+                  $!userDO.phone
+              </td>
+          </tr>
+
+                <tr>
+              <td>喜欢的场地类型</td>
+              <td>
+                  $!userDO.groundTypeOfEnjoy
+              </td>
+          </tr>
+
+                <tr>
+              <td>特长</td>
+              <td>
+                  $!userDO.special
+              </td>
+          </tr>
+
+                <tr>
+              <td>经常比赛的场地</td>
+              <td>
+                  $!userDO.groundOfDaily
+              </td>
+          </tr>
+
+                <tr>
+              <td>状态</td>
+              <td>
+                  $!userDO.status
+              </td>
+          </tr>
+
+                <tr>
+              <td>头像</td>
+              <td>
+                  $!userDO.img
+              </td>
+          </tr>
+
+        </table>

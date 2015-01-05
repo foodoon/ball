@@ -1,0 +1,28 @@
+<a  class="btn btn-default"  href="$!homeServer.getURI("comment/create.htm")" >新建</a>
+
+<table  class="table">
+    <thead>
+ <tr>
+              <th>约战ID</th>
+              <th>评论内容</th>
+              <th>用户ID</th>
+              <th>被评论ID（球员，球场，比赛）</th>
+              <th>被评论类型（球员，球场，比赛）</th>
+          <th>操作</th>
+ </tr>
+    </thead>
+#foreach($f in $commentDOList)
+  <tr>
+               <td> $!f.challengeId</td>
+               <td> $!f.msg</td>
+               <td> $!f.userId</td>
+               <td> $!f.commentId</td>
+               <td> $!f.commentType</td>
+          <td><a href="$!homeServer.getURI("comment/edit.htm").addQueryData('id',"$!f.id")" >编辑</a></td>
+    <td><a href="$!homeServer.getURI("comment/detail.htm").addQueryData('id',"$!f.id")" >查看详情</a></td>
+      <td><a href="$!homeServer.getURI("comment/doDelete.htm").addQueryData('id',"$!f.id")" onclick="return confirm('确定删除吗?')">删除</a></td>
+ </tr>
+#end
+</table>
+
+$tile.load('home/common/page.vm').param('query',$query).param('path','${doNameLower}/list.htm')

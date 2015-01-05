@@ -1,0 +1,19 @@
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+ <mappers>
+  <mapper resource="mybatis/ChallengeDOMapper.xml"/>
+  <mapper resource="mybatis/CourtDOMapper.xml"/>
+  <mapper resource="mybatis/CourtApplyDOMapper.xml"/>
+  <mapper resource="mybatis/GoodsDOMapper.xml"/>
+  <mapper resource="mybatis/OrderDOMapper.xml"/>
+  <mapper resource="mybatis/TeamDOMapper.xml"/>
+  <mapper resource="mybatis/TeamApplyDOMapper.xml"/>
+  <mapper resource="mybatis/TeamRecruitDOMapper.xml"/>
+  <mapper resource="mybatis/UserDOMapper.xml"/>
+  <mapper resource="mybatis/SessionDOMapper.xml"/>
+  <mapper resource="mybatis/TeamMemberDOMapper.xml"/>
+  <mapper resource="mybatis/ChallengeApplyDOMapper.xml"/>
+  <mapper resource="mybatis/CommentDOMapper.xml"/>
+ </mappers>
+</configuration>

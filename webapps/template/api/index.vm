@@ -1,0 +1,130 @@
+
+
+<form class="form-inline" id="J-api-form" role="form">
+    <fieldset>
+        <div id="legend" class="">
+            <legend class="">服务信息</legend>
+        </div>
+        <div class="form-group">
+            <label>服务端地址</label>
+            <input type="text" class="form-control" name="requestUrl" value="http://blog.foodoon.com/app.htm">
+        </div>
+
+        <div class="form-group">
+            <label>apiName</label>
+            <input type="text" class="form-control" name="apiName" value="$apiDefine.apiName">
+        </div>
+        <div class="form-group">
+            <label>apiVersion</label>
+            <input type="text" class="form-control" name="apiVersion" value="$apiDefine.apiVersion">
+        </div>
+    </fieldset>
+</form>
+
+<form class="form-horizontal" id="J-api-param" role="form">
+
+    <fieldset>
+        <div id="legend" class="">
+            <legend class="">参数信息</legend>
+        </div>
+        #foreach($apiParam in $apiDefine.params.entrySet())
+            <div class="form-group form-inline">
+                <label class="col-sm-2 control-label" for="$apiParam.key">$apiParam.value</label>
+                <input type="text" class="form-control" id="$apiParam.key" name="$apiParam.key" placeholder="$apiParam.key">
+            </div>
+        #end
+
+
+    </fieldset>
+
+</form>
+
+<form class="form-inline" role="form">
+<div class="form-group">
+    <button type="button" class="btn btn-primary" id="J-create-url-btn">生成测试URL</button>
+</div>
+    </form>
+
+<form class="form-inline" role="form">
+
+    <div class="form-group">
+        <textarea cols="100" id="J-request-url" rows="10">
+        </textarea>
+    </div>
+
+
+</form>
+
+<div class="form-group">
+    <div class="form-group">
+    <button type="button" class="btn btn-primary" id="J-request-btn">提交测试</button>
+        </div>
+</div>
+
+<form class="form-inline" role="form">
+    <div class="form-group">
+        <fieldset>
+            <div  class="form-group">
+                <textarea cols="100" rows="30" id="J-request-result">
+                </textarea>
+            </div>
+
+        </fieldset>
+    </div>
+</form>
+
+<script>
+    jQuery(document).ready(function(){
+        jQuery("#J-create-url-btn").click(function(){
+            var apiFormInput = jQuery("#J-api-form").find("input");
+            var p = "";
+            for(var i = 0, l = apiFormInput.length; i < l; i++) {
+                p = p  + apiFormInput[i].name + "=" + apiFormInput[i].value + "&" ;
+            }
+
+            var paramFormInput = jQuery("#J-api-param").find("input");
+            for(var i = 0, l = paramFormInput.length; i < l; i++) {
+                p = p  + paramFormInput[i].name + "=" + paramFormInput[i].value + "&" ;
+            }
+
+            jQuery.ajax({
+                url:"$homeServer.getURI("api/createUrl.htm")" + "?" + p,
+                async:false,
+                dataType:'json',
+                success:function(data) {
+                    jQuery("#J-request-url").val("");
+                    if(data){
+                        jQuery("#J-request-url").val(data.msg);
+                    }
+                },
+                error : function() {
+                    alert("服务端异常！");
+                }
+            });
+
+        });
+
+        jQuery("#J-request-btn").click(function(){
+            var url =jQuery("#J-request-url").val();
+            if(!url || url.indexOf('http') == -1){
+                alert('请先生成测试URL');
+                return;
+            }
+            var htmlobj=jQuery.ajax({
+                url:url,
+                async:false,
+                dataType:'text',
+                success:function(data) {
+                    jQuery("#J-request-result").val("");
+                    if(data){
+                        jQuery("#J-request-result").val(data);
+                    }
+                },
+                error : function() {
+                   alert("服务端异常！");
+                }
+           });
+
+        });
+    });
+</script>

@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="guda.ball.dao.ChallengeApplyDOMapper" >
+  <resultMap id="BaseResultMap" type="guda.ball.dao.domain.ChallengeApplyDO" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="challenge_id" property="challengeId" jdbcType="INTEGER" />
+    <result column="team_id" property="teamId" jdbcType="INTEGER" />
+    <result column="goal_count" property="goalCount" jdbcType="INTEGER" />
+    <result column="challenge_result" property="challengeResult" jdbcType="VARCHAR" />
+    <result column="accept" property="accept" jdbcType="INTEGER" />
+    <result column="is_deleted" property="isDeleted" jdbcType="INTEGER" />
+    <result column="gmt_modify" property="gmtModify" jdbcType="TIMESTAMP" />
+    <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, challenge_id, team_id, goal_count, challenge_result, accept, is_deleted, gmt_modify, 
+    gmt_create
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="guda.ball.dao.domain.ChallengeApplyDOCriteria" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ball_challenge_apply
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="startRow >= 0" >
+      limit ${startRow} , ${pageSize}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ball_challenge_apply
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from ball_challenge_apply
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="guda.ball.dao.domain.ChallengeApplyDO" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into ball_challenge_apply (challenge_id, team_id, goal_count,
+      challenge_result, accept, is_deleted, 
+      gmt_modify, gmt_create)
+    values (#{challengeId,jdbcType=INTEGER}, #{teamId,jdbcType=INTEGER}, #{goalCount,jdbcType=INTEGER}, 
+      #{challengeResult,jdbcType=VARCHAR}, #{accept,jdbcType=INTEGER}, #{isDeleted,jdbcType=INTEGER}, 
+      #{gmtModify,jdbcType=TIMESTAMP}, #{gmtCreate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="guda.ball.dao.domain.ChallengeApplyDO" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into ball_challenge_apply
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="challengeId != null" >
+        challenge_id,
+      </if>
+      <if test="teamId != null" >
+        team_id,
+      </if>
+      <if test="goalCount != null" >
+        goal_count,
+      </if>
+      <if test="challengeResult != null" >
+        challenge_result,
+      </if>
+      <if test="accept != null" >
+        accept,
+      </if>
+      <if test="isDeleted != null" >
+        is_deleted,
+      </if>
+      <if test="gmtModify != null" >
+        gmt_modify,
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="challengeId != null" >
+        #{challengeId,jdbcType=INTEGER},
+      </if>
+      <if test="teamId != null" >
+        #{teamId,jdbcType=INTEGER},
+      </if>
+      <if test="goalCount != null" >
+        #{goalCount,jdbcType=INTEGER},
+      </if>
+      <if test="challengeResult != null" >
+        #{challengeResult,jdbcType=VARCHAR},
+      </if>
+      <if test="accept != null" >
+        #{accept,jdbcType=INTEGER},
+      </if>
+      <if test="isDeleted != null" >
+        #{isDeleted,jdbcType=INTEGER},
+      </if>
+      <if test="gmtModify != null" >
+        #{gmtModify,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtCreate != null" >
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="guda.ball.dao.domain.ChallengeApplyDOCriteria" resultType="java.lang.Integer" >
+    select count(*) from ball_challenge_apply
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByPrimaryKeySelective" parameterType="guda.ball.dao.domain.ChallengeApplyDO" >
+    update ball_challenge_apply
+    <set >
+      <if test="challengeId != null" >
+        challenge_id = #{challengeId,jdbcType=INTEGER},
+      </if>
+      <if test="teamId != null" >
+        team_id = #{teamId,jdbcType=INTEGER},
+      </if>
+      <if test="goalCount != null" >
+        goal_count = #{goalCount,jdbcType=INTEGER},
+      </if>
+      <if test="challengeResult != null" >
+        challenge_result = #{challengeResult,jdbcType=VARCHAR},
+      </if>
+      <if test="accept != null" >
+        accept = #{accept,jdbcType=INTEGER},
+      </if>
+      <if test="isDeleted != null" >
+        is_deleted = #{isDeleted,jdbcType=INTEGER},
+      </if>
+      <if test="gmtModify != null" >
+        gmt_modify = #{gmtModify,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="guda.ball.dao.domain.ChallengeApplyDO" >
+    update ball_challenge_apply
+    set challenge_id = #{challengeId,jdbcType=INTEGER},
+      team_id = #{teamId,jdbcType=INTEGER},
+      goal_count = #{goalCount,jdbcType=INTEGER},
+      challenge_result = #{challengeResult,jdbcType=VARCHAR},
+      accept = #{accept,jdbcType=INTEGER},
+      is_deleted = #{isDeleted,jdbcType=INTEGER},
+      gmt_modify = #{gmtModify,jdbcType=TIMESTAMP},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

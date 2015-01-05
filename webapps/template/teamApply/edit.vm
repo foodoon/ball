@@ -1,0 +1,36 @@
+编辑
+
+<form name="teamApplyEditForm" action="$!homeServer.getURI("teamApply/doUpdate.htm")" method="post">
+  <table class="table">
+  #springBind("teamApplyEditForm.id")
+  <input type="hidden" name="${status.expression}" value="$!status.value" />
+                #springBind("teamApplyEditForm.teamId")
+          <tr>
+              <td>球队ID</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("teamApplyEditForm.userId")
+          <tr>
+              <td>用户ID</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("teamApplyEditForm.status")
+          <tr>
+              <td>是否通过</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+      	  <tr>
+	  <td colspan="2">
+	  <input type="submit" class="btn" value="提交"/></td>
+	  </tr>
+  </table>
+</form>

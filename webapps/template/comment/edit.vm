@@ -1,0 +1,52 @@
+编辑
+
+<form name="commentEditForm" action="$!homeServer.getURI("comment/doUpdate.htm")" method="post">
+  <table class="table">
+  #springBind("commentEditForm.id")
+  <input type="hidden" name="${status.expression}" value="$!status.value" />
+                #springBind("commentEditForm.challengeId")
+          <tr>
+              <td>约战ID</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("commentEditForm.msg")
+          <tr>
+              <td>评论内容</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("commentEditForm.userId")
+          <tr>
+              <td>用户ID</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("commentEditForm.commentId")
+          <tr>
+              <td>被评论ID（球员，球场，比赛）</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("commentEditForm.commentType")
+          <tr>
+              <td>被评论类型（球员，球场，比赛）</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+      	  <tr>
+	  <td colspan="2">
+	  <input type="submit" class="btn" value="提交"/></td>
+	  </tr>
+  </table>
+</form>

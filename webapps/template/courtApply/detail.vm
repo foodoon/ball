@@ -1,0 +1,31 @@
+$!courtApply详情
+  <table class="table">
+                <tr>
+              <td>预定用户ID</td>
+              <td>
+                  $!courtApplyDO.userId
+              </td>
+          </tr>
+
+                <tr>
+              <td>预定场地ID</td>
+              <td>
+                  $!courtApplyDO.courtId
+              </td>
+          </tr>
+
+                <tr>
+              <td>预定时间</td>
+              <td>
+                  $!courtApplyDO.bookingTime
+              </td>
+          </tr>
+
+                <tr>
+              <td>状态</td>
+              <td>
+                  $!courtApplyDO.status
+              </td>
+          </tr>
+
+        </table>

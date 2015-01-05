@@ -1,0 +1,59 @@
+$!court详情
+  <table class="table">
+                <tr>
+              <td>球场名称</td>
+              <td>
+                  $!courtDO.name
+              </td>
+          </tr>
+
+                <tr>
+              <td>地址</td>
+              <td>
+                  $!courtDO.address
+              </td>
+          </tr>
+
+                <tr>
+              <td>类型</td>
+              <td>
+                  $!courtDO.type
+              </td>
+          </tr>
+
+                <tr>
+              <td>开放时间</td>
+              <td>
+                  $!courtDO.openTime
+              </td>
+          </tr>
+
+                <tr>
+              <td>用户ID</td>
+              <td>
+                  $!courtDO.userId
+              </td>
+          </tr>
+
+                <tr>
+              <td>是否开放</td>
+              <td>
+                  $!courtDO.status
+              </td>
+          </tr>
+
+                <tr>
+              <td>球场介绍</td>
+              <td>
+                  $!courtDO.courtDesc
+              </td>
+          </tr>
+
+                <tr>
+              <td>面积</td>
+              <td>
+                  $!courtDO.square
+              </td>
+          </tr>
+
+        </table>

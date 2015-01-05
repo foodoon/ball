@@ -1,0 +1,26 @@
+<a  class="btn btn-default"  href="$!homeServer.getURI("courtApply/create.htm")" >新建</a>
+
+<table  class="table">
+    <thead>
+ <tr>
+              <th>预定用户ID</th>
+              <th>预定场地ID</th>
+              <th>预定时间</th>
+              <th>状态</th>
+          <th>操作</th>
+ </tr>
+    </thead>
+#foreach($f in $courtApplyDOList)
+  <tr>
+               <td> $!f.userId</td>
+               <td> $!f.courtId</td>
+               <td> $!f.bookingTime</td>
+               <td> $!f.status</td>
+          <td><a href="$!homeServer.getURI("courtApply/edit.htm").addQueryData('id',"$!f.id")" >编辑</a></td>
+    <td><a href="$!homeServer.getURI("courtApply/detail.htm").addQueryData('id',"$!f.id")" >查看详情</a></td>
+      <td><a href="$!homeServer.getURI("courtApply/doDelete.htm").addQueryData('id',"$!f.id")" onclick="return confirm('确定删除吗?')">删除</a></td>
+ </tr>
+#end
+</table>
+
+$tile.load('home/common/page.vm').param('query',$query).param('path','${doNameLower}/list.htm')

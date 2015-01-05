@@ -1,0 +1,52 @@
+编辑
+
+<form name="challengeAcceptEditForm" action="$!homeServer.getURI("challengeAccept/doUpdate.htm")" method="post">
+  <table class="table">
+  #springBind("challengeAcceptEditForm.id")
+  <input type="hidden" name="${status.expression}" value="$!status.value" />
+                #springBind("challengeAcceptEditForm.challengeId")
+          <tr>
+              <td>约战ID</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("challengeAcceptEditForm.teamId")
+          <tr>
+              <td>球队ID</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("challengeAcceptEditForm.goalCount")
+          <tr>
+              <td>比赛进球数</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("challengeAcceptEditForm.challengeResult")
+          <tr>
+              <td>比赛结果</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("challengeAcceptEditForm.accept")
+          <tr>
+              <td>是否接受</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+      	  <tr>
+	  <td colspan="2">
+	  <input type="submit" class="btn" value="提交"/></td>
+	  </tr>
+  </table>
+</form>

@@ -1,0 +1,34 @@
+<a  class="btn btn-default"  href="$!homeServer.getURI("court/create.htm")" >新建</a>
+
+<table  class="table">
+    <thead>
+ <tr>
+              <th>球场名称</th>
+              <th>地址</th>
+              <th>类型</th>
+              <th>开放时间</th>
+              <th>用户ID</th>
+              <th>是否开放</th>
+              <th>球场介绍</th>
+              <th>面积</th>
+          <th>操作</th>
+ </tr>
+    </thead>
+#foreach($f in $courtDOList)
+  <tr>
+               <td> $!f.name</td>
+               <td> $!f.address</td>
+               <td> $!f.type</td>
+               <td> $!f.openTime</td>
+               <td> $!f.userId</td>
+               <td> $!f.status</td>
+               <td> $!f.courtDesc</td>
+               <td> $!f.square</td>
+          <td><a href="$!homeServer.getURI("court/edit.htm").addQueryData('id',"$!f.id")" >编辑</a></td>
+    <td><a href="$!homeServer.getURI("court/detail.htm").addQueryData('id',"$!f.id")" >查看详情</a></td>
+      <td><a href="$!homeServer.getURI("court/doDelete.htm").addQueryData('id',"$!f.id")" onclick="return confirm('确定删除吗?')">删除</a></td>
+ </tr>
+#end
+</table>
+
+$tile.load('home/common/page.vm').param('query',$query).param('path','court/list.htm')

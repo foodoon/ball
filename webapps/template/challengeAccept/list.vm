@@ -1,0 +1,28 @@
+<a  class="btn btn-default"  href="$!homeServer.getURI("challengeAccept/create.htm")" >新建</a>
+
+<table  class="table">
+    <thead>
+ <tr>
+              <th>约战ID</th>
+              <th>球队ID</th>
+              <th>比赛进球数</th>
+              <th>比赛结果</th>
+              <th>是否接受</th>
+          <th>操作</th>
+ </tr>
+    </thead>
+#foreach($f in $challengeAcceptDOList)
+  <tr>
+               <td> $!f.challengeId</td>
+               <td> $!f.teamId</td>
+               <td> $!f.goalCount</td>
+               <td> $!f.challengeResult</td>
+               <td> $!f.accept</td>
+          <td><a href="$!homeServer.getURI("challengeAccept/edit.htm").addQueryData('id',"$!f.id")" >编辑</a></td>
+    <td><a href="$!homeServer.getURI("challengeAccept/detail.htm").addQueryData('id',"$!f.id")" >查看详情</a></td>
+      <td><a href="$!homeServer.getURI("challengeAccept/doDelete.htm").addQueryData('id',"$!f.id")" onclick="return confirm('确定删除吗?')">删除</a></td>
+ </tr>
+#end
+</table>
+
+$tile.load('home/common/page.vm').param('query',$query).param('path','challengeAccept/list.htm')

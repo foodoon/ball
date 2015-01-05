@@ -1,0 +1,45 @@
+$!order详情
+  <table class="table">
+                <tr>
+              <td>商品ID</td>
+              <td>
+                  $!orderDO.goodsId
+              </td>
+          </tr>
+
+                <tr>
+              <td>留言</td>
+              <td>
+                  $!orderDO.leaveMsg
+              </td>
+          </tr>
+
+                <tr>
+              <td>配送时间</td>
+              <td>
+                  $!orderDO.deliveryTime
+              </td>
+          </tr>
+
+                <tr>
+              <td>买家ID</td>
+              <td>
+                  $!orderDO.buyerId
+              </td>
+          </tr>
+
+                <tr>
+              <td>卖家ID</td>
+              <td>
+                  $!orderDO.sellerId
+              </td>
+          </tr>
+
+                <tr>
+              <td>订单状态</td>
+              <td>
+                  $!orderDO.status
+              </td>
+          </tr>
+
+        </table>

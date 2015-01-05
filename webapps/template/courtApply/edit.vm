@@ -1,0 +1,44 @@
+编辑
+
+<form name="courtApplyEditForm" action="$!homeServer.getURI("courtApply/doUpdate.htm")" method="post">
+  <table class="table">
+  #springBind("courtApplyEditForm.id")
+  <input type="hidden" name="${status.expression}" value="$!status.value" />
+                #springBind("courtApplyEditForm.userId")
+          <tr>
+              <td>预定用户ID</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("courtApplyEditForm.courtId")
+          <tr>
+              <td>预定场地ID</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("courtApplyEditForm.bookingTime")
+          <tr>
+              <td>预定时间</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("courtApplyEditForm.status")
+          <tr>
+              <td>状态</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+      	  <tr>
+	  <td colspan="2">
+	  <input type="submit" class="btn" value="提交"/></td>
+	  </tr>
+  </table>
+</form>

@@ -1,0 +1,38 @@
+$!challengeAccept详情
+  <table class="table">
+                <tr>
+              <td>约战ID</td>
+              <td>
+                  $!challengeAcceptDO.challengeId
+              </td>
+          </tr>
+
+                <tr>
+              <td>球队ID</td>
+              <td>
+                  $!challengeAcceptDO.teamId
+              </td>
+          </tr>
+
+                <tr>
+              <td>比赛进球数</td>
+              <td>
+                  $!challengeAcceptDO.goalCount
+              </td>
+          </tr>
+
+                <tr>
+              <td>比赛结果</td>
+              <td>
+                  $!challengeAcceptDO.challengeResult
+              </td>
+          </tr>
+
+                <tr>
+              <td>是否接受</td>
+              <td>
+                  $!challengeAcceptDO.accept
+              </td>
+          </tr>
+
+        </table>

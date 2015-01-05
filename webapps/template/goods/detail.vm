@@ -1,0 +1,31 @@
+$!goods详情
+  <table class="table">
+                <tr>
+              <td>名称</td>
+              <td>
+                  $!goodsDO.goodsName
+              </td>
+          </tr>
+
+                <tr>
+              <td>描述</td>
+              <td>
+                  $!goodsDO.goodsDesc
+              </td>
+          </tr>
+
+                <tr>
+              <td>价格</td>
+              <td>
+                  $!goodsDO.price
+              </td>
+          </tr>
+
+                <tr>
+              <td>所在场地</td>
+              <td>
+                  $!goodsDO.courtId
+              </td>
+          </tr>
+
+        </table>
