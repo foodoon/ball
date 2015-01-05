@@ -4,6 +4,7 @@
  */
 package guda.ball.web;
 
+import guda.tools.web.util.RequestUtil;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -19,18 +20,11 @@ import javax.servlet.http.HttpServletRequest;
  * @version $Id: BlankController.java, v 0.1 2012-4-26 9:16:33 gag Exp $
  */
 @Controller
-@RequestMapping("/*.htm")
 public class BlankController {
 
-    private final static Logger logger = Logger.getLogger(BlankController.class);
-
-    @RequestMapping(method = RequestMethod.GET)
-    public String doGet(HttpServletRequest request, ModelMap modelMap) {
-        if (logger.isInfoEnabled()) {
-            logger.info("test url" + request.getRequestURL());
-        }
-        return "index.vm";
-
+    @RequestMapping(value = "**/*.htm", method = RequestMethod.GET)
+    public String list(HttpServletRequest request, ModelMap modelMap) {
+        return RequestUtil.resolveVM(request);
     }
 
 

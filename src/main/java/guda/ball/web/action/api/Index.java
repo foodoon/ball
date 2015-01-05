@@ -33,6 +33,7 @@ public class Index {
     public String index(HttpServletRequest request, ModelMap modelMap) {
         String apiName = request.getParameter("apiName");
         String apiVersion = request.getParameter("apiVersion");
+        modelMap.put("host",getBasePath(request) + "/app.htm");
         if(!StringUtils.hasText(apiName) || !StringUtils.hasText(apiVersion)){
             modelMap.put("errorMsg","api名称以及版本不能为空");
             return "api/index.vm";
@@ -49,7 +50,13 @@ public class Index {
 
     }
 
-
+    private String getBasePath(HttpServletRequest request) {
+        String path = request.getContextPath();
+        String basePath = request.getScheme() + "://"
+                + request.getServerName() + ":" + request.getServerPort()
+                + path;
+        return basePath;
+    }
 
     public void setApiFactory(ApiFactory apiFactory) {
         this.apiFactory = apiFactory;

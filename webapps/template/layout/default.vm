@@ -55,6 +55,7 @@
              <div class="well sidebar-nav">
                  <ul class="nav nav-list">
                      <li class="nav-header">API测试</li>
+                     <li><a href="$!homeServer.getURI("api/help.htm")">api使用说明</a></li>
                      <li><a href="$!homeServer.getURI("api/list.htm")">api列表</a></li>
                      <li class="nav-header">球员</li>
                      <li><a href="$!homeServer.getURI("court/list.htm")">球场信息</a></li>
