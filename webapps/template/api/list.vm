@@ -5,7 +5,7 @@
             <h2>用户相关</h2>
             <ul>
                 <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','user.login').addQueryData('apiVersion','1.0')">用户登录</a></li>
-                <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','user.login').addQueryData('apiVersion','1.0')">用户登出</a></li>
+                <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','user.loginOut').addQueryData('apiVersion','1.0')">用户退出</a></li>
                 <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','user.update').addQueryData('apiVersion','1.0')">修改个人信息</a></li>
                 <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','user.reg').addQueryData('apiVersion','1.0')">用户注册</a></li>
             </ul>
