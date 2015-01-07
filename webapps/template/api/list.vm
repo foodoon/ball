@@ -91,5 +91,13 @@
                 </ul>
             </div>
 
+            <div class="col-md-4">
+                <h2>其他</h2>
+                <ul>
+                    <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','img.list').addQueryData('apiVersion','1.0')">图片</a></li>
+
+                </ul>
+            </div>
+
         </div>
 
