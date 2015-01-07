@@ -16,6 +16,7 @@ import org.apache.commons.beanutils.BeanUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 
@@ -27,6 +28,7 @@ import java.util.List;
 /**
  * Created by foodoon on 2014/8/5.
  */
+@Service
 public class ChallengeServiceImpl implements ChallengeService {
 
     private final static Logger log = LoggerFactory.getLogger(ChallengeServiceImpl.class);

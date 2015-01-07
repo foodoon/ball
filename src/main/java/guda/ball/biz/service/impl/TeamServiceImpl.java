@@ -20,6 +20,7 @@ import guda.ball.util.enums.ApplyStatusEnum;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
@@ -30,6 +31,7 @@ import java.util.List;
 /**
  * Created by foodoon on 2014/8/2.
  */
+@Service
 public class TeamServiceImpl implements TeamService{
 
     private final static Logger log = LoggerFactory.getLogger(TeamServiceImpl.class);

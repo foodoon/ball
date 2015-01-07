@@ -17,6 +17,7 @@ import guda.ball.util.enums.OrderStatusEnum;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 
@@ -26,6 +27,7 @@ import java.util.List;
 /**
  * Created by well on 2014/8/9.
  */
+@Service
 public class GoodsServiceImpl implements GoodsService{
     private final static Logger log = LoggerFactory.getLogger(GoodsServiceImpl.class);
     @Autowired

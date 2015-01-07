@@ -14,6 +14,7 @@ import guda.tools.web.page.BizResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import java.util.Calendar;
@@ -22,6 +23,7 @@ import java.util.Date;
 /**
  * Created by foodoon on 2014/7/31.
  */
+@Service
 public class UserServiceImpl implements UserService {
     private final static Logger log = LoggerFactory.getLogger(UserServiceImpl.class);
 

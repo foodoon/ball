@@ -18,6 +18,7 @@ import guda.ball.util.enums.OpenTimeEnum;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import java.text.SimpleDateFormat;
@@ -29,6 +30,7 @@ import java.util.List;
 /**
  * Created by foodoon on 2014/8/3.
  */
+@Service
 public class CourtServiceImpl implements CourtService {
 
     private final static Logger log = LoggerFactory.getLogger(CourtServiceImpl.class);

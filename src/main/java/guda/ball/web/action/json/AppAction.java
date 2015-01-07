@@ -34,7 +34,7 @@ public class AppAction extends BaseJsonController{
         //TODO 校验签名
         //TODO 校验登录
         //TODO
-        String method=request.getParameter("method");
+       // String method=request.getParameter("method");
         String apiName=request.getParameter("apiName");
         String apiVersion=request.getParameter("apiVersion");
         if(!StringUtils.hasText(apiName)||!StringUtils.hasText(apiVersion)){

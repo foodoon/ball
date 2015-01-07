@@ -58,6 +58,7 @@
 
                 <ref local="comment.create"></ref>
                 <ref local="comment.queryCommentList"></ref>
+                <ref local="img.list"></ref>
 
             </list>
         </property>
@@ -671,6 +672,12 @@
                 <entry key="pageSize" value="每页记录数(可为空，默认20)"></entry>
             </map>
         </property>
+    </bean>
+
+    <bean id="img.list" class="guda.ball.biz.entity.ApiDefine">
+        <property name="apiName" value="img.list"></property>
+        <property name="apiVersion" value="1.0"></property>
+
     </bean>
 
 </beans>

@@ -50,7 +50,7 @@ public class Index {
 
     }
 
-    private String getBasePath(HttpServletRequest request) {
+    public static String getBasePath(HttpServletRequest request) {
         String path = request.getContextPath();
         String basePath = request.getScheme() + "://"
                 + request.getServerName() + ":" + request.getServerPort()

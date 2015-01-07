@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="imgService" class="guda.ball.biz.service.impl.ImgServiceImpl">
+        <property name="imgMap">
+        <map>
+        <entry key="bannerImg" value="http://blog.foodoon.com/assets/img/banner_769x442.jpg" />
+
+        </map>
+        </property>
+    </bean>
+
+</beans>
