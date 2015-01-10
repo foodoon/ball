@@ -108,7 +108,7 @@
                 <entry key="realName" value="真实姓名"></entry>
                 <entry key="address" value="地址"></entry>
                 <entry key="phone" value="手机号"></entry>
-                <entry key="groundTypeOfEnjoy" value="喜欢的场地类型"></entry>
+                <entry key="groundTypeOfEnjoy" value="喜欢的场地类型(可取的值为3,5,7,9,11分别代表3V3,5V5,7V7,9V9,11V11)"></entry>
                 <entry key="groundOfDaily" value="经常比赛的场地"></entry>
                 <entry key="special" value="特长"></entry>
 
