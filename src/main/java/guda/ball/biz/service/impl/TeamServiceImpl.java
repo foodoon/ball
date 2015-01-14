@@ -452,7 +452,7 @@ public class TeamServiceImpl implements TeamService{
         return bizResult;
     }
     @AppRequestMapping(apiName = "team.queryTeamList", apiVersion = "1.0")
-    public BizResult queryTeamList(String sid, int pageNo, int pageSize) {
+    public BizResult queryTeamList(@AppRequestParam("sid") String sid,@AppRequestParam("pageNo") int pageNo,@AppRequestParam("pageSize") int pageSize) {
         if( !StringUtils.hasText(sid)){
             return BizResultHelper.newResultCode(CommonResultCode.PARAM_MISS);
         }

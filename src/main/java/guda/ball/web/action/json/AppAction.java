@@ -58,7 +58,7 @@ public class AppAction extends BaseJsonController{
         appRequest.setAppRequestKey(appRequestKey);
         appRequest.setRequestParams(parameterMap);
         AppMethodInvoker appMethodInvoker = new AppMethodInvoker();
-        AppResponse invoke = null;
+        AppResponse invoke = new AppResponse();
         try {
             invoke = appMethodInvoker.invoke(appRequest, service);
             if(invoke.isSuccess()){
