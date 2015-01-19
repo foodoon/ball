@@ -108,7 +108,7 @@
                 <entry key="realName" value="真实姓名"></entry>
                 <entry key="address" value="地址"></entry>
                 <entry key="phone" value="手机号"></entry>
-                <entry key="groundTypeOfEnjoy" value="喜欢的场地类型"></entry>
+                <entry key="groundTypeOfEnjoy" value="喜欢的场地类型(可取的值为3,5,7,9,11分别代表3V3,5V5,7V7,9V9,11V11)"></entry>
                 <entry key="groundOfDaily" value="经常比赛的场地"></entry>
                 <entry key="special" value="特长"></entry>
 
@@ -289,8 +289,8 @@
                 <entry key="id" value="场地ID"></entry>
                 <entry key="name" value="场地名称"></entry>
                 <entry key="address" value="场地地址"></entry>
-                <entry key="type" value="场地类型"></entry>
-                <entry key="openTime" value="场地开放时间"></entry>
+                <entry key="type" value="场地类型(可取的值为3,5,7,9,11分别代表3V3,5V5,7V7,9V9,11V11)"></entry>
+                <entry key="openTime" value="场地开放时间(ALL:所有时间均开放;WEEKEND:仅周末开放;WORKDAY:仅工作日开放)"></entry>
                 <entry key="courtDesc" value="场地描述"></entry>
                 <entry key="square" value="场地面积"></entry>
                 <entry key="status" value="是否开放"></entry>
