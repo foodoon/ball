@@ -257,7 +257,7 @@ public class ChallengeServiceImpl implements ChallengeService {
         List<TeamDO> teamDOs = teamDOMapper.selectByExample(teamDOCriteria);
         if(CollectionUtils.isEmpty(teamDOs)){
                 return BizResultHelper.newResultCode(CommonResultCode.CHALLENGE_MUST_HAVE_TEAM);
-           
+
         }
 
         ChallengeDOCriteria challengeDOCriteria = new ChallengeDOCriteria();
