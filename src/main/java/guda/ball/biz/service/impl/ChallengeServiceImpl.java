@@ -85,6 +85,7 @@ public class ChallengeServiceImpl implements ChallengeService {
         challengeDO.setGmtCreate(new Date());
         challengeDO.setGmtModify(new Date());
         challengeDO.setIsDeleted(0);
+        challengeDO.setStatus(ChallengeStatusEnum.FALSE.value);
         challengeDO.setTeamId(teamDOs.get(0).getId());
         try {
             challengeDOMapper.insert(challengeDO);
