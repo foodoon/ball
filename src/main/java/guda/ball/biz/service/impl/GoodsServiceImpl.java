@@ -151,7 +151,7 @@ public class GoodsServiceImpl implements GoodsService{
         }
         GoodsDOCriteria goodsDOCriteria = new GoodsDOCriteria();
         goodsDOCriteria.createCriteria().andCourtIdEqualTo(courtId);
-        goodsDOCriteria.setOrderByClause("order by gmt_modify desc");
+        goodsDOCriteria.setOrderByClause(" gmt_modify desc");
         BaseQuery baseQuery = new BaseQuery();
         baseQuery.setPageNo(pageNo);
         baseQuery.setPageSize(pageSize);
@@ -180,7 +180,7 @@ public class GoodsServiceImpl implements GoodsService{
         }
         OrderDOCriteria orderDOCriteria = new OrderDOCriteria();
         orderDOCriteria.createCriteria().andBuyerIdEqualTo(userDO.getId());
-        orderDOCriteria.setOrderByClause("order by gmt_modify desc");
+        orderDOCriteria.setOrderByClause(" gmt_modify desc");
         BaseQuery baseQuery = new BaseQuery();
         baseQuery.setPageNo(pageNo);
         baseQuery.setPageSize(pageSize);
@@ -209,7 +209,7 @@ public class GoodsServiceImpl implements GoodsService{
         }
         OrderDOCriteria orderDOCriteria = new OrderDOCriteria();
         orderDOCriteria.createCriteria().andSellerIdEqualTo(userDO.getId());
-        orderDOCriteria.setOrderByClause("order by gmt_modify desc");
+        orderDOCriteria.setOrderByClause(" gmt_modify desc");
         BaseQuery baseQuery = new BaseQuery();
         baseQuery.setPageNo(pageNo);
         baseQuery.setPageSize(pageSize);

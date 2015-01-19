@@ -333,7 +333,7 @@ public class CourtServiceImpl implements CourtService {
         baseQuery.setPageSize(pageSize);
         CourtApplyDOCriteria courtApplyDOCriteria = new CourtApplyDOCriteria();
         courtApplyDOCriteria.createCriteria().andUserIdEqualTo(userDO.getId());
-        courtApplyDOCriteria.setOrderByClause("order by gmt_create desc");
+        courtApplyDOCriteria.setOrderByClause(" gmt_create desc");
         List<CourtApplyDO> courtApplyDOs = courtApplyDOMapper.selectByExample(courtApplyDOCriteria);
         int count = courtApplyDOMapper.countByExample(courtApplyDOCriteria);
         baseQuery.setTotalCount(count);
@@ -388,7 +388,7 @@ public class CourtServiceImpl implements CourtService {
         });
         CourtApplyDOCriteria courtApplyDOCriteria = new CourtApplyDOCriteria();
         courtApplyDOCriteria.createCriteria().andCourtIdIn(courtIdList);
-        courtApplyDOCriteria.setOrderByClause("order by gmt_create desc");
+        courtApplyDOCriteria.setOrderByClause(" gmt_create desc");
         List<CourtApplyDO> courtApplyDOs = courtApplyDOMapper.selectByExample(courtApplyDOCriteria);
         int count = courtApplyDOMapper.countByExample(courtApplyDOCriteria);
         baseQuery.setTotalCount(count);
