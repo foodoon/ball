@@ -22,5 +22,7 @@ public interface UserService {
 
     public BizResult loginOut(String sid);
 
+    public BizResult queryUser(String sid,String userName);
+
 
 }

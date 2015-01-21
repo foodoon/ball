@@ -1,19 +1,14 @@
 package guda.ball.dao.domain;
 
-import guda.gen.GenField;
-
 import java.util.Date;
 
 public class TeamApplyDO {
     private Integer id;
 
-    @GenField(cn="球队ID",order=1,inSearchForm = false,canNull = false)
     private Integer teamId;
 
-    @GenField(cn="用户ID",order=1,inSearchForm = false,canNull = false)
     private Integer userId;
 
-    @GenField(cn="是否通过",order=1,inSearchForm = false,canNull = false)
     private Integer status;
 
     private Integer isDeleted;
@@ -21,6 +16,8 @@ public class TeamApplyDO {
     private Date gmtModify;
 
     private Date gmtCreate;
+
+    private String applyMsg;
 
     public Integer getId() {
         return id;
@@ -76,5 +73,13 @@ public class TeamApplyDO {
 
     public void setGmtCreate(Date gmtCreate) {
         this.gmtCreate = gmtCreate;
+    }
+
+    public String getApplyMsg() {
+        return applyMsg;
+    }
+
+    public void setApplyMsg(String applyMsg) {
+        this.applyMsg = applyMsg == null ? null : applyMsg.trim();
     }
 }

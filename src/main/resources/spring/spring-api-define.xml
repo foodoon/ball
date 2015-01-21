@@ -11,6 +11,7 @@
                 <ref local="user.login"></ref>
                 <ref local="user.queryUserInfo"></ref>
                 <ref local="user.queryUserInfoById"></ref>
+                <ref local="user.queryUser"></ref>
 
 
                 <ref local="team.apply"></ref>
@@ -139,7 +140,25 @@
                 <entry key="groundTypeOfEnjoy" value="喜欢的场地类型(可取的值为3,5,7,9,11分别代表3V3,5V5,7V7,9V9,11V11)"></entry>
                 <entry key="groundOfDaily" value="经常比赛的场地"></entry>
                 <entry key="special" value="特长"></entry>
+                <entry key="height" value="身高(单位:米)"></entry>
+                <entry key="weight" value="体重(单位:KG)"></entry>
+                <entry key="hometown" value="籍贯"></entry>
+                <entry key="expertFooter" value="擅长脚（可取值:左脚，右脚）"></entry>
+                <entry key="expertLocation" value="擅长位置（取值范围：门将，边后卫，中后卫，中场，边前锋，中锋，前腰，后腰）"></entry>
+                <entry key="hometown" value="籍贯"></entry>
 
+            </map>
+        </property>
+    </bean>
+
+    <bean id="user.queryUser" class="guda.ball.biz.entity.ApiDefine">
+        <property name="apiName" value="user.queryUser"></property>
+        <property name="apiVersion" value="1.0"></property>
+        <property name="params">
+            <map>
+                <entry key="userName" value="登录名"></entry>
+                <entry key="password" value="密码"></entry>
+                <entry key="realName" value="姓名"></entry>
             </map>
         </property>
     </bean>

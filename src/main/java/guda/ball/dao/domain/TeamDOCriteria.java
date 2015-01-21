@@ -385,6 +385,76 @@ public class TeamDOCriteria {
             return (Criteria) this;
         }
 
+        public Criteria andTeamTypeIsNull() {
+            addCriterion("team_type is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTeamTypeIsNotNull() {
+            addCriterion("team_type is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTeamTypeEqualTo(String value) {
+            addCriterion("team_type =", value, "teamType");
+            return (Criteria) this;
+        }
+
+        public Criteria andTeamTypeNotEqualTo(String value) {
+            addCriterion("team_type <>", value, "teamType");
+            return (Criteria) this;
+        }
+
+        public Criteria andTeamTypeGreaterThan(String value) {
+            addCriterion("team_type >", value, "teamType");
+            return (Criteria) this;
+        }
+
+        public Criteria andTeamTypeGreaterThanOrEqualTo(String value) {
+            addCriterion("team_type >=", value, "teamType");
+            return (Criteria) this;
+        }
+
+        public Criteria andTeamTypeLessThan(String value) {
+            addCriterion("team_type <", value, "teamType");
+            return (Criteria) this;
+        }
+
+        public Criteria andTeamTypeLessThanOrEqualTo(String value) {
+            addCriterion("team_type <=", value, "teamType");
+            return (Criteria) this;
+        }
+
+        public Criteria andTeamTypeLike(String value) {
+            addCriterion("team_type like", value, "teamType");
+            return (Criteria) this;
+        }
+
+        public Criteria andTeamTypeNotLike(String value) {
+            addCriterion("team_type not like", value, "teamType");
+            return (Criteria) this;
+        }
+
+        public Criteria andTeamTypeIn(List<String> values) {
+            addCriterion("team_type in", values, "teamType");
+            return (Criteria) this;
+        }
+
+        public Criteria andTeamTypeNotIn(List<String> values) {
+            addCriterion("team_type not in", values, "teamType");
+            return (Criteria) this;
+        }
+
+        public Criteria andTeamTypeBetween(String value1, String value2) {
+            addCriterion("team_type between", value1, value2, "teamType");
+            return (Criteria) this;
+        }
+
+        public Criteria andTeamTypeNotBetween(String value1, String value2) {
+            addCriterion("team_type not between", value1, value2, "teamType");
+            return (Criteria) this;
+        }
+
         public Criteria andCanJoinIsNull() {
             addCriterion("can_join is null");
             return (Criteria) this;
@@ -622,6 +692,146 @@ public class TeamDOCriteria {
 
         public Criteria andGmtCreateNotBetween(Date value1, Date value2) {
             addCriterion("gmt_create not between", value1, value2, "gmtCreate");
+            return (Criteria) this;
+        }
+
+        public Criteria andAreaIsNull() {
+            addCriterion("area is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAreaIsNotNull() {
+            addCriterion("area is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAreaEqualTo(String value) {
+            addCriterion("area =", value, "area");
+            return (Criteria) this;
+        }
+
+        public Criteria andAreaNotEqualTo(String value) {
+            addCriterion("area <>", value, "area");
+            return (Criteria) this;
+        }
+
+        public Criteria andAreaGreaterThan(String value) {
+            addCriterion("area >", value, "area");
+            return (Criteria) this;
+        }
+
+        public Criteria andAreaGreaterThanOrEqualTo(String value) {
+            addCriterion("area >=", value, "area");
+            return (Criteria) this;
+        }
+
+        public Criteria andAreaLessThan(String value) {
+            addCriterion("area <", value, "area");
+            return (Criteria) this;
+        }
+
+        public Criteria andAreaLessThanOrEqualTo(String value) {
+            addCriterion("area <=", value, "area");
+            return (Criteria) this;
+        }
+
+        public Criteria andAreaLike(String value) {
+            addCriterion("area like", value, "area");
+            return (Criteria) this;
+        }
+
+        public Criteria andAreaNotLike(String value) {
+            addCriterion("area not like", value, "area");
+            return (Criteria) this;
+        }
+
+        public Criteria andAreaIn(List<String> values) {
+            addCriterion("area in", values, "area");
+            return (Criteria) this;
+        }
+
+        public Criteria andAreaNotIn(List<String> values) {
+            addCriterion("area not in", values, "area");
+            return (Criteria) this;
+        }
+
+        public Criteria andAreaBetween(String value1, String value2) {
+            addCriterion("area between", value1, value2, "area");
+            return (Criteria) this;
+        }
+
+        public Criteria andAreaNotBetween(String value1, String value2) {
+            addCriterion("area not between", value1, value2, "area");
+            return (Criteria) this;
+        }
+
+        public Criteria andHomeCourtIsNull() {
+            addCriterion("home_court is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHomeCourtIsNotNull() {
+            addCriterion("home_court is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHomeCourtEqualTo(String value) {
+            addCriterion("home_court =", value, "homeCourt");
+            return (Criteria) this;
+        }
+
+        public Criteria andHomeCourtNotEqualTo(String value) {
+            addCriterion("home_court <>", value, "homeCourt");
+            return (Criteria) this;
+        }
+
+        public Criteria andHomeCourtGreaterThan(String value) {
+            addCriterion("home_court >", value, "homeCourt");
+            return (Criteria) this;
+        }
+
+        public Criteria andHomeCourtGreaterThanOrEqualTo(String value) {
+            addCriterion("home_court >=", value, "homeCourt");
+            return (Criteria) this;
+        }
+
+        public Criteria andHomeCourtLessThan(String value) {
+            addCriterion("home_court <", value, "homeCourt");
+            return (Criteria) this;
+        }
+
+        public Criteria andHomeCourtLessThanOrEqualTo(String value) {
+            addCriterion("home_court <=", value, "homeCourt");
+            return (Criteria) this;
+        }
+
+        public Criteria andHomeCourtLike(String value) {
+            addCriterion("home_court like", value, "homeCourt");
+            return (Criteria) this;
+        }
+
+        public Criteria andHomeCourtNotLike(String value) {
+            addCriterion("home_court not like", value, "homeCourt");
+            return (Criteria) this;
+        }
+
+        public Criteria andHomeCourtIn(List<String> values) {
+            addCriterion("home_court in", values, "homeCourt");
+            return (Criteria) this;
+        }
+
+        public Criteria andHomeCourtNotIn(List<String> values) {
+            addCriterion("home_court not in", values, "homeCourt");
+            return (Criteria) this;
+        }
+
+        public Criteria andHomeCourtBetween(String value1, String value2) {
+            addCriterion("home_court between", value1, value2, "homeCourt");
+            return (Criteria) this;
+        }
+
+        public Criteria andHomeCourtNotBetween(String value1, String value2) {
+            addCriterion("home_court not between", value1, value2, "homeCourt");
             return (Criteria) this;
         }
     }

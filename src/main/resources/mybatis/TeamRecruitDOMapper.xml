@@ -47,7 +47,7 @@
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from ball_team_recruit
+    from team_recruit
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -61,15 +61,15 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from ball_team_recruit
+    from team_recruit
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from ball_team_recruit
+    delete from team_recruit
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="guda.ball.dao.domain.TeamRecruitDO">
-    insert into ball_team_recruit (id, user_id, recruit_desc,
+    insert into team_recruit (id, user_id, recruit_desc,
       is_deleted, gmt_modify, gmt_create
       )
     values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{recruitDesc,jdbcType=VARCHAR}, 
@@ -77,7 +77,7 @@
       )
   </insert>
   <insert id="insertSelective" parameterType="guda.ball.dao.domain.TeamRecruitDO">
-    insert into ball_team_recruit
+    insert into team_recruit
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
@@ -120,13 +120,13 @@
     </trim>
   </insert>
   <select id="countByExample" parameterType="guda.ball.dao.domain.TeamRecruitDOCriteria" resultType="java.lang.Integer">
-    select count(*) from ball_team_recruit
+    select count(*) from team_recruit
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByPrimaryKeySelective" parameterType="guda.ball.dao.domain.TeamRecruitDO">
-    update ball_team_recruit
+    update team_recruit
     <set>
       <if test="userId != null">
         user_id = #{userId,jdbcType=INTEGER},
@@ -147,7 +147,7 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="guda.ball.dao.domain.TeamRecruitDO">
-    update ball_team_recruit
+    update team_recruit
     set user_id = #{userId,jdbcType=INTEGER},
       recruit_desc = #{recruitDesc,jdbcType=VARCHAR},
       is_deleted = #{isDeleted,jdbcType=INTEGER},

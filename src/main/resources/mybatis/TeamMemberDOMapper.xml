@@ -46,7 +46,7 @@
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from ball_team_member
+    from team_member
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -60,18 +60,18 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from ball_team_member
+    from team_member
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from ball_team_member
+    delete from team_member
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="guda.ball.dao.domain.TeamMemberDO" >
     <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into ball_team_member (team_id, user_id, gmt_create,
+    insert into team_member (team_id, user_id, gmt_create,
       gmt_modify)
     values (#{teamId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{gmtCreate,jdbcType=TIMESTAMP}, 
       #{gmtModify,jdbcType=TIMESTAMP})
@@ -80,7 +80,7 @@
     <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into ball_team_member
+    insert into team_member
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="teamId != null" >
         team_id,
@@ -111,13 +111,13 @@
     </trim>
   </insert>
   <select id="countByExample" parameterType="guda.ball.dao.domain.TeamMemberDOCriteria" resultType="java.lang.Integer" >
-    select count(*) from ball_team_member
+    select count(*) from team_member
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByPrimaryKeySelective" parameterType="guda.ball.dao.domain.TeamMemberDO" >
-    update ball_team_member
+    update team_member
     <set >
       <if test="teamId != null" >
         team_id = #{teamId,jdbcType=INTEGER},
@@ -135,7 +135,7 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="guda.ball.dao.domain.TeamMemberDO" >
-    update ball_team_member
+    update team_member
     set team_id = #{teamId,jdbcType=INTEGER},
       user_id = #{userId,jdbcType=INTEGER},
       gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},

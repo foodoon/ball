@@ -1064,6 +1064,356 @@ public class UserDOCriteria {
             addCriterion("gmt_create not between", value1, value2, "gmtCreate");
             return (Criteria) this;
         }
+
+        public Criteria andExpertLocationIsNull() {
+            addCriterion("expert_location is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andExpertLocationIsNotNull() {
+            addCriterion("expert_location is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andExpertLocationEqualTo(String value) {
+            addCriterion("expert_location =", value, "expertLocation");
+            return (Criteria) this;
+        }
+
+        public Criteria andExpertLocationNotEqualTo(String value) {
+            addCriterion("expert_location <>", value, "expertLocation");
+            return (Criteria) this;
+        }
+
+        public Criteria andExpertLocationGreaterThan(String value) {
+            addCriterion("expert_location >", value, "expertLocation");
+            return (Criteria) this;
+        }
+
+        public Criteria andExpertLocationGreaterThanOrEqualTo(String value) {
+            addCriterion("expert_location >=", value, "expertLocation");
+            return (Criteria) this;
+        }
+
+        public Criteria andExpertLocationLessThan(String value) {
+            addCriterion("expert_location <", value, "expertLocation");
+            return (Criteria) this;
+        }
+
+        public Criteria andExpertLocationLessThanOrEqualTo(String value) {
+            addCriterion("expert_location <=", value, "expertLocation");
+            return (Criteria) this;
+        }
+
+        public Criteria andExpertLocationLike(String value) {
+            addCriterion("expert_location like", value, "expertLocation");
+            return (Criteria) this;
+        }
+
+        public Criteria andExpertLocationNotLike(String value) {
+            addCriterion("expert_location not like", value, "expertLocation");
+            return (Criteria) this;
+        }
+
+        public Criteria andExpertLocationIn(List<String> values) {
+            addCriterion("expert_location in", values, "expertLocation");
+            return (Criteria) this;
+        }
+
+        public Criteria andExpertLocationNotIn(List<String> values) {
+            addCriterion("expert_location not in", values, "expertLocation");
+            return (Criteria) this;
+        }
+
+        public Criteria andExpertLocationBetween(String value1, String value2) {
+            addCriterion("expert_location between", value1, value2, "expertLocation");
+            return (Criteria) this;
+        }
+
+        public Criteria andExpertLocationNotBetween(String value1, String value2) {
+            addCriterion("expert_location not between", value1, value2, "expertLocation");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeightIsNull() {
+            addCriterion("height is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeightIsNotNull() {
+            addCriterion("height is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeightEqualTo(String value) {
+            addCriterion("height =", value, "height");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeightNotEqualTo(String value) {
+            addCriterion("height <>", value, "height");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeightGreaterThan(String value) {
+            addCriterion("height >", value, "height");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeightGreaterThanOrEqualTo(String value) {
+            addCriterion("height >=", value, "height");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeightLessThan(String value) {
+            addCriterion("height <", value, "height");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeightLessThanOrEqualTo(String value) {
+            addCriterion("height <=", value, "height");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeightLike(String value) {
+            addCriterion("height like", value, "height");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeightNotLike(String value) {
+            addCriterion("height not like", value, "height");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeightIn(List<String> values) {
+            addCriterion("height in", values, "height");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeightNotIn(List<String> values) {
+            addCriterion("height not in", values, "height");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeightBetween(String value1, String value2) {
+            addCriterion("height between", value1, value2, "height");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeightNotBetween(String value1, String value2) {
+            addCriterion("height not between", value1, value2, "height");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeightIsNull() {
+            addCriterion("weight is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeightIsNotNull() {
+            addCriterion("weight is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeightEqualTo(String value) {
+            addCriterion("weight =", value, "weight");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeightNotEqualTo(String value) {
+            addCriterion("weight <>", value, "weight");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeightGreaterThan(String value) {
+            addCriterion("weight >", value, "weight");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeightGreaterThanOrEqualTo(String value) {
+            addCriterion("weight >=", value, "weight");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeightLessThan(String value) {
+            addCriterion("weight <", value, "weight");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeightLessThanOrEqualTo(String value) {
+            addCriterion("weight <=", value, "weight");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeightLike(String value) {
+            addCriterion("weight like", value, "weight");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeightNotLike(String value) {
+            addCriterion("weight not like", value, "weight");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeightIn(List<String> values) {
+            addCriterion("weight in", values, "weight");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeightNotIn(List<String> values) {
+            addCriterion("weight not in", values, "weight");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeightBetween(String value1, String value2) {
+            addCriterion("weight between", value1, value2, "weight");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeightNotBetween(String value1, String value2) {
+            addCriterion("weight not between", value1, value2, "weight");
+            return (Criteria) this;
+        }
+
+        public Criteria andHometownIsNull() {
+            addCriterion("hometown is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHometownIsNotNull() {
+            addCriterion("hometown is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHometownEqualTo(String value) {
+            addCriterion("hometown =", value, "hometown");
+            return (Criteria) this;
+        }
+
+        public Criteria andHometownNotEqualTo(String value) {
+            addCriterion("hometown <>", value, "hometown");
+            return (Criteria) this;
+        }
+
+        public Criteria andHometownGreaterThan(String value) {
+            addCriterion("hometown >", value, "hometown");
+            return (Criteria) this;
+        }
+
+        public Criteria andHometownGreaterThanOrEqualTo(String value) {
+            addCriterion("hometown >=", value, "hometown");
+            return (Criteria) this;
+        }
+
+        public Criteria andHometownLessThan(String value) {
+            addCriterion("hometown <", value, "hometown");
+            return (Criteria) this;
+        }
+
+        public Criteria andHometownLessThanOrEqualTo(String value) {
+            addCriterion("hometown <=", value, "hometown");
+            return (Criteria) this;
+        }
+
+        public Criteria andHometownLike(String value) {
+            addCriterion("hometown like", value, "hometown");
+            return (Criteria) this;
+        }
+
+        public Criteria andHometownNotLike(String value) {
+            addCriterion("hometown not like", value, "hometown");
+            return (Criteria) this;
+        }
+
+        public Criteria andHometownIn(List<String> values) {
+            addCriterion("hometown in", values, "hometown");
+            return (Criteria) this;
+        }
+
+        public Criteria andHometownNotIn(List<String> values) {
+            addCriterion("hometown not in", values, "hometown");
+            return (Criteria) this;
+        }
+
+        public Criteria andHometownBetween(String value1, String value2) {
+            addCriterion("hometown between", value1, value2, "hometown");
+            return (Criteria) this;
+        }
+
+        public Criteria andHometownNotBetween(String value1, String value2) {
+            addCriterion("hometown not between", value1, value2, "hometown");
+            return (Criteria) this;
+        }
+
+        public Criteria andExpertFooterIsNull() {
+            addCriterion("expert_footer is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andExpertFooterIsNotNull() {
+            addCriterion("expert_footer is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andExpertFooterEqualTo(String value) {
+            addCriterion("expert_footer =", value, "expertFooter");
+            return (Criteria) this;
+        }
+
+        public Criteria andExpertFooterNotEqualTo(String value) {
+            addCriterion("expert_footer <>", value, "expertFooter");
+            return (Criteria) this;
+        }
+
+        public Criteria andExpertFooterGreaterThan(String value) {
+            addCriterion("expert_footer >", value, "expertFooter");
+            return (Criteria) this;
+        }
+
+        public Criteria andExpertFooterGreaterThanOrEqualTo(String value) {
+            addCriterion("expert_footer >=", value, "expertFooter");
+            return (Criteria) this;
+        }
+
+        public Criteria andExpertFooterLessThan(String value) {
+            addCriterion("expert_footer <", value, "expertFooter");
+            return (Criteria) this;
+        }
+
+        public Criteria andExpertFooterLessThanOrEqualTo(String value) {
+            addCriterion("expert_footer <=", value, "expertFooter");
+            return (Criteria) this;
+        }
+
+        public Criteria andExpertFooterLike(String value) {
+            addCriterion("expert_footer like", value, "expertFooter");
+            return (Criteria) this;
+        }
+
+        public Criteria andExpertFooterNotLike(String value) {
+            addCriterion("expert_footer not like", value, "expertFooter");
+            return (Criteria) this;
+        }
+
+        public Criteria andExpertFooterIn(List<String> values) {
+            addCriterion("expert_footer in", values, "expertFooter");
+            return (Criteria) this;
+        }
+
+        public Criteria andExpertFooterNotIn(List<String> values) {
+            addCriterion("expert_footer not in", values, "expertFooter");
+            return (Criteria) this;
+        }
+
+        public Criteria andExpertFooterBetween(String value1, String value2) {
+            addCriterion("expert_footer between", value1, value2, "expertFooter");
+            return (Criteria) this;
+        }
+
+        public Criteria andExpertFooterNotBetween(String value1, String value2) {
+            addCriterion("expert_footer not between", value1, value2, "expertFooter");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

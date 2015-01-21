@@ -1,48 +1,45 @@
 package guda.ball.dao.domain;
 
-import guda.gen.GenField;
-
 import java.util.Date;
 
 public class UserDO {
     private Integer id;
 
-    @GenField(cn="登录名",order=1,inSearchForm = false,canNull = false)
     private String userName;
 
-    @GenField(cn="真实姓名",order=1,inSearchForm = false,canNull = false)
     private String realName;
 
-    @GenField(cn="电子邮箱",order=1,inSearchForm = false,canNull = false)
     private String email;
 
-    @GenField(cn="住址",order=1,inSearchForm = false,canNull = false)
     private String address;
 
-    @GenField(cn="密码",order=1,inSearchForm = false,canNull = false)
     private String password;
 
-    @GenField(cn="手机号码",order=1,inSearchForm = false,canNull = false)
     private String phone;
 
-    @GenField(cn="喜欢的场地类型",order=1,inSearchForm = false,canNull = false)
     private String groundTypeOfEnjoy;
 
-    @GenField(cn="特长",order=1,inSearchForm = false,canNull = false)
     private String special;
 
-    @GenField(cn="经常比赛的场地",order=1,inSearchForm = false,canNull = false)
     private String groundOfDaily;
 
-    @GenField(cn="状态",order=1,inSearchForm = false,canNull = false)
     private Integer status;
 
-    @GenField(cn="头像",order=1,inSearchForm = false,canNull = false)
     private String img;
 
     private Date gmtModify;
 
     private Date gmtCreate;
+
+    private String expertLocation;
+
+    private String height;
+
+    private String weight;
+
+    private String hometown;
+
+    private String expertFooter;
 
     public Integer getId() {
         return id;
@@ -154,5 +151,45 @@ public class UserDO {
 
     public void setGmtCreate(Date gmtCreate) {
         this.gmtCreate = gmtCreate;
+    }
+
+    public String getExpertLocation() {
+        return expertLocation;
+    }
+
+    public void setExpertLocation(String expertLocation) {
+        this.expertLocation = expertLocation == null ? null : expertLocation.trim();
+    }
+
+    public String getHeight() {
+        return height;
+    }
+
+    public void setHeight(String height) {
+        this.height = height == null ? null : height.trim();
+    }
+
+    public String getWeight() {
+        return weight;
+    }
+
+    public void setWeight(String weight) {
+        this.weight = weight == null ? null : weight.trim();
+    }
+
+    public String getHometown() {
+        return hometown;
+    }
+
+    public void setHometown(String hometown) {
+        this.hometown = hometown == null ? null : hometown.trim();
+    }
+
+    public String getExpertFooter() {
+        return expertFooter;
+    }
+
+    public void setExpertFooter(String expertFooter) {
+        this.expertFooter = expertFooter == null ? null : expertFooter.trim();
     }
 }

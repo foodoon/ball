@@ -49,7 +49,7 @@
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from ball_court_apply
+    from court_apply
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -63,18 +63,18 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from ball_court_apply
+    from court_apply
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from ball_court_apply
+    delete from court_apply
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="guda.ball.dao.domain.CourtApplyDO">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into ball_court_apply (user_id, court_id, booking_time,
+    insert into court_apply (user_id, court_id, booking_time,
       status, is_deleted, gmt_modify, 
       gmt_create)
     values (#{userId,jdbcType=INTEGER}, #{courtId,jdbcType=INTEGER}, #{bookingTime,jdbcType=TIMESTAMP}, 
@@ -85,7 +85,7 @@
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into ball_court_apply
+    insert into court_apply
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="userId != null">
         user_id,
@@ -134,13 +134,13 @@
     </trim>
   </insert>
   <select id="countByExample" parameterType="guda.ball.dao.domain.CourtApplyDOCriteria" resultType="java.lang.Integer">
-    select count(*) from ball_court_apply
+    select count(*) from court_apply
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByPrimaryKeySelective" parameterType="guda.ball.dao.domain.CourtApplyDO">
-    update ball_court_apply
+    update court_apply
     <set>
       <if test="userId != null">
         user_id = #{userId,jdbcType=INTEGER},
@@ -167,7 +167,7 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="guda.ball.dao.domain.CourtApplyDO">
-    update ball_court_apply
+    update court_apply
     set user_id = #{userId,jdbcType=INTEGER},
       court_id = #{courtId,jdbcType=INTEGER},
       booking_time = #{bookingTime,jdbcType=TIMESTAMP},

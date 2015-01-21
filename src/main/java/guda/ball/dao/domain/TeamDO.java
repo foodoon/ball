@@ -1,29 +1,29 @@
 package guda.ball.dao.domain;
 
-import guda.gen.GenField;
-
 import java.util.Date;
 
 public class TeamDO {
     private Integer id;
 
-    @GenField(cn="球队名",order=1,inSearchForm = false,canNull = false)
-    private String name;
-
-    @GenField(cn="简单介绍",order=1,inSearchForm = false,canNull = false)
-    private String teamDesc;
-
-    @GenField(cn="是否开放加入",order=1,inSearchForm = false,canNull = false)
-    private Integer canJoin;
-    @GenField(cn="用户ID",order=1,inSearchForm = false,canNull = false)
     private Integer userId;
 
+    private String name;
+
+    private String teamDesc;
+
+    private String teamType;
+
+    private Integer canJoin;
 
     private Integer isDeleted;
 
     private Date gmtModify;
 
     private Date gmtCreate;
+
+    private String area;
+
+    private String homeCourt;
 
     public Integer getId() {
         return id;
@@ -57,6 +57,14 @@ public class TeamDO {
         this.teamDesc = teamDesc == null ? null : teamDesc.trim();
     }
 
+    public String getTeamType() {
+        return teamType;
+    }
+
+    public void setTeamType(String teamType) {
+        this.teamType = teamType == null ? null : teamType.trim();
+    }
+
     public Integer getCanJoin() {
         return canJoin;
     }
@@ -87,5 +95,21 @@ public class TeamDO {
 
     public void setGmtCreate(Date gmtCreate) {
         this.gmtCreate = gmtCreate;
+    }
+
+    public String getArea() {
+        return area;
+    }
+
+    public void setArea(String area) {
+        this.area = area == null ? null : area.trim();
+    }
+
+    public String getHomeCourt() {
+        return homeCourt;
+    }
+
+    public void setHomeCourt(String homeCourt) {
+        this.homeCourt = homeCourt == null ? null : homeCourt.trim();
     }
 }

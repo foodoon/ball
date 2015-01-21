@@ -10,6 +10,7 @@
                 <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','user.reg').addQueryData('apiVersion','1.0')">用户注册</a></li>
                 <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','user.queryUserInfo').addQueryData('apiVersion','1.0')">查询个人信息(自己)</a></li>
                 <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','user.queryUserInfoById').addQueryData('apiVersion','1.0')">查询个人信息(他人)</a></li>
+                <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','user.queryUser').addQueryData('apiVersion','1.0')">根据真实姓名查询用户（模糊匹配，只前10条记录）</a></li>
             </ul>
         </div>
         <div class="col-md-4">

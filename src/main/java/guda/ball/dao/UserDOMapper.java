@@ -2,7 +2,6 @@ package guda.ball.dao;
 
 import guda.ball.dao.domain.UserDO;
 import guda.ball.dao.domain.UserDOCriteria;
-
 import java.util.List;
 
 public interface UserDOMapper {

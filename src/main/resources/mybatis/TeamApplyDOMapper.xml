@@ -1,34 +1,35 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="guda.ball.dao.TeamApplyDOMapper" >
-  <resultMap id="BaseResultMap" type="guda.ball.dao.domain.TeamApplyDO" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="team_id" property="teamId" jdbcType="INTEGER" />
-    <result column="user_id" property="userId" jdbcType="INTEGER" />
-    <result column="status" property="status" jdbcType="INTEGER" />
-    <result column="is_deleted" property="isDeleted" jdbcType="INTEGER" />
-    <result column="gmt_modify" property="gmtModify" jdbcType="TIMESTAMP" />
-    <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="guda.ball.dao.TeamApplyDOMapper">
+  <resultMap id="BaseResultMap" type="guda.ball.dao.domain.TeamApplyDO">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="team_id" jdbcType="INTEGER" property="teamId" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="is_deleted" jdbcType="INTEGER" property="isDeleted" />
+    <result column="gmt_modify" jdbcType="TIMESTAMP" property="gmtModify" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="apply_msg" jdbcType="VARCHAR" property="applyMsg" />
   </resultMap>
-  <sql id="Example_Where_Clause" >
-    <where >
-      <foreach collection="oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
                   and ${criterion.condition}
                 </when>
-                <when test="criterion.singleValue" >
+                <when test="criterion.singleValue">
                   and ${criterion.condition} #{criterion.value}
                 </when>
-                <when test="criterion.betweenValue" >
+                <when test="criterion.betweenValue">
                   and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
                 </when>
-                <when test="criterion.listValue" >
+                <when test="criterion.listValue">
                   and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
                     #{listItem}
                   </foreach>
                 </when>
@@ -39,131 +40,142 @@
       </foreach>
     </where>
   </sql>
-  <sql id="Base_Column_List" >
-    id, team_id, user_id, status, is_deleted, gmt_modify, gmt_create
+  <sql id="Base_Column_List">
+    id, team_id, user_id, status, is_deleted, gmt_modify, gmt_create, apply_msg
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="guda.ball.dao.domain.TeamApplyDOCriteria" >
+  <select id="selectByExample" parameterType="guda.ball.dao.domain.TeamApplyDOCriteria" resultMap="BaseResultMap">
     select
-    <if test="distinct" >
+    <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from ball_team_apply
-    <if test="_parameter != null" >
+    from team_apply
+    <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
-    <if test="orderByClause != null" >
+    <if test="orderByClause != null">
       order by ${orderByClause}
     </if>
-    <if test="startRow >= 0" >
+    <if test="startRow &gt;= 0">
       limit ${startRow} , ${pageSize}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from ball_team_apply
+    from team_apply
     where id = #{id,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from ball_team_apply
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from team_apply
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="guda.ball.dao.domain.TeamApplyDO" >
-    insert into ball_team_apply (id, team_id, user_id,
-      status, is_deleted, gmt_modify, 
-      gmt_create)
-    values (#{id,jdbcType=INTEGER}, #{teamId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, 
-      #{status,jdbcType=INTEGER}, #{isDeleted,jdbcType=INTEGER}, #{gmtModify,jdbcType=TIMESTAMP}, 
-      #{gmtCreate,jdbcType=TIMESTAMP})
+  <insert id="insert" parameterType="guda.ball.dao.domain.TeamApplyDO">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into team_apply (team_id, user_id, status, 
+      is_deleted, gmt_modify, gmt_create, 
+      apply_msg)
+    values (#{teamId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{isDeleted,jdbcType=INTEGER}, #{gmtModify,jdbcType=TIMESTAMP}, #{gmtCreate,jdbcType=TIMESTAMP}, 
+      #{applyMsg,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="guda.ball.dao.domain.TeamApplyDO" >
-    insert into ball_team_apply
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
-      <if test="teamId != null" >
+  <insert id="insertSelective" parameterType="guda.ball.dao.domain.TeamApplyDO">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into team_apply
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="teamId != null">
         team_id,
       </if>
-      <if test="userId != null" >
+      <if test="userId != null">
         user_id,
       </if>
-      <if test="status != null" >
+      <if test="status != null">
         status,
       </if>
-      <if test="isDeleted != null" >
+      <if test="isDeleted != null">
         is_deleted,
       </if>
-      <if test="gmtModify != null" >
+      <if test="gmtModify != null">
         gmt_modify,
       </if>
-      <if test="gmtCreate != null" >
+      <if test="gmtCreate != null">
         gmt_create,
       </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
+      <if test="applyMsg != null">
+        apply_msg,
       </if>
-      <if test="teamId != null" >
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="teamId != null">
         #{teamId,jdbcType=INTEGER},
       </if>
-      <if test="userId != null" >
+      <if test="userId != null">
         #{userId,jdbcType=INTEGER},
       </if>
-      <if test="status != null" >
+      <if test="status != null">
         #{status,jdbcType=INTEGER},
       </if>
-      <if test="isDeleted != null" >
+      <if test="isDeleted != null">
         #{isDeleted,jdbcType=INTEGER},
       </if>
-      <if test="gmtModify != null" >
+      <if test="gmtModify != null">
         #{gmtModify,jdbcType=TIMESTAMP},
       </if>
-      <if test="gmtCreate != null" >
+      <if test="gmtCreate != null">
         #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="applyMsg != null">
+        #{applyMsg,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="guda.ball.dao.domain.TeamApplyDOCriteria" resultType="java.lang.Integer" >
-    select count(*) from ball_team_apply
-    <if test="_parameter != null" >
+  <select id="countByExample" parameterType="guda.ball.dao.domain.TeamApplyDOCriteria" resultType="java.lang.Integer">
+    select count(*) from team_apply
+    <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
-  <update id="updateByPrimaryKeySelective" parameterType="guda.ball.dao.domain.TeamApplyDO" >
-    update ball_team_apply
-    <set >
-      <if test="teamId != null" >
+  <update id="updateByPrimaryKeySelective" parameterType="guda.ball.dao.domain.TeamApplyDO">
+    update team_apply
+    <set>
+      <if test="teamId != null">
         team_id = #{teamId,jdbcType=INTEGER},
       </if>
-      <if test="userId != null" >
+      <if test="userId != null">
         user_id = #{userId,jdbcType=INTEGER},
       </if>
-      <if test="status != null" >
+      <if test="status != null">
         status = #{status,jdbcType=INTEGER},
       </if>
-      <if test="isDeleted != null" >
+      <if test="isDeleted != null">
         is_deleted = #{isDeleted,jdbcType=INTEGER},
       </if>
-      <if test="gmtModify != null" >
+      <if test="gmtModify != null">
         gmt_modify = #{gmtModify,jdbcType=TIMESTAMP},
       </if>
-      <if test="gmtCreate != null" >
+      <if test="gmtCreate != null">
         gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="applyMsg != null">
+        apply_msg = #{applyMsg,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="guda.ball.dao.domain.TeamApplyDO" >
-    update ball_team_apply
+  <update id="updateByPrimaryKey" parameterType="guda.ball.dao.domain.TeamApplyDO">
+    update team_apply
     set team_id = #{teamId,jdbcType=INTEGER},
       user_id = #{userId,jdbcType=INTEGER},
       status = #{status,jdbcType=INTEGER},
       is_deleted = #{isDeleted,jdbcType=INTEGER},
       gmt_modify = #{gmtModify,jdbcType=TIMESTAMP},
-      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP}
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      apply_msg = #{applyMsg,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
 </mapper>

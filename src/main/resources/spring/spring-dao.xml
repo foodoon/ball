@@ -52,4 +52,8 @@
   <property name="mapperInterface" value="guda.ball.dao.CommentDOMapper"/>
   <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
  </bean>
+ <bean id="courtServiceDOMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+  <property name="mapperInterface" value="guda.ball.dao.CourtServiceDOMapper"/>
+  <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+ </bean>
 </beans>

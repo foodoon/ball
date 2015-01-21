@@ -53,7 +53,7 @@
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from ball_challenge
+    from challenge
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -67,18 +67,18 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from ball_challenge
+    from challenge
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from ball_challenge
+    delete from challenge
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="guda.ball.dao.domain.ChallengeDO">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into ball_challenge (team_id, court_id, challenge_time,
+    insert into challenge (team_id, court_id, challenge_time,
       challenge_desc, challenge_result, goal_count, 
       status, is_deleted, gmt_modify, 
       gmt_create)
@@ -91,7 +91,7 @@
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into ball_challenge
+    insert into challenge
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="teamId != null">
         team_id,
@@ -158,13 +158,13 @@
     </trim>
   </insert>
   <select id="countByExample" parameterType="guda.ball.dao.domain.ChallengeDOCriteria" resultType="java.lang.Integer">
-    select count(*) from ball_challenge
+    select count(*) from challenge
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByPrimaryKeySelective" parameterType="guda.ball.dao.domain.ChallengeDO">
-    update ball_challenge
+    update challenge
     <set>
       <if test="teamId != null">
         team_id = #{teamId,jdbcType=INTEGER},
@@ -200,7 +200,7 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="guda.ball.dao.domain.ChallengeDO">
-    update ball_challenge
+    update challenge
     set team_id = #{teamId,jdbcType=INTEGER},
       court_id = #{courtId,jdbcType=INTEGER},
       challenge_time = #{challengeTime,jdbcType=DATE},

@@ -32,6 +32,7 @@ public class CommonResultCode {
     public static final String TEAM_NOT_OPEN = "TEAM_NOT_OPEN";
     public static final String TEAM_CREATE_ONLY_ONE = "TEAM_CREATE_ONLY_ONE";
     public static final String TEAM_ALLOW_NOT_ALLOW = "TEAM_ALLOW_NOT_ALLOW";
+    public static final String TEAM_ALLOW_REPEAT = "TEAM_ALLOW_REPEAT";
 
 
     public static final String TEAM_APPLY_NOT_EXIST = "TEAM_APPLY_NOT_EXIST";

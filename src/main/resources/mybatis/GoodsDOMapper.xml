@@ -49,7 +49,7 @@
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from ball_goods
+    from goods
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -63,15 +63,15 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from ball_goods
+    from goods
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from ball_goods
+    delete from goods
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="guda.ball.dao.domain.GoodsDO" >
-    insert into ball_goods (id, goods_name, goods_desc,
+    insert into goods (id, goods_name, goods_desc,
       price, court_id, is_deleted, 
       gmt_modify, gmt_create)
     values (#{id,jdbcType=INTEGER}, #{goodsName,jdbcType=VARCHAR}, #{goodsDesc,jdbcType=VARCHAR}, 
@@ -79,7 +79,7 @@
       #{gmtModify,jdbcType=TIMESTAMP}, #{gmtCreate,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="guda.ball.dao.domain.GoodsDO" >
-    insert into ball_goods
+    insert into goods
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
@@ -134,13 +134,13 @@
     </trim>
   </insert>
   <select id="countByExample" parameterType="guda.ball.dao.domain.GoodsDOCriteria" resultType="java.lang.Integer" >
-    select count(*) from ball_goods
+    select count(*) from goods
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByPrimaryKeySelective" parameterType="guda.ball.dao.domain.GoodsDO" >
-    update ball_goods
+    update goods
     <set >
       <if test="goodsName != null" >
         goods_name = #{goodsName,jdbcType=VARCHAR},
@@ -167,7 +167,7 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="guda.ball.dao.domain.GoodsDO" >
-    update ball_goods
+    update goods
     set goods_name = #{goodsName,jdbcType=VARCHAR},
       goods_desc = #{goodsDesc,jdbcType=VARCHAR},
       price = #{price,jdbcType=BIGINT},

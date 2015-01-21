@@ -69,6 +69,13 @@ public class TeamServiceImpl implements TeamService{
         if(sessionDO.getUserId() == teamDO.getUserId()){
             return BizResultHelper.newResultCode(CommonResultCode.TEAM_ALLOW_NOT_ALLOW);
         }
+        //判断是否已经申请过
+        TeamApplyDOCriteria teamApplyDOCriteria = new TeamApplyDOCriteria();
+        teamApplyDOCriteria.createCriteria().andUserIdEqualTo(sessionDO.getUserId()).andTeamIdEqualTo(teamId);
+        List<TeamApplyDO> teamApplyDOs = teamApplyDOMapper.selectByExample(teamApplyDOCriteria);
+        if(teamApplyDOs.size()>0){
+            return BizResultHelper.newResultCode(CommonResultCode.TEAM_ALLOW_REPEAT);
+        }
         TeamApplyDO teamApplyDO = new TeamApplyDO();
         teamApplyDO.setGmtCreate(new Date());
         teamApplyDO.setGmtModify(new Date());
@@ -280,7 +287,7 @@ public class TeamServiceImpl implements TeamService{
             List<TeamDO> teamDOList = teamDOMapper.selectByExample(teamDOCriteria2);
             teamDOs.addAll(teamDOList);
         }
-       
+
         List<TeamVO> teamVOList = CollectionHelper.transformList(teamDOs,new Transformer<TeamDO, TeamVO>() {
             @Override
             public TeamVO transform(TeamDO object) {

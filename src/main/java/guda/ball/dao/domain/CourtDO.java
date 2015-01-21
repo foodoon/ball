@@ -1,42 +1,35 @@
 package guda.ball.dao.domain;
 
-import guda.gen.GenField;
-
 import java.util.Date;
 
 public class CourtDO {
     private Integer id;
 
-    @GenField(cn="球场名称",order=1,inSearchForm = false,canNull = false)
     private String name;
 
-    @GenField(cn="地址",order=1,inSearchForm = false,canNull = false)
     private String address;
 
-    @GenField(cn="类型",order=1,inSearchForm = false,canNull = false)
     private String type;
 
-    @GenField(cn="开放时间",order=1,inSearchForm = false,canNull = false)
     private String openTime;
 
+    private String square;
 
-    @GenField(cn="用户ID",order=1,inSearchForm = false,canNull = false)
     private Integer userId;
 
     private Integer isDeleted;
 
-    @GenField(cn="是否开放",order=1,inSearchForm = false,canNull = false)
     private Integer status;
 
-    @GenField(cn="球场介绍",order=1,inSearchForm = false,canNull = false)
     private String courtDesc;
-
-    @GenField(cn="面积",order=1,inSearchForm = false,canNull = false)
-    private String square;
 
     private Date gmtModify;
 
     private Date gmtCreate;
+
+    private String tel;
+
+    private Long price;
 
     public Integer getId() {
         return id;
@@ -114,8 +107,8 @@ public class CourtDO {
         return courtDesc;
     }
 
-    public void setCourtDesc(String desc) {
-        this.courtDesc = desc == null ? null : desc.trim();
+    public void setCourtDesc(String courtDesc) {
+        this.courtDesc = courtDesc == null ? null : courtDesc.trim();
     }
 
     public Date getGmtModify() {
@@ -132,5 +125,21 @@ public class CourtDO {
 
     public void setGmtCreate(Date gmtCreate) {
         this.gmtCreate = gmtCreate;
+    }
+
+    public String getTel() {
+        return tel;
+    }
+
+    public void setTel(String tel) {
+        this.tel = tel == null ? null : tel.trim();
+    }
+
+    public Long getPrice() {
+        return price;
+    }
+
+    public void setPrice(Long price) {
+        this.price = price;
     }
 }

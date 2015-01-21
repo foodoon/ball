@@ -2,7 +2,6 @@ package guda.ball.dao;
 
 import guda.ball.dao.domain.TeamDO;
 import guda.ball.dao.domain.TeamDOCriteria;
-
 import java.util.List;
 
 public interface TeamDOMapper {

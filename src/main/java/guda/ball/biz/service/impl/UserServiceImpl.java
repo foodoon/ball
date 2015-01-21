@@ -18,8 +18,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by foodoon on 2014/7/31.
@@ -170,6 +172,39 @@ public class UserServiceImpl implements UserService {
 
         } catch (Exception e) {
             log.error("user login out error", e);
+        }
+
+        return BizResultHelper.newCommonError();
+    }
+    @AppRequestMapping(apiName = "user.queryUser", apiVersion = "1.0")
+    @Override
+    public BizResult queryUser(@AppRequestParam("sid") String sid, @AppRequestParam("realName") String realName) {
+        if(sid == null){
+            return BizResultHelper.newResultCode(CommonResultCode.NEED_LOGIN);
+        }
+        SessionDO sessionDO = sessionBiz.querySessionBySID(sid);
+        if (sessionDO == null) {
+            return BizResultHelper.newResultCode(CommonResultCode.NEED_LOGIN);
+        }
+        UserDOCriteria userDOCriteria = new UserDOCriteria();
+        userDOCriteria.createCriteria().andRealNameLike("%"+realName+"%");
+        userDOCriteria.setStartRow(0);
+        userDOCriteria.setPageSize(10);
+        List<UserDO> userDOs = userDOMapper.selectByExample(userDOCriteria);
+        try {
+            List<UserVO> userVOList = CollectionHelper.transformList(userDOs,new Transformer<UserDO, UserVO>() {
+                @Override
+                public UserVO transform(UserDO object) {
+                    return new UserVO(object);
+                }
+            });
+
+            BizResult bizResult = new BizResult();
+            bizResult.data.put("list",userVOList);
+            bizResult.success = true;
+            return bizResult;
+        } catch (Exception e) {
+            log.error("query user error", e);
         }
 
         return BizResultHelper.newCommonError();

@@ -2,7 +2,6 @@ package guda.ball.dao;
 
 import guda.ball.dao.domain.CourtDO;
 import guda.ball.dao.domain.CourtDOCriteria;
-
 import java.util.List;
 
 public interface CourtDOMapper {

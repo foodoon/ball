@@ -544,6 +544,76 @@ public class TeamApplyDOCriteria {
             addCriterion("gmt_create not between", value1, value2, "gmtCreate");
             return (Criteria) this;
         }
+
+        public Criteria andApplyMsgIsNull() {
+            addCriterion("apply_msg is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andApplyMsgIsNotNull() {
+            addCriterion("apply_msg is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andApplyMsgEqualTo(String value) {
+            addCriterion("apply_msg =", value, "applyMsg");
+            return (Criteria) this;
+        }
+
+        public Criteria andApplyMsgNotEqualTo(String value) {
+            addCriterion("apply_msg <>", value, "applyMsg");
+            return (Criteria) this;
+        }
+
+        public Criteria andApplyMsgGreaterThan(String value) {
+            addCriterion("apply_msg >", value, "applyMsg");
+            return (Criteria) this;
+        }
+
+        public Criteria andApplyMsgGreaterThanOrEqualTo(String value) {
+            addCriterion("apply_msg >=", value, "applyMsg");
+            return (Criteria) this;
+        }
+
+        public Criteria andApplyMsgLessThan(String value) {
+            addCriterion("apply_msg <", value, "applyMsg");
+            return (Criteria) this;
+        }
+
+        public Criteria andApplyMsgLessThanOrEqualTo(String value) {
+            addCriterion("apply_msg <=", value, "applyMsg");
+            return (Criteria) this;
+        }
+
+        public Criteria andApplyMsgLike(String value) {
+            addCriterion("apply_msg like", value, "applyMsg");
+            return (Criteria) this;
+        }
+
+        public Criteria andApplyMsgNotLike(String value) {
+            addCriterion("apply_msg not like", value, "applyMsg");
+            return (Criteria) this;
+        }
+
+        public Criteria andApplyMsgIn(List<String> values) {
+            addCriterion("apply_msg in", values, "applyMsg");
+            return (Criteria) this;
+        }
+
+        public Criteria andApplyMsgNotIn(List<String> values) {
+            addCriterion("apply_msg not in", values, "applyMsg");
+            return (Criteria) this;
+        }
+
+        public Criteria andApplyMsgBetween(String value1, String value2) {
+            addCriterion("apply_msg between", value1, value2, "applyMsg");
+            return (Criteria) this;
+        }
+
+        public Criteria andApplyMsgNotBetween(String value1, String value2) {
+            addCriterion("apply_msg not between", value1, value2, "applyMsg");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

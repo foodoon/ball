@@ -13,4 +13,5 @@
  <bean id="teamMemberBiz" class="guda.ball.biz.impl.TeamMemberBizImpl"/>
  <bean id="challengeApplyBiz" class="guda.ball.biz.impl.ChallengeApplyBizImpl"/>
  <bean id="commentBiz" class="guda.ball.biz.impl.CommentBizImpl"/>
+ <bean id="courtServiceBiz" class="guda.ball.biz.impl.CourtServiceBizImpl"/>
 </beans>

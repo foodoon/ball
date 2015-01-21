@@ -52,7 +52,7 @@
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from ball_order
+    from order
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -66,18 +66,18 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from ball_order
+    from order
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from ball_order
+    delete from order
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="guda.ball.dao.domain.OrderDO">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into ball_order (goods_id, buyer_id, seller_id,
+    insert into order (goods_id, buyer_id, seller_id,
       delivery_time, leave_msg, status, 
       is_deleted, gmt_modify, gmt_create
       )
@@ -90,7 +90,7 @@
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into ball_order
+    insert into order
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="goodsId != null">
         goods_id,
@@ -151,13 +151,13 @@
     </trim>
   </insert>
   <select id="countByExample" parameterType="guda.ball.dao.domain.OrderDOCriteria" resultType="java.lang.Integer">
-    select count(*) from ball_order
+    select count(*) from order
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByPrimaryKeySelective" parameterType="guda.ball.dao.domain.OrderDO">
-    update ball_order
+    update order
     <set>
       <if test="goodsId != null">
         goods_id = #{goodsId,jdbcType=INTEGER},
@@ -190,7 +190,7 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="guda.ball.dao.domain.OrderDO">
-    update ball_order
+    update order
     set goods_id = #{goodsId,jdbcType=INTEGER},
       buyer_id = #{buyerId,jdbcType=INTEGER},
       seller_id = #{sellerId,jdbcType=INTEGER},

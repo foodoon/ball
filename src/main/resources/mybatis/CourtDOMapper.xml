@@ -14,6 +14,8 @@
     <result column="court_desc" jdbcType="VARCHAR" property="courtDesc" />
     <result column="gmt_modify" jdbcType="TIMESTAMP" property="gmtModify" />
     <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="tel" jdbcType="VARCHAR" property="tel" />
+    <result column="price" jdbcType="BIGINT" property="price" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -46,7 +48,7 @@
   </sql>
   <sql id="Base_Column_List">
     id, name, address, type, open_time, square, user_id, is_deleted, status, court_desc, 
-    gmt_modify, gmt_create
+    gmt_modify, gmt_create, tel, price
   </sql>
   <select id="selectByExample" parameterType="guda.ball.dao.domain.CourtDOCriteria" resultMap="BaseResultMap">
     select
@@ -54,7 +56,7 @@
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from ball_court
+    from court
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -68,31 +70,34 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from ball_court
+    from court
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from ball_court
+    delete from court
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="guda.ball.dao.domain.CourtDO">
-    insert into ball_court (id, name, address,
-      type, open_time, square, 
-      user_id, is_deleted, status, 
-      court_desc, gmt_modify, gmt_create
-      )
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
-      #{type,jdbcType=VARCHAR}, #{openTime,jdbcType=VARCHAR}, #{square,jdbcType=VARCHAR}, 
-      #{userId,jdbcType=INTEGER}, #{isDeleted,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
-      #{courtDesc,jdbcType=VARCHAR}, #{gmtModify,jdbcType=TIMESTAMP}, #{gmtCreate,jdbcType=TIMESTAMP}
-      )
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into court (name, address, type, 
+      open_time, square, user_id, 
+      is_deleted, status, court_desc, 
+      gmt_modify, gmt_create, tel, 
+      price)
+    values (#{name,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, 
+      #{openTime,jdbcType=VARCHAR}, #{square,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, 
+      #{isDeleted,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{courtDesc,jdbcType=VARCHAR}, 
+      #{gmtModify,jdbcType=TIMESTAMP}, #{gmtCreate,jdbcType=TIMESTAMP}, #{tel,jdbcType=VARCHAR}, 
+      #{price,jdbcType=BIGINT})
   </insert>
   <insert id="insertSelective" parameterType="guda.ball.dao.domain.CourtDO">
-    insert into ball_court
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into court
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
       <if test="name != null">
         name,
       </if>
@@ -126,11 +131,14 @@
       <if test="gmtCreate != null">
         gmt_create,
       </if>
+      <if test="tel != null">
+        tel,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
       <if test="name != null">
         #{name,jdbcType=VARCHAR},
       </if>
@@ -164,16 +172,22 @@
       <if test="gmtCreate != null">
         #{gmtCreate,jdbcType=TIMESTAMP},
       </if>
+      <if test="tel != null">
+        #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=BIGINT},
+      </if>
     </trim>
   </insert>
   <select id="countByExample" parameterType="guda.ball.dao.domain.CourtDOCriteria" resultType="java.lang.Integer">
-    select count(*) from ball_court
+    select count(*) from court
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByPrimaryKeySelective" parameterType="guda.ball.dao.domain.CourtDO">
-    update ball_court
+    update court
     <set>
       <if test="name != null">
         name = #{name,jdbcType=VARCHAR},
@@ -208,11 +222,17 @@
       <if test="gmtCreate != null">
         gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
       </if>
+      <if test="tel != null">
+        tel = #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=BIGINT},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="guda.ball.dao.domain.CourtDO">
-    update ball_court
+    update court
     set name = #{name,jdbcType=VARCHAR},
       address = #{address,jdbcType=VARCHAR},
       type = #{type,jdbcType=VARCHAR},
@@ -223,8 +243,11 @@
       status = #{status,jdbcType=INTEGER},
       court_desc = #{courtDesc,jdbcType=VARCHAR},
       gmt_modify = #{gmtModify,jdbcType=TIMESTAMP},
-      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP}
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      tel = #{tel,jdbcType=VARCHAR},
+      price = #{price,jdbcType=BIGINT}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
 
 </mapper>
