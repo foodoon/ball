@@ -305,7 +305,7 @@ public class TeamServiceImpl implements TeamService{
         baseQuery.setPageSize(pageSize);
         teamApplyDOCriteria.setStartRow(baseQuery.getStartRow());
         teamApplyDOCriteria.setPageSize(baseQuery.getPageSize());
-        teamApplyDOCriteria.setOrderByClause("order by gmt_create desc");
+        teamApplyDOCriteria.setOrderByClause(" gmt_create desc");
         List<TeamApplyDO> teamApplyDOs = teamApplyDOMapper.selectByExample(teamApplyDOCriteria);
         int count = teamApplyDOMapper.countByExample(teamApplyDOCriteria);
         baseQuery.setTotalCount(count);
@@ -352,7 +352,7 @@ public class TeamServiceImpl implements TeamService{
 
         teamApplyDOCriteria.setStartRow(baseQuery.getStartRow());
         teamApplyDOCriteria.setPageSize(baseQuery.getPageSize());
-        teamApplyDOCriteria.setOrderByClause("order by gmt_create desc");
+        teamApplyDOCriteria.setOrderByClause(" gmt_create desc");
         List<TeamApplyDO> teamApplyDOs = teamApplyDOMapper.selectByExample(teamApplyDOCriteria);
         int count = teamApplyDOMapper.countByExample(teamApplyDOCriteria);
         baseQuery.setTotalCount(count);

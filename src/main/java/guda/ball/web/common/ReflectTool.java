@@ -104,7 +104,7 @@ public class ReflectTool {
             }
             return Character.valueOf(val.toString().charAt(0)).charValue();
         } else if (Date.class.isAssignableFrom(paramTypeClass)) {
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd HHmmss");
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
             return simpleDateFormat.parse(val.toString());
         } else {
             throw new RuntimeException("cannot find convert class type:[" + paramTypeClass + "],with value:[" + val + "]");

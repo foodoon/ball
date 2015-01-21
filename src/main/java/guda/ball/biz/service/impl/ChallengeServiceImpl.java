@@ -85,6 +85,7 @@ public class ChallengeServiceImpl implements ChallengeService {
         challengeDO.setGmtCreate(new Date());
         challengeDO.setGmtModify(new Date());
         challengeDO.setIsDeleted(0);
+        challengeDO.setStatus(ChallengeStatusEnum.FALSE.value);
         challengeDO.setTeamId(teamDOs.get(0).getId());
         try {
             challengeDOMapper.insert(challengeDO);
@@ -202,7 +203,7 @@ public class ChallengeServiceImpl implements ChallengeService {
                 .andChallengeTimeGreaterThan(new Date());
         challengeDOCriteria.setStartRow(baseQuery.getStartRow());
         challengeDOCriteria.setPageSize(baseQuery.getPageSize());
-        challengeDOCriteria.setOrderByClause("order by gmt_modify desc");
+        challengeDOCriteria.setOrderByClause(" gmt_modify desc");
         List<ChallengeDO> challengeDOs = challengeDOMapper.selectByExample(challengeDOCriteria);
         int i = challengeDOMapper.countByExample(challengeDOCriteria);
         baseQuery.setTotalCount(i);
@@ -255,16 +256,15 @@ public class ChallengeServiceImpl implements ChallengeService {
         teamDOCriteria.createCriteria().andUserIdEqualTo(userDO.getId());
         List<TeamDO> teamDOs = teamDOMapper.selectByExample(teamDOCriteria);
         if(CollectionUtils.isEmpty(teamDOs)){
-            if (userDO == null) {
                 return BizResultHelper.newResultCode(CommonResultCode.CHALLENGE_MUST_HAVE_TEAM);
-            }
+
         }
 
         ChallengeDOCriteria challengeDOCriteria = new ChallengeDOCriteria();
         challengeDOCriteria.createCriteria().andTeamIdEqualTo(teamDOs.get(0).getId());
         challengeDOCriteria.setStartRow(baseQuery.getStartRow());
         challengeDOCriteria.setPageSize(baseQuery.getPageSize());
-        challengeDOCriteria.setOrderByClause("order by gmt_modify desc");
+        challengeDOCriteria.setOrderByClause(" gmt_modify desc");
         List<ChallengeDO> challengeDOs = challengeDOMapper.selectByExample(challengeDOCriteria);
         int i = challengeDOMapper.countByExample(challengeDOCriteria);
         baseQuery.setTotalCount(i);
@@ -325,7 +325,7 @@ public class ChallengeServiceImpl implements ChallengeService {
         challengeDOCriteria.createCriteria().andTeamIdEqualTo(teamDOs.get(0).getId());
         challengeDOCriteria.setStartRow(baseQuery.getStartRow());
         challengeDOCriteria.setPageSize(baseQuery.getPageSize());
-        challengeDOCriteria.setOrderByClause("order by gmt_modify desc");
+        challengeDOCriteria.setOrderByClause(" gmt_modify desc");
         List<ChallengeDO> challengeDOs = challengeDOMapper.selectByExample(challengeDOCriteria);
         int i = challengeDOMapper.countByExample(challengeDOCriteria);
         baseQuery.setTotalCount(i);

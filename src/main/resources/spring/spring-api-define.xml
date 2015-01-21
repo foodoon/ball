@@ -416,8 +416,7 @@
                 <entry key="courtId" value="场地ID"></entry>
                 <entry key="challengeTime" value="比赛时间(yyyyMMddHHmmss)"></entry>
                 <entry key="challengeDesc" value="约战描述"></entry>
-                <entry key="pageNo" value="页码"></entry>
-                <entry key="pageSize" value="每页记录数(可为空，默认20)"></entry>
+             
             </map>
         </property>
     </bean>
