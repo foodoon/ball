@@ -18,6 +18,9 @@ public interface TeamService {
 
     public BizResult delete(String sid, int id);
 
+    public BizResult queryMyTeamInfo(String sid);
+    public BizResult queryMyTeamList(String sid);
+
     public BizResult queryMyApplyList(String sid, int pageNo, int pageSize);
 
     public BizResult passApply(String sid, int applyId);

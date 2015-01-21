@@ -16,4 +16,14 @@ public enum BooleanEnum {
         this.value = value;
         this.msg = msg;
     }
+
+    public static BooleanEnum getByValue(int value){
+        BooleanEnum[] values = BooleanEnum.values();
+        for(BooleanEnum booleanEnum:values){
+            if(booleanEnum.value == (value)){
+                return booleanEnum;
+            }
+        }
+        return null;
+    }
 }

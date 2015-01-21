@@ -8,6 +8,8 @@
                 <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','user.loginOut').addQueryData('apiVersion','1.0')">用户退出</a></li>
                 <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','user.update').addQueryData('apiVersion','1.0')">修改个人信息</a></li>
                 <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','user.reg').addQueryData('apiVersion','1.0')">用户注册</a></li>
+                <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','user.queryUserInfo').addQueryData('apiVersion','1.0')">查询个人信息(自己)</a></li>
+                <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','user.queryUserInfoById').addQueryData('apiVersion','1.0')">查询个人信息(他人)</a></li>
             </ul>
         </div>
         <div class="col-md-4">
@@ -25,6 +27,8 @@
                 <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','team.queryApplyListForReview').addQueryData('apiVersion','1.0')">查询球队申请记录</a></li>
                 <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','team.queryMemberList').addQueryData('apiVersion','1.0')">查询球队成员</a></li>
                 <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','team.removeMember').addQueryData('apiVersion','1.0')">移除球队成员</a></li>
+                <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','team.queryMyTeamInfo').addQueryData('apiVersion','1.0')">查询我创建的球队</a></li>
+                <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','team.queryMyTeamList').addQueryData('apiVersion','1.0')">查询我的球队（加入和创建的）</a></li>
             </ul>
         </div>
         <div class="col-md-4">

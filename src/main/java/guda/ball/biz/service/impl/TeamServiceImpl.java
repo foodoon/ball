@@ -1,5 +1,7 @@
 package guda.ball.biz.service.impl;
 
+import guda.ball.biz.entity.TeamVO;
+import guda.ball.util.*;
 import guda.tools.web.page.BaseQuery;
 import guda.tools.web.page.BizResult;
 import guda.ball.biz.SessionBiz;
@@ -12,10 +14,6 @@ import guda.ball.dao.TeamDOMapper;
 import guda.ball.dao.TeamMemberDOMapper;
 import guda.ball.dao.UserDOMapper;
 import guda.ball.dao.domain.*;
-import guda.ball.util.AppRequestMapping;
-import guda.ball.util.AppRequestParam;
-import guda.ball.util.BizResultHelper;
-import guda.ball.util.CommonResultCode;
 import guda.ball.util.enums.ApplyStatusEnum;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -210,6 +208,90 @@ public class TeamServiceImpl implements TeamService{
         return BizResultHelper.newCommonError();
     }
 
+    @AppRequestMapping(apiName = "team.queryMyTeamInfo", apiVersion = "1.0")
+    @Override
+    public BizResult queryMyTeamInfo(@AppRequestParam("sid") String sid) {
+        if( !StringUtils.hasText(sid)){
+            return BizResultHelper.newResultCode(CommonResultCode.PARAM_MISS);
+        }
+        BizResult bizResult = sessionBiz.checkSession(sid);
+        if(!bizResult.success) {
+            return bizResult;
+        }
+        SessionDO sessionDO = (SessionDO)bizResult.data.get("sessionDO");
+        UserDO userDO = userDOMapper.selectByPrimaryKey(sessionDO.getUserId());
+        if(userDO == null){
+            return BizResultHelper.newResultCode(CommonResultCode.USER_NOT_EXIST);
+        }
+        TeamDOCriteria teamDOCriteria = new TeamDOCriteria();
+        TeamDOCriteria.Criteria criteria = teamDOCriteria.createCriteria();
+        criteria.andUserIdEqualTo(userDO.getId());
+
+        List<TeamDO> teamDOs = teamDOMapper.selectByExample(teamDOCriteria);
+        BizResult bizResult1 = new BizResult();
+        List<TeamVO> teamVOList = CollectionHelper.transformList(teamDOs,new Transformer<TeamDO, TeamVO>() {
+            @Override
+            public TeamVO transform(TeamDO object) {
+                return new TeamVO(object);
+            }
+        });
+        bizResult1.data.put("list",teamVOList);
+        bizResult1.success = true;
+        return bizResult1;
+    }
+
+    @AppRequestMapping(apiName = "team.queryMyTeamList", apiVersion = "1.0")
+    @Override
+    public BizResult queryMyTeamList(@AppRequestParam("sid") String sid) {
+        if( !StringUtils.hasText(sid)){
+            return BizResultHelper.newResultCode(CommonResultCode.PARAM_MISS);
+        }
+        BizResult bizResult = sessionBiz.checkSession(sid);
+        if(!bizResult.success) {
+            return bizResult;
+        }
+        SessionDO sessionDO = (SessionDO)bizResult.data.get("sessionDO");
+        UserDO userDO = userDOMapper.selectByPrimaryKey(sessionDO.getUserId());
+        if(userDO == null){
+            return BizResultHelper.newResultCode(CommonResultCode.USER_NOT_EXIST);
+        }
+        TeamDOCriteria teamDOCriteria = new TeamDOCriteria();
+        TeamDOCriteria.Criteria criteria = teamDOCriteria.createCriteria();
+        criteria.andUserIdEqualTo(userDO.getId());
+
+        List<TeamDO> teamDOs = teamDOMapper.selectByExample(teamDOCriteria);
+
+
+        TeamMemberDOCriteria teamMemberDOCriteria = new TeamMemberDOCriteria();
+        TeamMemberDOCriteria.Criteria criteria1 = teamMemberDOCriteria.createCriteria();
+        criteria1.andUserIdEqualTo(userDO.getId());
+        List<TeamMemberDO> teamMemberDOs = teamMemberDOMapper.selectByExample(teamMemberDOCriteria);
+        List<Integer> teamIdList = CollectionHelper.transformList(teamMemberDOs,new Transformer<TeamMemberDO, Integer>() {
+            @Override
+            public Integer transform(TeamMemberDO object) {
+                return object.getId();
+            }
+        });
+        BizResult bizResult1 = new BizResult();
+        if(teamIdList.size()>0) {
+            TeamDOCriteria teamDOCriteria2 = new TeamDOCriteria();
+            TeamDOCriteria.Criteria criteria2 = teamDOCriteria2.createCriteria();
+            criteria2.andIdIn(teamIdList);
+            List<TeamDO> teamDOList = teamDOMapper.selectByExample(teamDOCriteria2);
+            teamDOs.addAll(teamDOList);
+        }
+       
+        List<TeamVO> teamVOList = CollectionHelper.transformList(teamDOs,new Transformer<TeamDO, TeamVO>() {
+            @Override
+            public TeamVO transform(TeamDO object) {
+                return new TeamVO(object);
+            }
+        });
+        bizResult1.data.put("list",teamVOList);
+        bizResult1.success = true;
+        return bizResult1;
+    }
+
 
     @AppRequestMapping(apiName = "team.passApply", apiVersion = "1.0")
     public BizResult passApply(@AppRequestParam("sid") String sid,@AppRequestParam("applyId")  int applyId) {
@@ -321,6 +403,7 @@ public class TeamServiceImpl implements TeamService{
         BizResult bizResult1 = new BizResult();
         bizResult1.data.put("list",teamApplyVOList);
         bizResult1.data.put("query",baseQuery);
+        bizResult.success = true;
         return bizResult1;
     }
 
@@ -368,6 +451,7 @@ public class TeamServiceImpl implements TeamService{
         BizResult bizResult1 = new BizResult();
         bizResult1.data.put("list",teamApplyVOList);
         bizResult1.data.put("query",baseQuery);
+        bizResult.success = true;
         return bizResult1;
     }
 

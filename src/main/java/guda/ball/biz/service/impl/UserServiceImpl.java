@@ -4,6 +4,7 @@ package guda.ball.biz.service.impl;
 import guda.ball.biz.SessionBiz;
 import guda.ball.biz.UserBiz;
 import guda.ball.biz.entity.AppUserForm;
+import guda.ball.biz.entity.UserVO;
 import guda.ball.biz.service.UserService;
 import guda.ball.dao.UserDOMapper;
 import guda.ball.dao.domain.SessionDO;
@@ -100,7 +101,7 @@ public class UserServiceImpl implements UserService {
         try {
             UserDO userDO = userDOMapper.selectByPrimaryKey(sessionDO.getUserId());
             BizResult bizResult = new BizResult();
-            bizResult.data.put("user",userDO);
+            bizResult.data.put("user",new UserVO(userDO));
             bizResult.success = true;
             return bizResult;
         } catch (Exception e) {
@@ -111,7 +112,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @AppRequestMapping(apiName = "user.queryUserInfoById", apiVersion = "1.0")
-    public BizResult queryUserInfoById(String sid, int userId) {
+    public BizResult queryUserInfoById(@AppRequestParam("sid") String sid, @AppRequestParam("userId") int userId) {
         if(sid == null){
             return BizResultHelper.newResultCode(CommonResultCode.NEED_LOGIN);
         }
@@ -126,7 +127,7 @@ public class UserServiceImpl implements UserService {
         try {
             UserDO userDO = userDOMapper.selectByPrimaryKey(userId);
             BizResult bizResult = new BizResult();
-            bizResult.data.put("user",userDO);
+            bizResult.data.put("user",new UserVO(userDO));
             bizResult.success = true;
             return bizResult;
         } catch (Exception e) {

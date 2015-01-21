@@ -1,6 +1,7 @@
 package guda.ball.biz.entity;
 
 import guda.ball.dao.domain.TeamApplyDO;
+import guda.ball.util.enums.ApplyStatusEnum;
 
 
 /**
@@ -19,6 +20,10 @@ public class TeamApplyVO extends TeamApplyDO {
         this.setIsDeleted(teamApplyDO.getIsDeleted());
         this.setGmtModify(teamApplyDO.getGmtModify());
         this.setGmtCreate(teamApplyDO.getGmtCreate());
+        ApplyStatusEnum byValue = ApplyStatusEnum.getByValue(teamApplyDO.getStatus());
+        if(byValue!=null) {
+            this.statusCN =byValue.msg;
+        }
     }
 
     private String applyUserName;

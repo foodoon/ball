@@ -25,6 +25,8 @@
                 <ref local="team.queryMyApplyList"></ref>
                 <ref local="team.removeMember"></ref>
                 <ref local="team.queryTeamList"></ref>
+                <ref local="team.queryMyTeamInfo"></ref>
+                <ref local="team.queryMyTeamList"></ref>
 
                 <ref local="court.apply"></ref>
                 <ref local="court.cancelApply"></ref>
@@ -107,6 +109,7 @@
             <map>
                 <entry key="userName" value="登录名"></entry>
                 <entry key="password" value="密码"></entry>
+                <entry key="userId" value="用户ID"></entry>
             </map>
         </property>
     </bean>
@@ -284,6 +287,29 @@
             </map>
         </property>
     </bean>
+    <bean id="team.queryMyTeamInfo" class="guda.ball.biz.entity.ApiDefine">
+        <property name="apiName" value="team.queryMyTeamInfo"></property>
+        <property name="apiVersion" value="1.0"></property>
+        <property name="params">
+            <map>
+                <entry key="userName" value="登录名"></entry>
+                <entry key="password" value="密码"></entry>
+            </map>
+        </property>
+    </bean>
+    <bean id="team.queryMyTeamList" class="guda.ball.biz.entity.ApiDefine">
+        <property name="apiName" value="team.queryMyTeamList"></property>
+        <property name="apiVersion" value="1.0"></property>
+        <property name="params">
+            <map>
+                <entry key="userName" value="登录名"></entry>
+                <entry key="password" value="密码"></entry>
+            </map>
+        </property>
+    </bean>
+
+
+
 
     <bean id="court.create" class="guda.ball.biz.entity.ApiDefine">
         <property name="apiName" value="court.create"></property>
