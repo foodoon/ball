@@ -21,8 +21,8 @@
                 <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','team.queryTeamList').addQueryData('apiVersion','1.0')">查询所有球队</a></li>
                 <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','team.apply').addQueryData('apiVersion','1.0')">申请加入球队</a></li>
                 <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','team.cancelApply').addQueryData('apiVersion','1.0')">取消加入球队的申请</a></li>
-                <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','team.passApply').addQueryData('apiVersion','1.0')">审批加入球队申请</a></li>
-                <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','team.rejectApply').addQueryData('apiVersion','1.0')">拒绝加入球队申请</a></li>
+                <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','team.passApply').addQueryData('apiVersion','1.0')">审批通过（加入球队申请）</a></li>
+                <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','team.rejectApply').addQueryData('apiVersion','1.0')">拒绝（加入球队申请）</a></li>
                 <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','team.queryMyApplyList').addQueryData('apiVersion','1.0')">查询我的申请记录</a></li>
                 <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','team.queryApplyListForReview').addQueryData('apiVersion','1.0')">查询球队申请记录</a></li>
                 <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','team.queryMemberList').addQueryData('apiVersion','1.0')">查询球队成员</a></li>
