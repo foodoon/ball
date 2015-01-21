@@ -110,6 +110,32 @@ public class UserServiceImpl implements UserService {
         return BizResultHelper.newCommonError();
     }
 
+    @AppRequestMapping(apiName = "user.queryUserInfoById", apiVersion = "1.0")
+    public BizResult queryUserInfoById(String sid, int userId) {
+        if(sid == null){
+            return BizResultHelper.newResultCode(CommonResultCode.NEED_LOGIN);
+        }
+        SessionDO sessionDO = sessionBiz.querySessionBySID(sid);
+        if (sessionDO == null) {
+            return BizResultHelper.newResultCode(CommonResultCode.NEED_LOGIN);
+        }
+        if ((new Date()).after(sessionDO.getExpireTime())) {
+            return BizResultHelper.newResultCode(CommonResultCode.NEED_LOGIN);
+        }
+
+        try {
+            UserDO userDO = userDOMapper.selectByPrimaryKey(userId);
+            BizResult bizResult = new BizResult();
+            bizResult.data.put("user",userDO);
+            bizResult.success = true;
+            return bizResult;
+        } catch (Exception e) {
+            log.error("query user error", e);
+        }
+
+        return BizResultHelper.newCommonError();
+    }
+
     @AppRequestMapping(apiName = "user.login", apiVersion = "1.0")
     public BizResult login(@AppRequestParam("userName") String userName,@AppRequestParam("password")  String password) {
         if (!StringUtils.hasText(userName) || !StringUtils.hasText(password)) {

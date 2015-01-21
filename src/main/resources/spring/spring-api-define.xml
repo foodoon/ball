@@ -9,7 +9,10 @@
                 <ref local="user.reg"></ref>
                 <ref local="user.update"></ref>
                 <ref local="user.login"></ref>
-                <ref local="user.login"></ref>
+                <ref local="user.queryUserInfo"></ref>
+                <ref local="user.queryUserInfoById"></ref>
+
+
                 <ref local="team.apply"></ref>
                 <ref local="team.cancelApply"></ref>
                 <ref local="team.create"></ref>
@@ -77,6 +80,28 @@
 
     <bean id="user.loginOut" class="guda.ball.biz.entity.ApiDefine">
         <property name="apiName" value="user.loginOut"></property>
+        <property name="apiVersion" value="1.0"></property>
+        <property name="params">
+            <map>
+                <entry key="userName" value="登录名"></entry>
+                <entry key="password" value="密码"></entry>
+            </map>
+        </property>
+    </bean>
+
+    <bean id="user.queryUserInfo" class="guda.ball.biz.entity.ApiDefine">
+        <property name="apiName" value="user.queryUserInfo"></property>
+        <property name="apiVersion" value="1.0"></property>
+        <property name="params">
+            <map>
+                <entry key="userName" value="登录名"></entry>
+                <entry key="password" value="密码"></entry>
+            </map>
+        </property>
+    </bean>
+
+    <bean id="user.queryUserInfoById" class="guda.ball.biz.entity.ApiDefine">
+        <property name="apiName" value="user.queryUserInfoById"></property>
         <property name="apiVersion" value="1.0"></property>
         <property name="params">
             <map>
