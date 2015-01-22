@@ -25,6 +25,8 @@ public class TeamDO {
 
     private String homeCourt;
 
+    private String jerseyColor;
+
     public Integer getId() {
         return id;
     }
@@ -111,5 +113,13 @@ public class TeamDO {
 
     public void setHomeCourt(String homeCourt) {
         this.homeCourt = homeCourt == null ? null : homeCourt.trim();
+    }
+
+    public String getJerseyColor() {
+        return jerseyColor;
+    }
+
+    public void setJerseyColor(String jerseyColor) {
+        this.jerseyColor = jerseyColor == null ? null : jerseyColor.trim();
     }
 }

@@ -834,6 +834,76 @@ public class TeamDOCriteria {
             addCriterion("home_court not between", value1, value2, "homeCourt");
             return (Criteria) this;
         }
+
+        public Criteria andJerseyColorIsNull() {
+            addCriterion("jersey_color is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andJerseyColorIsNotNull() {
+            addCriterion("jersey_color is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andJerseyColorEqualTo(String value) {
+            addCriterion("jersey_color =", value, "jerseyColor");
+            return (Criteria) this;
+        }
+
+        public Criteria andJerseyColorNotEqualTo(String value) {
+            addCriterion("jersey_color <>", value, "jerseyColor");
+            return (Criteria) this;
+        }
+
+        public Criteria andJerseyColorGreaterThan(String value) {
+            addCriterion("jersey_color >", value, "jerseyColor");
+            return (Criteria) this;
+        }
+
+        public Criteria andJerseyColorGreaterThanOrEqualTo(String value) {
+            addCriterion("jersey_color >=", value, "jerseyColor");
+            return (Criteria) this;
+        }
+
+        public Criteria andJerseyColorLessThan(String value) {
+            addCriterion("jersey_color <", value, "jerseyColor");
+            return (Criteria) this;
+        }
+
+        public Criteria andJerseyColorLessThanOrEqualTo(String value) {
+            addCriterion("jersey_color <=", value, "jerseyColor");
+            return (Criteria) this;
+        }
+
+        public Criteria andJerseyColorLike(String value) {
+            addCriterion("jersey_color like", value, "jerseyColor");
+            return (Criteria) this;
+        }
+
+        public Criteria andJerseyColorNotLike(String value) {
+            addCriterion("jersey_color not like", value, "jerseyColor");
+            return (Criteria) this;
+        }
+
+        public Criteria andJerseyColorIn(List<String> values) {
+            addCriterion("jersey_color in", values, "jerseyColor");
+            return (Criteria) this;
+        }
+
+        public Criteria andJerseyColorNotIn(List<String> values) {
+            addCriterion("jersey_color not in", values, "jerseyColor");
+            return (Criteria) this;
+        }
+
+        public Criteria andJerseyColorBetween(String value1, String value2) {
+            addCriterion("jersey_color between", value1, value2, "jerseyColor");
+            return (Criteria) this;
+        }
+
+        public Criteria andJerseyColorNotBetween(String value1, String value2) {
+            addCriterion("jersey_color not between", value1, value2, "jerseyColor");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

@@ -27,7 +27,11 @@ public class TeamVO extends TeamDO {
         this.setId(teamDO.getId());
         this.setName(teamDO.getName());
         this.setTeamDesc(teamDO.getTeamDesc());
+        this.setTeamType(teamDO.getTeamType());
         this.setUserId(teamDO.getUserId());
         this.setCanJoinCN(BooleanEnum.getByValue(teamDO.getCanJoin()).msg);
+        this.setArea(teamDO.getArea());
+        this.setHomeCourt(teamDO.getHomeCourt());
+        this.setJerseyColor(teamDO.getJerseyColor());
     }
 }
