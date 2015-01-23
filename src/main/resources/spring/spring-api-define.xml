@@ -23,6 +23,7 @@
                 <ref local="team.rejectApply"></ref>
                 <ref local="team.queryApplyListForReview"></ref>
                 <ref local="team.queryMemberList"></ref>
+                <ref local="team.queryTeamInfo"></ref>
                 <ref local="team.queryMyApplyList"></ref>
                 <ref local="team.removeMember"></ref>
                 <ref local="team.queryTeamList"></ref>
