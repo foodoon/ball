@@ -1,8 +1,8 @@
 package guda.ball.biz;
 
+import guda.ball.dao.domain.TeamDO;
 import guda.tools.web.page.BaseQuery;
 import guda.tools.web.page.BizResult;
-import guda.ball.dao.domain.TeamDO;
 
 public interface TeamBiz {
 

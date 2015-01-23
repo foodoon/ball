@@ -6,19 +6,19 @@ import guda.ball.dao.domain.UserDO;
 
 public interface UserBiz {
 
-        BizResult detail(int id);
+    BizResult detail(int id);
 
-        BizResult list(BaseQuery baseQuery);
+    BizResult list(BaseQuery baseQuery);
 
-        BizResult delete(int id);
+    BizResult delete(int id);
 
-        BizResult create(UserDO userDO);
+    BizResult create(UserDO userDO);
 
-        BizResult update(UserDO userDO);
+    BizResult update(UserDO userDO);
 
-        BizResult login(String userName, String password);
+    BizResult login(String userName, String password);
 
-        BizResult loginOut(String sid);
+    BizResult loginOut(String sid);
 
 
 
