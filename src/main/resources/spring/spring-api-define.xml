@@ -310,11 +310,28 @@
             <map>
                 <entry key="userName" value="登录名"></entry>
                 <entry key="password" value="密码"></entry>
+                <entry key="teamId" value="球队ID"></entry>
                 <entry key="pageNo" value="页码"></entry>
                 <entry key="pageSize" value="每页记录数"></entry>
             </map>
         </property>
     </bean>
+
+    <bean id="team.queryTeamInfo" class="guda.ball.biz.entity.ApiDefine">
+        <property name="apiName" value="team.queryMemberList"></property>
+        <property name="apiVersion" value="1.0"></property>
+        <property name="params">
+            <map>
+                <entry key="userName" value="登录名"></entry>
+                <entry key="password" value="密码"></entry>
+                <entry key="teamId" value="球队ID"></entry>
+                <entry key="pageNo" value="页码"></entry>
+                <entry key="pageSize" value="每页记录数"></entry>
+            </map>
+        </property>
+    </bean>
+
+
     <bean id="team.queryMyTeamInfo" class="guda.ball.biz.entity.ApiDefine">
         <property name="apiName" value="team.queryMyTeamInfo"></property>
         <property name="apiVersion" value="1.0"></property>

@@ -30,6 +30,7 @@
                 <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','team.removeMember').addQueryData('apiVersion','1.0')">移除球队成员</a></li>
                 <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','team.queryMyTeamInfo').addQueryData('apiVersion','1.0')">查询我创建的球队</a></li>
                 <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','team.queryMyTeamList').addQueryData('apiVersion','1.0')">查询我的球队（加入和创建的）</a></li>
+                <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','team.queryTeamInfo').addQueryData('apiVersion','1.0')">查询球队详情</a></li>
             </ul>
         </div>
         <div class="col-md-4">

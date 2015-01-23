@@ -31,8 +31,10 @@ public interface TeamService {
 
     public BizResult removeMember(String sid, int removeUserId);
 
-    public BizResult queryMemberList(String sid, int pageNo, int pageSize);
+    public BizResult queryMemberList(String sid, int teamId ,int pageNo, int pageSize);
 
     public BizResult queryTeamList(String sid, int pageNo, int pageSize);
+
+    public BizResult queryTeamInfo(String sid,int teamId);
 
 }
