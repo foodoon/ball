@@ -318,7 +318,7 @@
     </bean>
 
     <bean id="team.queryTeamInfo" class="guda.ball.biz.entity.ApiDefine">
-        <property name="apiName" value="team.queryMemberList"></property>
+        <property name="apiName" value="team.queryTeamInfo"></property>
         <property name="apiVersion" value="1.0"></property>
         <property name="params">
             <map>
