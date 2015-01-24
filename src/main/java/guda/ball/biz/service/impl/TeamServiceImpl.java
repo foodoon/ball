@@ -403,9 +403,11 @@ public class TeamServiceImpl implements TeamService{
         for(TeamApplyDO applyDO :teamApplyDOs){
             TeamApplyVO teamApplyVO = new TeamApplyVO(applyDO);
             UserDO userDO = userDOMapper.selectByPrimaryKey(applyDO.getUserId());
+            teamApplyVO.setApplyUser(userDO);
             teamApplyVO.setApplyUserName(userDO.getUserName());
             teamApplyVO.setApplyRealName(userDO.getRealName());
             teamApplyVO.setStatusCN(ApplyStatusEnum.getByValue(applyDO.getStatus()).msg);
+            teamApplyVO.setTeam(teamDOMapper.selectByPrimaryKey(applyDO.getTeamId()));
             teamApplyVOList.add(teamApplyVO);
         }
         BizResult bizResult1 = new BizResult();
@@ -454,6 +456,8 @@ public class TeamServiceImpl implements TeamService{
             teamApplyVO.setApplyUserName(userDO.getUserName());
             teamApplyVO.setApplyRealName(userDO.getRealName());
             teamApplyVO.setStatusCN(ApplyStatusEnum.getByValue(applyDO.getStatus()).msg);
+            teamApplyVO.setTeam(teamDOMapper.selectByPrimaryKey(applyDO.getTeamId()));
+            teamApplyVO.setApplyUser(userDO);
             teamApplyVOList.add(teamApplyVO);
         }
         BizResult bizResult1 = new BizResult();

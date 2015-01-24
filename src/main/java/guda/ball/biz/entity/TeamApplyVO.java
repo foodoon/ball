@@ -1,6 +1,8 @@
 package guda.ball.biz.entity;
 
 import guda.ball.dao.domain.TeamApplyDO;
+import guda.ball.dao.domain.TeamDO;
+import guda.ball.dao.domain.UserDO;
 import guda.ball.util.enums.ApplyStatusEnum;
 
 
@@ -9,6 +11,8 @@ import guda.ball.util.enums.ApplyStatusEnum;
  */
 public class TeamApplyVO extends TeamApplyDO {
 
+    private TeamDO team;
+    private UserDO applyUser;
     public TeamApplyVO() {
     }
 
@@ -24,6 +28,22 @@ public class TeamApplyVO extends TeamApplyDO {
         if(byValue!=null) {
             this.statusCN =byValue.msg;
         }
+    }
+
+    public TeamDO getTeam() {
+        return team;
+    }
+
+    public void setTeam(TeamDO team) {
+        this.team = team;
+    }
+
+    public UserDO getApplyUser() {
+        return applyUser;
+    }
+
+    public void setApplyUser(UserDO applyUser) {
+        this.applyUser = applyUser;
     }
 
     private String applyUserName;
