@@ -411,7 +411,7 @@ public class TeamServiceImpl implements TeamService{
         BizResult bizResult1 = new BizResult();
         bizResult1.data.put("list",teamApplyVOList);
         bizResult1.data.put("query",baseQuery);
-        bizResult.success = true;
+        bizResult1.success = true;
         return bizResult1;
     }
 
@@ -428,18 +428,18 @@ public class TeamServiceImpl implements TeamService{
         baseQuery.setPageNo(pageNo);
         baseQuery.setPageSize(pageSize);
         SessionDO sessionDO = (SessionDO)bizResult.data.get("sessionDO");
-        TeamDOCriteria teamDOCriteria = new TeamDOCriteria();
-        teamDOCriteria.createCriteria().andUserIdEqualTo(sessionDO.getUserId());
-        List<TeamDO> teamDOs = teamDOMapper.selectByExample(teamDOCriteria);
-        if(teamDOs.size() == 0){
-            BizResult bizResult1 = new BizResult();
-            bizResult1.data.put("list", Collections.emptyList());
-            bizResult1.data.put("query",baseQuery);
-            return bizResult1;
-        }
+//        TeamDOCriteria teamDOCriteria = new TeamDOCriteria();
+//        teamDOCriteria.createCriteria().andUserIdEqualTo(sessionDO.getUserId());
+//        List<TeamDO> teamDOs = teamDOMapper.selectByExample(teamDOCriteria);
+//        if(teamDOs.size() == 0){
+//            BizResult bizResult1 = new BizResult();
+//            bizResult1.data.put("list", Collections.emptyList());
+//            bizResult1.data.put("query",baseQuery);
+//            return bizResult1;
+//        }
         TeamApplyDOCriteria teamApplyDOCriteria = new TeamApplyDOCriteria();
         TeamApplyDOCriteria.Criteria criteria = teamApplyDOCriteria.createCriteria();
-        criteria.andTeamIdEqualTo(teamDOs.get(0).getUserId());
+        criteria.andUserIdEqualTo(sessionDO.getUserId());
 
         teamApplyDOCriteria.setStartRow(baseQuery.getStartRow());
         teamApplyDOCriteria.setPageSize(baseQuery.getPageSize());
@@ -459,7 +459,7 @@ public class TeamServiceImpl implements TeamService{
         BizResult bizResult1 = new BizResult();
         bizResult1.data.put("list",teamApplyVOList);
         bizResult1.data.put("query",baseQuery);
-        bizResult.success = true;
+        bizResult1.success = true;
         return bizResult1;
     }
 
