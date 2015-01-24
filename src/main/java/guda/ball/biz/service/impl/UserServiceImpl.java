@@ -5,6 +5,7 @@ import guda.ball.biz.SessionBiz;
 import guda.ball.biz.UserBiz;
 import guda.ball.biz.entity.AppUserForm;
 import guda.ball.biz.entity.UserVO;
+import guda.ball.biz.helper.FileHelper;
 import guda.ball.biz.service.UserService;
 import guda.ball.dao.UserDOMapper;
 import guda.ball.dao.domain.SessionDO;
@@ -36,6 +37,8 @@ public class UserServiceImpl implements UserService {
     private UserDOMapper userDOMapper;
     @Autowired
     private SessionBiz sessionBiz;
+    @Autowired
+    private FileHelper fileHelper;
 
     @AppRequestMapping(apiName = "user.reg", apiVersion = "1.0")
     public BizResult create(AppUserForm appUserForm) {
@@ -103,7 +106,9 @@ public class UserServiceImpl implements UserService {
         try {
             UserDO userDO = userDOMapper.selectByPrimaryKey(sessionDO.getUserId());
             BizResult bizResult = new BizResult();
-            bizResult.data.put("user",new UserVO(userDO));
+            UserVO userVO = new UserVO(userDO);
+            userVO.setImg(fileHelper.getFileSever() + userDO.getImg());
+            bizResult.data.put("user",userVO);
             bizResult.success = true;
             return bizResult;
         } catch (Exception e) {
@@ -129,7 +134,9 @@ public class UserServiceImpl implements UserService {
         try {
             UserDO userDO = userDOMapper.selectByPrimaryKey(userId);
             BizResult bizResult = new BizResult();
-            bizResult.data.put("user",new UserVO(userDO));
+            UserVO userVO = new UserVO(userDO);
+            userVO.setImg(fileHelper.getFileSever() + userDO.getImg());
+            bizResult.data.put("user",userVO);
             bizResult.success = true;
             return bizResult;
         } catch (Exception e) {
@@ -195,6 +202,8 @@ public class UserServiceImpl implements UserService {
             List<UserVO> userVOList = CollectionHelper.transformList(userDOs,new Transformer<UserDO, UserVO>() {
                 @Override
                 public UserVO transform(UserDO object) {
+                    UserVO userVO = new UserVO(object);
+                    userVO.setImg(fileHelper.getFileSever() + object.getImg());
                     return new UserVO(object);
                 }
             });

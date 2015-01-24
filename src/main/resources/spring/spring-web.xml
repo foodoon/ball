@@ -24,7 +24,7 @@
           class="guda.mvc.spring.GudaPropertyConfigurer">
         <property name="ignoreUnresolvablePlaceholders" value="false"></property>
         <property name="fileEncoding" value="UTF-8"></property>
-        <property name="locations" value="classpath:app.properties"/>
+        <property name="locations" value="classpath:app-dev.properties"/>
     </bean>
 
     <bean id="springBeanFactoryTool"  class="guda.mvc.spring.SpringBeanFactoryTool">
@@ -65,6 +65,13 @@
     <bean id="characterEncodingFilter" class="org.springframework.web.filter.CharacterEncodingFilter">
         <property name="encoding" value="UTF-8"></property>
     </bean>
+
+    <bean id="fileHelper" class="guda.ball.biz.helper.FileHelper">
+        <property name="fileSever" value="${file.server}"></property>
+        <property name="fileDir" value="${file.dir}"></property>
+    </bean>
+
+
 
 
 </beans>

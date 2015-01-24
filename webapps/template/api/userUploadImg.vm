@@ -1,0 +1,14 @@
+
+
+<p>
+    提交方式:post<br>
+    post 地址:$!homeServer.getURI("user/upload.json")<br/>
+    post参数:sid=用户的sid   <br> file=图片<br/>
+    返回结果样例<pre>{"data":{"url":"http://localhost:9990/upload/20150124/2387596b-51f1-4fbf-86a9-cb041f5ca20f_180x180.png?mod=1422098223988"},"success":true}</pre>
+</p>
+
+<form action="$!homeServer.getURI("user/upload.json")" method="post" enctype="multipart/form-data">
+    SID:<input type="text" name="sid">
+     <input type="file" name="file">
+    <input type="submit" value="提交">
+</form>

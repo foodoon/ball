@@ -12,13 +12,16 @@
         http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd"
 		 default-autowire="byName">
 
+    <context:annotation-config />
+    <mvc:annotation-driven />
+    <!-- 配置要扫描的包 -->
+    <context:component-scan base-package="guda.ball"></context:component-scan>
 
-	
-	
 
 
-	<bean id="viewResolver"
-		class="org.springframework.web.servlet.view.velocity.VelocityLayoutViewResolver">
+
+    <bean id="viewResolver"
+          class="org.springframework.web.servlet.view.velocity.VelocityLayoutViewResolver">
 
         <property name="prefix" value="/template/"/>
         <property name="contentType" value="text/html; charset=utf-8" />
@@ -41,8 +44,13 @@
         </property>
 
     </bean>
-	
-	
+
+
+    <bean id="multipartResolver"
+          class="guda.ball.biz.helper.CustomMultipartResolver">
+        <property name="maxUploadSize"
+                  value="20000000" />
+    </bean>
 
     
 

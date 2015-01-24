@@ -10,11 +10,23 @@
   <name>ball</name>
   <url>http://maven.apache.org</url>
     <profiles>
+
         <profile>
-            <id>dev</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
+            <id>pro</id>
+            <build>
+                <filters>
+                    <filter>src/main/resources/app-pro.properties</filter>
+                </filters>
+                <resources>
+                    <resource>
+                        <directory>src/main/resources</directory>
+                        <filtering>true</filtering>
+                        <includes>
+                            <include>**/*</include>
+                        </includes>
+                    </resource>
+                </resources>
+            </build>
             <repositories>
                 <repository>
                     <id>snapshots</id>
@@ -28,8 +40,46 @@
                     <snapshots>
                     </snapshots>
                 </repository>
+
             </repositories>
         </profile>
+        <profile>
+            <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+                <filters>
+                    <filter>src/main/resources/app-dev.properties</filter>
+                </filters>
+                <resources>
+                    <resource>
+                        <directory>src/main/resources</directory>
+                        <filtering>true</filtering>
+                        <includes>
+                            <include>**/*</include>
+                        </includes>
+                    </resource>
+                </resources>
+            </build>
+            <repositories>
+                <repository>
+                    <id>snapshots</id>
+                    <url>http://nongmao.info/nexus/content/repositories/snapshots</url>
+                    <snapshots>
+                    </snapshots>
+                </repository>
+                <repository>
+                    <id>dev</id>
+                    <url>http://nongmao.info/nexus/content/repositories/dev</url>
+                    <snapshots>
+                    </snapshots>
+                </repository>
+
+            </repositories>
+
+        </profile>
+
     </profiles>
 
     <properties>

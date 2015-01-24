@@ -103,4 +103,12 @@ public class DateHelper {
         return simpleDateFormat.format(time);
     }
 
+    public static String formatYMD(Date time)  {
+        if(time == null){
+            return null;
+        }
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd");
+        return simpleDateFormat.format(time);
+    }
+
 }

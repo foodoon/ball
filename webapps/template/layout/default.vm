@@ -57,6 +57,7 @@
                      <li class="nav-header">API测试</li>
                      <li><a href="$!homeServer.getURI("api/help.htm")">api使用说明</a></li>
                      <li><a href="$!homeServer.getURI("api/list.htm")">api列表</a></li>
+                     <li><a href="$!homeServer.getURI("api/userUploadImg.htm")">上传头像</a></li>
 
                  </ul>
              </div><!--/.well -->
