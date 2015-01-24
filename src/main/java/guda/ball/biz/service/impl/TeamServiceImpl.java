@@ -387,12 +387,28 @@ public class TeamServiceImpl implements TeamService{
             return bizResult;
         }
         SessionDO sessionDO = (SessionDO)bizResult.data.get("sessionDO");
-        TeamApplyDOCriteria teamApplyDOCriteria = new TeamApplyDOCriteria();
-        TeamApplyDOCriteria.Criteria criteria = teamApplyDOCriteria.createCriteria();
-        criteria.andUserIdEqualTo(sessionDO.getUserId());
         BaseQuery baseQuery = new BaseQuery();
         baseQuery.setPageNo(pageNo);
         baseQuery.setPageSize(pageSize);
+        TeamDOCriteria teamDOCriteria = new TeamDOCriteria();
+        teamDOCriteria.createCriteria().andUserIdEqualTo(sessionDO.getUserId());
+        List<TeamDO> teamDOs = teamDOMapper.selectByExample(teamDOCriteria);
+        if(teamDOs.size() == 0){
+            BizResult bizResult1 = new BizResult();
+            bizResult1.data.put("list", Collections.emptyList());
+            bizResult1.data.put("query",baseQuery);
+            return bizResult1;
+        }
+        List<Integer> teamIdList = CollectionHelper.transformList(teamDOs,new Transformer<TeamDO, Integer>() {
+            @Override
+            public Integer transform(TeamDO object) {
+                return object.getId();
+            }
+        });
+        TeamApplyDOCriteria teamApplyDOCriteria = new TeamApplyDOCriteria();
+        TeamApplyDOCriteria.Criteria criteria = teamApplyDOCriteria.createCriteria();
+        criteria.andTeamIdIn(teamIdList);
+
         teamApplyDOCriteria.setStartRow(baseQuery.getStartRow());
         teamApplyDOCriteria.setPageSize(baseQuery.getPageSize());
         teamApplyDOCriteria.setOrderByClause(" gmt_create desc");
@@ -430,15 +446,7 @@ public class TeamServiceImpl implements TeamService{
         baseQuery.setPageNo(pageNo);
         baseQuery.setPageSize(pageSize);
         SessionDO sessionDO = (SessionDO)bizResult.data.get("sessionDO");
-//        TeamDOCriteria teamDOCriteria = new TeamDOCriteria();
-//        teamDOCriteria.createCriteria().andUserIdEqualTo(sessionDO.getUserId());
-//        List<TeamDO> teamDOs = teamDOMapper.selectByExample(teamDOCriteria);
-//        if(teamDOs.size() == 0){
-//            BizResult bizResult1 = new BizResult();
-//            bizResult1.data.put("list", Collections.emptyList());
-//            bizResult1.data.put("query",baseQuery);
-//            return bizResult1;
-//        }
+
         TeamApplyDOCriteria teamApplyDOCriteria = new TeamApplyDOCriteria();
         TeamApplyDOCriteria.Criteria criteria = teamApplyDOCriteria.createCriteria();
         criteria.andUserIdEqualTo(sessionDO.getUserId());
@@ -566,7 +574,9 @@ public class TeamServiceImpl implements TeamService{
         baseQuery.setPageNo(pageNo);
         baseQuery.setPageSize(pageSize);
         TeamDOCriteria teamDOCriteria = new TeamDOCriteria();
-        teamDOCriteria.createCriteria().andUserIdNotEqualTo(sessionDO.getUserId());
+       // teamDOCriteria.createCriteria().andUserIdNotEqualTo(sessionDO.getUserId());
+        teamDOCriteria.setStartRow(baseQuery.getStartRow());
+        teamDOCriteria.setPageSize(baseQuery.getPageSize());
         List<TeamDO> teamDOs = teamDOMapper.selectByExample(teamDOCriteria);
         if(teamDOs.size() == 0){
             BizResult bizResult1 = new BizResult();
