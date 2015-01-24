@@ -1,17 +1,17 @@
 package guda.ball.biz.impl;
 
-import guda.tools.web.page.BaseQuery;
-import guda.tools.web.page.BizResult;
-import guda.ball.biz.TeamApplyBiz;
-import guda.ball.dao.TeamApplyDOMapper;
-import guda.ball.dao.domain.TeamApplyDO;
-import guda.ball.dao.domain.TeamApplyDOCriteria;
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.Date;
-import java.util.List;
+import guda.ball.biz.TeamApplyBiz;
+import guda.ball.dao.TeamApplyDOMapper;
+import guda.ball.dao.domain.TeamApplyDO;
+import guda.ball.dao.domain.TeamApplyDOCriteria;
+import guda.tools.web.page.BaseQuery;
+import guda.tools.web.page.BizResult;
 
 public class TeamApplyBizImpl implements TeamApplyBiz{
 
@@ -63,12 +63,9 @@ public class TeamApplyBizImpl implements TeamApplyBiz{
 
     public BizResult create(TeamApplyDO teamApplyDO) {
         BizResult bizResult = new BizResult();
-        teamApplyDO.setGmtModify(new Date());
-        teamApplyDO.setGmtCreate(new Date());
-        teamApplyDO.setIsDeleted(0);
         try {
-            int id = teamApplyDOMapper.insert(teamApplyDO);
-            bizResult.data.put("count", id);
+            int count = teamApplyDOMapper.insert(teamApplyDO);
+            bizResult.data.put("count", count);
             bizResult.success = true;
         } catch (Exception e) {
             logger.error("create TeamApply error", e);
@@ -79,8 +76,8 @@ public class TeamApplyBizImpl implements TeamApplyBiz{
     public BizResult update(TeamApplyDO teamApplyDO) {
         BizResult bizResult = new BizResult();
         try {
-            int id = teamApplyDOMapper.updateByPrimaryKeySelective(teamApplyDO);
-            bizResult.data.put("count", id);
+            int count = teamApplyDOMapper.updateByPrimaryKeySelective(teamApplyDO);
+            bizResult.data.put("count", count);
             bizResult.success = true;
         } catch (Exception e) {
             logger.error("update TeamApply error", e);

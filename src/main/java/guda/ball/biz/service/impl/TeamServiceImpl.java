@@ -1,6 +1,7 @@
 package guda.ball.biz.service.impl;
 
 import guda.ball.biz.entity.TeamVO;
+import guda.ball.dao.*;
 import guda.ball.util.*;
 import guda.tools.web.page.BaseQuery;
 import guda.tools.web.page.BizResult;
@@ -9,10 +10,6 @@ import guda.ball.biz.TeamBiz;
 import guda.ball.biz.entity.TeamApplyVO;
 import guda.ball.biz.entity.TeamMemberVO;
 import guda.ball.biz.service.TeamService;
-import guda.ball.dao.TeamApplyDOMapper;
-import guda.ball.dao.TeamDOMapper;
-import guda.ball.dao.TeamMemberDOMapper;
-import guda.ball.dao.UserDOMapper;
 import guda.ball.dao.domain.*;
 import guda.ball.util.enums.ApplyStatusEnum;
 import org.slf4j.Logger;
@@ -46,6 +43,10 @@ public class TeamServiceImpl implements TeamService{
     private TeamApplyDOMapper teamApplyDOMapper;
     @Autowired
     private TeamMemberDOMapper teamMemberDOMapper;
+    @Autowired
+    private ChallengeApplyDOMapper challengeApplyDOMapper;
+    @Autowired
+    private ChallengeDOMapper challengeDOMapper;
 
     @AppRequestMapping(apiName = "team.apply", apiVersion = "1.0")
     public BizResult apply(@AppRequestParam("sid") String sid, @AppRequestParam("teamId") int teamId) {
@@ -497,7 +498,7 @@ public class TeamServiceImpl implements TeamService{
         return BizResultHelper.newCommonError();
     }
     @AppRequestMapping(apiName = "team.queryMemberList", apiVersion = "1.0")
-    public BizResult queryMemberList(@AppRequestParam("sid") String sid ,@AppRequestParam("pageNo")int pageNo,@AppRequestParam("pageSize")int pageSize) {
+    public BizResult queryMemberList(@AppRequestParam("sid") String sid ,@AppRequestParam("teamId") int teamId ,@AppRequestParam("pageNo")int pageNo,@AppRequestParam("pageSize")int pageSize) {
         if( !StringUtils.hasText(sid)){
             return BizResultHelper.newResultCode(CommonResultCode.PARAM_MISS);
         }
@@ -505,21 +506,26 @@ public class TeamServiceImpl implements TeamService{
         if(!bizResult.success) {
             return bizResult;
         }
-        SessionDO sessionDO = (SessionDO)bizResult.data.get("sessionDO");
         BaseQuery baseQuery = new BaseQuery();
         baseQuery.setPageNo(pageNo);
         baseQuery.setPageSize(pageSize);
-        TeamDOCriteria teamDOCriteria = new TeamDOCriteria();
-        teamDOCriteria.createCriteria().andUserIdEqualTo(sessionDO.getUserId());
-        List<TeamDO> teamDOs = teamDOMapper.selectByExample(teamDOCriteria);
-        if(teamDOs.size() == 0){
+//        SessionDO sessionDO = (SessionDO)bizResult.data.get("sessionDO");
+
+
+        TeamDO teamDO = teamDOMapper.selectByPrimaryKey(teamId);
+
+        if(teamDO == null){
             BizResult bizResult1 = new BizResult();
+            bizResult1.data.put("teamDO",teamDO);
             bizResult1.data.put("list", Collections.emptyList());
             bizResult1.data.put("query",baseQuery);
             return bizResult1;
         }
         TeamMemberDOCriteria teamMemberDOCriteria = new TeamMemberDOCriteria();
-        teamMemberDOCriteria.createCriteria().andTeamIdEqualTo(teamDOs.get(0).getId());
+        teamMemberDOCriteria.createCriteria().andTeamIdEqualTo(teamId);
+        teamMemberDOCriteria.setStartRow(baseQuery.getStartRow());
+        teamMemberDOCriteria.setPageSize(baseQuery.getPageSize());
+
         List<TeamMemberDO> teamMemberDOs = teamMemberDOMapper.selectByExample(teamMemberDOCriteria);
         int i = teamMemberDOMapper.countByExample(teamMemberDOCriteria);
         baseQuery.setTotalCount(i);
@@ -536,7 +542,7 @@ public class TeamServiceImpl implements TeamService{
             }
 
         }
-        bizResult.data.put("teamDO",teamDOs.get(0));
+        bizResult.data.put("teamDO",teamDO);
         bizResult.data.put("memberList",teamMemberVOList);
         bizResult.data.put("query",baseQuery);
         bizResult.success = true;
@@ -562,6 +568,7 @@ public class TeamServiceImpl implements TeamService{
             BizResult bizResult1 = new BizResult();
             bizResult1.data.put("list", Collections.emptyList());
             bizResult1.data.put("query",baseQuery);
+            bizResult1.success=true;
             return bizResult1;
         }
         int count = teamDOMapper.countByExample(teamDOCriteria);
@@ -570,6 +577,40 @@ public class TeamServiceImpl implements TeamService{
         bizResult.data.put("query",baseQuery);
         bizResult.success=true;
         return bizResult;
+    }
+    @AppRequestMapping(apiName = "team.queryTeamInfo", apiVersion = "1.0")
+    @Override
+    public BizResult queryTeamInfo(@AppRequestParam("sid") String sid,@AppRequestParam("teamId")  int teamId) {
+        if( !StringUtils.hasText(sid)){
+            return BizResultHelper.newResultCode(CommonResultCode.PARAM_MISS);
+        }
+        BizResult bizResult = sessionBiz.checkSession(sid);
+        if(!bizResult.success) {
+            return bizResult;
+        }
+       // SessionDO sessionDO = (SessionDO)bizResult.data.get("sessionDO");
+        TeamDO teamDO = teamDOMapper.selectByPrimaryKey(teamId);
+        BizResult bizResult1 = new BizResult();
+        TeamVO teamVO = new TeamVO(teamDO);
+        //查询队长
+        UserDO userDO = userDOMapper.selectByPrimaryKey(teamDO.getUserId());
+        teamVO.setTeamLeader(userDO);
+        //查询球员数量
+        TeamMemberDOCriteria teamMemberDOCriteria = new TeamMemberDOCriteria();
+        teamMemberDOCriteria.createCriteria().andTeamIdEqualTo(teamDO.getId());
+        int i = teamMemberDOMapper.countByExample(teamMemberDOCriteria);
+        teamVO.setMemberCount(i);
+        //查询应战次数
+        ChallengeApplyDOCriteria challengeApplyDOCriteria = new ChallengeApplyDOCriteria();
+        challengeApplyDOCriteria.createCriteria().andTeamIdEqualTo(teamDO.getId());
+        teamVO.setApplyBallCount(challengeApplyDOMapper.countByExample(challengeApplyDOCriteria));
+        //查询约战次数
+        ChallengeDOCriteria challengeDOCriteria = new ChallengeDOCriteria();
+        challengeDOCriteria.createCriteria().andTeamIdEqualTo(teamDO.getId());
+        teamVO.setBallCount(challengeDOMapper.countByExample(challengeDOCriteria));
+        bizResult1.data.put("teamInfo", teamVO);
+        bizResult1.success=true;
+        return bizResult1;
     }
 
 }

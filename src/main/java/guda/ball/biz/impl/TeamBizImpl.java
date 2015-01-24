@@ -1,16 +1,17 @@
 package guda.ball.biz.impl;
 
-import guda.tools.web.page.BaseQuery;
-import guda.tools.web.page.BizResult;
-import guda.ball.biz.TeamBiz;
-import guda.ball.dao.TeamDOMapper;
-import guda.ball.dao.domain.TeamDO;
-import guda.ball.dao.domain.TeamDOCriteria;
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.List;
+import guda.ball.biz.TeamBiz;
+import guda.ball.dao.TeamDOMapper;
+import guda.ball.dao.domain.TeamDO;
+import guda.ball.dao.domain.TeamDOCriteria;
+import guda.tools.web.page.BaseQuery;
+import guda.tools.web.page.BizResult;
 
 public class TeamBizImpl implements TeamBiz{
 
@@ -63,8 +64,8 @@ public class TeamBizImpl implements TeamBiz{
     public BizResult create(TeamDO teamDO) {
         BizResult bizResult = new BizResult();
         try {
-            int id = teamDOMapper.insert(teamDO);
-            bizResult.data.put("count", id);
+            int count = teamDOMapper.insert(teamDO);
+            bizResult.data.put("count", count);
             bizResult.success = true;
         } catch (Exception e) {
             logger.error("create Team error", e);
@@ -75,8 +76,8 @@ public class TeamBizImpl implements TeamBiz{
     public BizResult update(TeamDO teamDO) {
         BizResult bizResult = new BizResult();
         try {
-            int id = teamDOMapper.updateByPrimaryKeySelective(teamDO);
-            bizResult.data.put("count", id);
+            int count = teamDOMapper.updateByPrimaryKeySelective(teamDO);
+            bizResult.data.put("count", count);
             bizResult.success = true;
         } catch (Exception e) {
             logger.error("update Team error", e);

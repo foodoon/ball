@@ -39,7 +39,7 @@ public class UserBizImpl implements UserBiz{
             logger.error("query User error",e);
         }
         return bizResult;
-}
+    }
 
     public BizResult list(BaseQuery baseQuery) {
         BizResult bizResult = new BizResult();
@@ -56,8 +56,8 @@ public class UserBizImpl implements UserBiz{
         } catch (Exception e) {
             logger.error("view User list error", e);
         }
-            return bizResult;
-     }
+        return bizResult;
+    }
 
     public BizResult delete(int id) {
         BizResult bizResult = new BizResult();

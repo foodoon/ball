@@ -103,11 +103,21 @@ public class DateHelper {
         return simpleDateFormat.format(time);
     }
 
-    public static String formatYMD(Date time)  {
-        if(time == null){
+
+    public static String formatYMD(Date time) {
+        if (time == null) {
             return null;
         }
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd");
+        return simpleDateFormat.format(time);
+    }
+
+    public static String formatShowCN(Date time)  {
+        if(time == null){
+            return null;
+        }
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm:ss yyyy/MM/dd");
+
         return simpleDateFormat.format(time);
     }
 

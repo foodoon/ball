@@ -1,17 +1,17 @@
 package guda.ball.biz.impl;
 
-import guda.tools.web.page.BaseQuery;
-import guda.tools.web.page.BizResult;
-import guda.ball.biz.CourtBiz;
-import guda.ball.dao.CourtDOMapper;
-import guda.ball.dao.domain.CourtDO;
-import guda.ball.dao.domain.CourtDOCriteria;
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.Date;
-import java.util.List;
+import guda.ball.biz.CourtBiz;
+import guda.ball.dao.CourtDOMapper;
+import guda.ball.dao.domain.CourtDO;
+import guda.ball.dao.domain.CourtDOCriteria;
+import guda.tools.web.page.BaseQuery;
+import guda.tools.web.page.BizResult;
 
 public class CourtBizImpl implements CourtBiz{
 
@@ -63,12 +63,9 @@ public class CourtBizImpl implements CourtBiz{
 
     public BizResult create(CourtDO courtDO) {
         BizResult bizResult = new BizResult();
-        courtDO.setGmtModify(new Date());
-        courtDO.setGmtCreate(new Date());
-        courtDO.setIsDeleted(0);
         try {
-            int id = courtDOMapper.insert(courtDO);
-            bizResult.data.put("count", id);
+            int count = courtDOMapper.insert(courtDO);
+            bizResult.data.put("count", count);
             bizResult.success = true;
         } catch (Exception e) {
             logger.error("create Court error", e);
@@ -79,8 +76,8 @@ public class CourtBizImpl implements CourtBiz{
     public BizResult update(CourtDO courtDO) {
         BizResult bizResult = new BizResult();
         try {
-            int id = courtDOMapper.updateByPrimaryKeySelective(courtDO);
-            bizResult.data.put("count", id);
+            int count = courtDOMapper.updateByPrimaryKeySelective(courtDO);
+            bizResult.data.put("count", count);
             bizResult.success = true;
         } catch (Exception e) {
             logger.error("update Court error", e);
