@@ -6,7 +6,8 @@ package guda.ball.util.enums;
 public enum ChallengeStatusEnum {
 
     FALSE(0,"约战双方未确认"),
-    TRUE(1,"约战双方已确认");
+    TRUE(1,"约战双方已确认"),
+    FINISH(2,"比赛完成");
 
     public int value;
 

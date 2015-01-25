@@ -1,6 +1,8 @@
 package guda.ball.biz.entity;
 
 import guda.ball.dao.domain.ChallengeDO;
+import guda.ball.dao.domain.CourtDO;
+import guda.ball.dao.domain.TeamDO;
 
 /**
  * Created by well on 2014/8/7.
@@ -17,6 +19,43 @@ public class ChallengeVO extends ChallengeDO{
     private String challengeTimeCN;
 
     private String statusCN;
+
+    private TeamDO challengeTeam;
+    private TeamDO applyTeam;
+    private CourtDO court;
+    private ChallengeDO challenge;
+
+    public ChallengeDO getChallenge() {
+        return challenge;
+    }
+
+    public void setChallenge(ChallengeDO challenge) {
+        this.challenge = challenge;
+    }
+
+    public CourtDO getCourt() {
+        return court;
+    }
+
+    public void setCourt(CourtDO court) {
+        this.court = court;
+    }
+
+    public TeamDO getChallengeTeam() {
+        return challengeTeam;
+    }
+
+    public void setChallengeTeam(TeamDO challengeTeam) {
+        this.challengeTeam = challengeTeam;
+    }
+
+    public TeamDO getApplyTeam() {
+        return applyTeam;
+    }
+
+    public void setApplyTeam(TeamDO applyTeam) {
+        this.applyTeam = applyTeam;
+    }
 
     public String getStatusCN() {
         return statusCN;

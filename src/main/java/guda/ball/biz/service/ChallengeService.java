@@ -32,4 +32,10 @@ public interface ChallengeService {
 
     public BizResult rejectApply(String sid, int challengeApplyId);
 
+    public BizResult queryChallengeCount(String sid);
+
+    public BizResult queryWaitStartChallengeList(String sid);
+    public BizResult queryOverChallengeList(String sid);
+    public BizResult queryOngoingChallengeList(String sid);
+
 }

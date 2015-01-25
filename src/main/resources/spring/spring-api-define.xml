@@ -51,6 +51,10 @@
                 <ref local="challenge.update"></ref>
                 <ref local="challenge.create"></ref>
                 <ref local="challenge.delete"></ref>
+                <ref local="challenge.queryChallengeCount"></ref>
+                <ref local="challenge.queryWaitStartChallengeList"></ref>
+                <ref local="challenge.queryOverChallengeList"></ref>
+                <ref local="challenge.queryOngoingChallengeList"></ref>
 
                 <ref local="goods.confirmGoods"></ref>
                 <ref local="goods.confirmBuy"></ref>
@@ -521,6 +525,47 @@
             </map>
         </property>
     </bean>
+    <bean id="challenge.queryChallengeCount" class="guda.ball.biz.entity.ApiDefine">
+        <property name="apiName" value="challenge.queryChallengeCount"></property>
+        <property name="apiVersion" value="1.0"></property>
+        <property name="params">
+            <map>
+                <entry key="userName" value="登录名"></entry>
+                <entry key="password" value="密码"></entry>
+            </map>
+        </property>
+    </bean>
+    <bean id="challenge.queryWaitStartChallengeList" class="guda.ball.biz.entity.ApiDefine">
+        <property name="apiName" value="challenge.queryWaitStartChallengeList"></property>
+        <property name="apiVersion" value="1.0"></property>
+        <property name="params">
+            <map>
+                <entry key="userName" value="登录名"></entry>
+                <entry key="password" value="密码"></entry>
+            </map>
+        </property>
+    </bean>
+    <bean id="challenge.queryOverChallengeList" class="guda.ball.biz.entity.ApiDefine">
+        <property name="apiName" value="challenge.queryOverChallengeList"></property>
+        <property name="apiVersion" value="1.0"></property>
+        <property name="params">
+            <map>
+                <entry key="userName" value="登录名"></entry>
+                <entry key="password" value="密码"></entry>
+            </map>
+        </property>
+    </bean>
+    <bean id="challenge.queryOngoingChallengeList" class="guda.ball.biz.entity.ApiDefine">
+        <property name="apiName" value="challenge.queryOngoingChallengeList"></property>
+        <property name="apiVersion" value="1.0"></property>
+        <property name="params">
+            <map>
+                <entry key="userName" value="登录名"></entry>
+                <entry key="password" value="密码"></entry>
+            </map>
+        </property>
+    </bean>
+
 
     <bean id="challenge.queryListForApply" class="guda.ball.biz.entity.ApiDefine">
         <property name="apiName" value="challenge.queryListForApply"></property>

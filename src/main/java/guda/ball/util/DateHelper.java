@@ -38,6 +38,26 @@ public class DateHelper {
 
     }
 
+    public static boolean compare(Date time) {
+       if(time == null){
+           return false;
+       }
+        return new Date().before(time);
+
+    }
+
+    public static boolean sameDay(Date time) {
+        if(time == null){
+            return false;
+        }
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd");
+        String t = simpleDateFormat.format(time);
+        SimpleDateFormat simpleDateFormat2 = new SimpleDateFormat("yyyyMMdd");
+        String format = simpleDateFormat2.format(new Date());
+        return t.equals(format);
+
+    }
+
     public static Date get7Time() throws ParseException {
 
         Calendar calendar = Calendar.getInstance();

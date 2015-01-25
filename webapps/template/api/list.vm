@@ -55,7 +55,14 @@
 
 
 
+
                 <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','court.update').addQueryData('apiVersion','1.0')">录入比赛结果（发起人才能录入）</a></li>
+
+                <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','challenge.queryChallengeCount').addQueryData('apiVersion','1.0')">统计我的比赛数量</a></li>
+                <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','challenge.queryWaitStartChallengeList').addQueryData('apiVersion','1.0')">查询将要开始的比赛列表</a></li>
+                <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','challenge.queryOverChallengeList').addQueryData('apiVersion','1.0')">查询历史比赛列表</a></li>
+                <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','challenge.queryOngoingChallengeList').addQueryData('apiVersion','1.0')">查询正在进行的比赛列表</a></li>
+
 
             </ul>
         </div>
