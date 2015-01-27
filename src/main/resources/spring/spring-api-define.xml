@@ -39,6 +39,7 @@
                 <ref local="court.queryBookingListForReview"></ref>
                 <ref local="court.rejectApply"></ref>
                 <ref local="court.update"></ref>
+                <ref local="court.queryList"></ref>
 
                 <ref local="challenge.apply"></ref>
                 <ref local="challenge.cancelApply"></ref>
@@ -420,6 +421,31 @@
                 <entry key="password" value="密码"></entry>
                 <entry key="courtId" value="场地ID"></entry>
                 <entry key="applyTime" value="预定时间(yyyyMMddHHmmss格式)"></entry>
+            </map>
+        </property>
+    </bean>
+    <bean id="court.queryList" class="guda.ball.biz.entity.ApiDefine">
+        <property name="apiName" value="court.queryList"></property>
+        <property name="apiVersion" value="1.0"></property>
+        <property name="params">
+            <map>
+                <entry key="userName" value="登录名"></entry>
+                <entry key="password" value="密码"></entry>
+                <entry key="pageNo" value="页码"></entry>
+                <entry key="pageSize" value="每页记录数"></entry>
+            </map>
+        </property>
+    </bean>
+    <bean id="court.queryListByName" class="guda.ball.biz.entity.ApiDefine">
+        <property name="apiName" value="court.queryListByName"></property>
+        <property name="apiVersion" value="1.0"></property>
+        <property name="params">
+            <map>
+                <entry key="userName" value="登录名"></entry>
+                <entry key="password" value="密码"></entry>
+                <entry key="name" value="场地名称"></entry>
+                <entry key="pageNo" value="页码"></entry>
+                <entry key="pageSize" value="每页记录数"></entry>
             </map>
         </property>
     </bean>

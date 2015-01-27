@@ -25,4 +25,8 @@ public interface CourtService {
 
     public BizResult queryBookingListForReview(String sid, int pageNo, int pageSize);
 
+    public BizResult queryList(String sid, int pageNo, int pageSize);
+
+    public BizResult queryListByName(String sid, String name,int pageNo, int pageSize);
+
 }

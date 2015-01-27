@@ -79,6 +79,8 @@
                     <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','court.queryBookingListForReview').addQueryData('apiVersion','1.0')">查询待审批预约记录</a></li>
                     <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','court.passApply').addQueryData('apiVersion','1.0')">批准场地预约申请</a></li>
                     <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','court.rejectApply').addQueryData('apiVersion','1.0')">拒绝场地预约申请</a></li>
+                    <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','court.queryList').addQueryData('apiVersion','1.0')">查询场地</a></li>
+                    <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','court.queryListByName').addQueryData('apiVersion','1.0')">根据名称搜索场地</a></li>
                 </ul>
             </div>
             <div class="col-md-4">

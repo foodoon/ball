@@ -352,8 +352,9 @@ public class CourtServiceImpl implements CourtService {
         return bizResult;
     }
 
+
     @AppRequestMapping(apiName = "court.queryBookingListForReview", apiVersion = "1.0")
-    public BizResult queryBookingListForReview(String sid,@AppRequestParam("pageNo")int pageNo,@AppRequestParam("pageSize")int pageSize) {
+    public BizResult queryBookingListForReview(@AppRequestParam("sid")String sid,@AppRequestParam("pageNo")int pageNo,@AppRequestParam("pageSize")int pageSize) {
         if (!StringUtils.hasText(sid)) {
             return BizResultHelper.newResultCode(CommonResultCode.PARAM_MISS);
         }
@@ -402,6 +403,71 @@ public class CourtServiceImpl implements CourtService {
             }
         }
         bizResult.data.put("courtApplyList",courtApplyVOList);
+        bizResult.data.put("query",baseQuery);
+        bizResult.success  = true;
+        return bizResult;
+    }
+
+    @AppRequestMapping(apiName = "court.queryList", apiVersion = "1.0")
+    @Override
+    public BizResult queryList(@AppRequestParam("sid") String sid,@AppRequestParam("pageNo")  int pageNo,@AppRequestParam("pageSize")  int pageSize) {
+        if (!StringUtils.hasText(sid)) {
+            return BizResultHelper.newResultCode(CommonResultCode.PARAM_MISS);
+        }
+        BizResult bizResult = sessionBiz.checkSession(sid);
+        if (!bizResult.success) {
+            return bizResult;
+        }
+        SessionDO sessionDO = (SessionDO) bizResult.data.get("sessionDO");
+        UserDO userDO = userDOMapper.selectByPrimaryKey(sessionDO.getUserId());
+        if (userDO == null) {
+            return BizResultHelper.newResultCode(CommonResultCode.USER_NOT_EXIST);
+        }
+        BaseQuery baseQuery = new BaseQuery();
+        baseQuery.setPageNo(pageNo);
+        baseQuery.setPageSize(pageSize);
+        CourtDOCriteria courtDOCriteria = new CourtDOCriteria();
+        courtDOCriteria.setPageSize(baseQuery.getPageSize());
+        courtDOCriteria.setStartRow(baseQuery.getStartRow());
+        List<CourtDO> courtDOs = courtDOMapper.selectByExample(courtDOCriteria);
+        int i = courtDOMapper.countByExample(courtDOCriteria);
+        baseQuery.setTotalCount(i);
+
+        bizResult.data.put("list",courtDOs);
+        bizResult.data.put("query",baseQuery);
+        bizResult.success  = true;
+        return bizResult;
+    }
+
+    @AppRequestMapping(apiName = "court.queryListByName", apiVersion = "1.0")
+    @Override
+    public BizResult queryListByName(String sid, String name,int pageNo, int pageSize) {
+        if (!StringUtils.hasText(sid)) {
+            return BizResultHelper.newResultCode(CommonResultCode.PARAM_MISS);
+        }
+        BizResult bizResult = sessionBiz.checkSession(sid);
+        if (!bizResult.success) {
+            return bizResult;
+        }
+        SessionDO sessionDO = (SessionDO) bizResult.data.get("sessionDO");
+        UserDO userDO = userDOMapper.selectByPrimaryKey(sessionDO.getUserId());
+        if (userDO == null) {
+            return BizResultHelper.newResultCode(CommonResultCode.USER_NOT_EXIST);
+        }
+        BaseQuery baseQuery = new BaseQuery();
+        baseQuery.setPageNo(pageNo);
+        baseQuery.setPageSize(pageSize);
+        CourtDOCriteria courtDOCriteria = new CourtDOCriteria();
+        if(StringUtils.hasText(name)) {
+            courtDOCriteria.createCriteria().andNameLike("%" + name + "%");
+        }
+        courtDOCriteria.setPageSize(baseQuery.getPageSize());
+        courtDOCriteria.setStartRow(baseQuery.getStartRow());
+        List<CourtDO> courtDOs = courtDOMapper.selectByExample(courtDOCriteria);
+        int i = courtDOMapper.countByExample(courtDOCriteria);
+        baseQuery.setTotalCount(i);
+
+        bizResult.data.put("list",courtDOs);
         bizResult.data.put("query",baseQuery);
         bizResult.success  = true;
         return bizResult;
