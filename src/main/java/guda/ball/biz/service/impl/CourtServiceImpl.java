@@ -441,7 +441,7 @@ public class CourtServiceImpl implements CourtService {
 
     @AppRequestMapping(apiName = "court.queryListByName", apiVersion = "1.0")
     @Override
-    public BizResult queryListByName(String sid, String name,int pageNo, int pageSize) {
+    public BizResult queryListByName(@AppRequestParam("sid") String sid,@AppRequestParam("name") String name,@AppRequestParam("pageNo")  int pageNo,@AppRequestParam("pageSize")  int pageSize) {
         if (!StringUtils.hasText(sid)) {
             return BizResultHelper.newResultCode(CommonResultCode.PARAM_MISS);
         }

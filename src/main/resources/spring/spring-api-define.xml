@@ -40,6 +40,7 @@
                 <ref local="court.rejectApply"></ref>
                 <ref local="court.update"></ref>
                 <ref local="court.queryList"></ref>
+                <ref local="court.queryListByName"></ref>
 
                 <ref local="challenge.apply"></ref>
                 <ref local="challenge.cancelApply"></ref>
