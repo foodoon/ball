@@ -59,6 +59,26 @@
                      <li><a href="$!homeServer.getURI("api/list.htm")">api列表</a></li>
                      <li><a href="$!homeServer.getURI("api/userUploadImg.htm")">上传头像</a></li>
 
+
+
+                     <li class="nav-header">球员</li>
+                     <li><a href="$!homeServer.getURI("court/list.htm")">球场信息</a></li>
+                     <li><a href="$!homeServer.getURI("team/list.htm")">球队信息</a></li>
+                     <li><a href="#">最近所有比赛</a></li>
+                     <li><a href="#">商品，服务</a></li>
+                     <li class="nav-header">队长</li>
+                     <li><a href="$!homeServer.getURI("challenge/list.htm")">约战信息</a></li>
+                     <li><a href="$!homeServer.getURI("team/list.htm")">球队信息</a></li>
+                     <li><a href="$!homeServer.getURI("teamApply/list.htm")">球队申请审核</a></li>
+                     <li class="nav-header">老板</li>
+                     <li><a href="$!homeServer.getURI("court/list.htm")">发布场地信息</a></li>
+                     <li><a href="$!homeServer.getURI("goods/list.htm")">发布商品服务信息</a></li>
+                     <li><a href="$!homeServer.getURI("courtApply/list.htm")">场地申请审核</a></li>
+
+                     <li class="nav-header">个人信息</li>
+                     <li><a href="$!homeServer.getURI("user/list.htm")">个人信息维护</a></li>
+
+
                  </ul>
              </div><!--/.well -->
          </div><!--/span-->
