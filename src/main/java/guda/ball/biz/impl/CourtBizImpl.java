@@ -1,5 +1,6 @@
 package guda.ball.biz.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -64,6 +65,9 @@ public class CourtBizImpl implements CourtBiz{
     public BizResult create(CourtDO courtDO) {
         BizResult bizResult = new BizResult();
         try {
+            courtDO.setIsDeleted(0);
+            courtDO.setGmtCreate(new Date());
+            courtDO.setGmtModify(new Date());
             int count = courtDOMapper.insert(courtDO);
             bizResult.data.put("count", count);
             bizResult.success = true;
