@@ -203,7 +203,7 @@
                 <entry key="password" value="密码"></entry>
                 <entry key="name" value="球队名称"></entry>
                 <entry key="teamType" value="球队类型(可取的值为3,5,7,9,11分别代表3V3,5V5,7V7,9V9,11V11)"></entry>
-                <entry key="teamDesc" value="球队介绍"></entry>
+                <entry key="teamDesc" value="球队口号"></entry>
                 <entry key="canJoin" value="是否开放加入(可取的值为1：开放加入；0：不开放)"></entry>
                 <entry key="jerseyColor" value="球服颜色"></entry>
                 <entry key="area" value="活动区域"></entry>
