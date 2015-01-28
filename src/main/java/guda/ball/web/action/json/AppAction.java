@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by foodoon on 2014/7/29.
@@ -41,11 +41,26 @@ public class AppAction extends BaseJsonController{
             this.ajaxReturn(new AppResponse("缺少参数","无法找到处理器"),response);
             return ;
         }
-        Map parameterMap = ServletRequestUtil.getAllParamter(request);
+        Map<String,String> parameterMap = ServletRequestUtil.getAllParamter(request);
+
+        //过滤空字符串或者null
+        Iterator<Map.Entry<String, String>> iterator = parameterMap.entrySet().iterator();
+        List<String> key = new ArrayList<String>();
+        while(iterator.hasNext()){
+            Map.Entry<String, String> en = iterator.next();
+            String value = en.getValue();
+            if(!StringUtils.hasText(value)){
+                key.add(en.getKey());
+            }
+        }
+        for(String s:key){
+            parameterMap.remove(s);
+        }
         AppRequest appRequest = new AppRequest();
         AppRequestKey appRequestKey = new AppRequestKey();
         appRequestKey.setApiName(apiName);
         appRequestKey.setApiVersion(apiVersion);
+
 
         AppHandle service = appServiceFactory.getService(appRequestKey);
         if(service == null){

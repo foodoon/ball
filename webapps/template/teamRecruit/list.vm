@@ -19,4 +19,4 @@
 #end
 </table>
 
-$tile.load('home/common/page.vm').param('query',$query).param('path','teamRecruit/list.htm')
+$tile.load('/template/common/page.vm').param('query',$query).param('path','teamRecruit/list.htm')

@@ -23,4 +23,4 @@
 #end
 </table>
 
-$tile.load('home/common/page.vm').param('path','staff/list.htm').param('query',$query)
+$tile.load('/template/common/page.vm').param('path','staff/list.htm').param('query',$query)
