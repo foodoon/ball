@@ -321,14 +321,33 @@ public class ChallengeServiceImpl implements ChallengeService {
         TeamDOCriteria teamDOCriteria = new TeamDOCriteria();
         teamDOCriteria.createCriteria().andUserIdEqualTo(userDO.getId());
         List<TeamDO> teamDOs = teamDOMapper.selectByExample(teamDOCriteria);
-        if(CollectionUtils.isEmpty(teamDOs)){
-            if (userDO == null) {
-                return BizResultHelper.newResultCode(CommonResultCode.CHALLENGE_MUST_HAVE_TEAM);
+
+
+        List<Integer> teamIdList = CollectionHelper.transformList(teamDOs,new Transformer<TeamDO, Integer>() {
+            @Override
+            public Integer transform(TeamDO object) {
+                return object.getId();
             }
+        });
+
+        //查找我加入的球队
+        TeamApplyDOCriteria teamApplyDOCriteria = new TeamApplyDOCriteria();
+        teamApplyDOCriteria.createCriteria().andStatusEqualTo(ApplyStatusEnum.PASS.value)
+                .andUserIdEqualTo(userDO.getId());
+        List<TeamApplyDO> teamApplyDOs = teamApplyDOMapper.selectByExample(teamApplyDOCriteria);
+        List<Integer> joinTeamIdList = CollectionHelper.transformList(teamApplyDOs,new Transformer<TeamApplyDO, Integer>() {
+            @Override
+            public Integer transform(TeamApplyDO object) {
+                return object.getTeamId();
+            }
+        });
+        teamIdList.addAll(joinTeamIdList);
+        if(CollectionUtils.isEmpty(teamIdList)){
+            return BizResultHelper.newResultCode(CommonResultCode.CHALLENGE_MUST_HAVE_TEAM);
         }
 
         ChallengeDOCriteria challengeDOCriteria = new ChallengeDOCriteria();
-        challengeDOCriteria.createCriteria().andTeamIdEqualTo(teamDOs.get(0).getId());
+        challengeDOCriteria.createCriteria().andTeamIdIn(teamIdList);
         challengeDOCriteria.setStartRow(baseQuery.getStartRow());
         challengeDOCriteria.setPageSize(baseQuery.getPageSize());
         challengeDOCriteria.setOrderByClause(" gmt_modify desc");
@@ -614,17 +633,30 @@ public class ChallengeServiceImpl implements ChallengeService {
         TeamDOCriteria teamDOCriteria = new TeamDOCriteria();
         teamDOCriteria.createCriteria().andUserIdEqualTo(userDO.getId());
         List<TeamDO> teamDOs = teamDOMapper.selectByExample(teamDOCriteria);
-        if(CollectionUtils.isEmpty(teamDOs)){
-            if (userDO == null) {
-                return BizResultHelper.newResultCode(CommonResultCode.CHALLENGE_MUST_HAVE_TEAM);
-            }
-        }
+
         List<Integer> teamIdList = CollectionHelper.transformList(teamDOs,new Transformer<TeamDO, Integer>() {
             @Override
             public Integer transform(TeamDO object) {
                 return object.getId();
             }
         });
+
+        //查找我加入的球队
+        TeamApplyDOCriteria teamApplyDOCriteria = new TeamApplyDOCriteria();
+        teamApplyDOCriteria.createCriteria().andStatusEqualTo(ApplyStatusEnum.PASS.value)
+                .andUserIdEqualTo(userDO.getId());
+        List<TeamApplyDO> teamApplyDOs = teamApplyDOMapper.selectByExample(teamApplyDOCriteria);
+        List<Integer> joinTeamIdList = CollectionHelper.transformList(teamApplyDOs,new Transformer<TeamApplyDO, Integer>() {
+            @Override
+            public Integer transform(TeamApplyDO object) {
+                return object.getTeamId();
+            }
+        });
+        teamIdList.addAll(joinTeamIdList);
+        if(CollectionUtils.isEmpty(teamIdList)){
+            return BizResultHelper.newResultCode(CommonResultCode.CHALLENGE_MUST_HAVE_TEAM);
+        }
+
         ChallengeDOCriteria challengeDOCriteria = new ChallengeDOCriteria();
         challengeDOCriteria.createCriteria().andTeamIdIn(teamIdList);
         List<ChallengeDO> challengeDOs = challengeDOMapper.selectByExample(challengeDOCriteria);
@@ -728,11 +760,8 @@ public class ChallengeServiceImpl implements ChallengeService {
             }
         });
         teamIdList.addAll(joinTeamIdList);
-
         if(CollectionUtils.isEmpty(teamIdList)){
-
            return BizResultHelper.newResultCode(CommonResultCode.CHALLENGE_MUST_HAVE_TEAM);
-
         }
 
         ChallengeDOCriteria challengeDOCriteria = new ChallengeDOCriteria();
