@@ -16,7 +16,7 @@ public interface UserService {
 
     public BizResult queryUserInfo(String sid);
 
-    public BizResult queryUserInfoById(String sid,int userId);
+    public BizResult queryUserInfoById(String sid,long userId);
 
     public BizResult login(String userName, String password);
 

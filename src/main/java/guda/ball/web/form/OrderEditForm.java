@@ -5,13 +5,13 @@ import guda.ball.dao.domain.OrderDO;
 
 public class OrderEditForm extends OrderForm{
 
-    private Integer id;
+    private Long id;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -25,12 +25,12 @@ public class OrderEditForm extends OrderForm{
         if(orderDO == null){
         return ;
     }
-    this.setGoodsId(orderDO.getGoodsId());
-    this.setLeaveMsg(orderDO.getLeaveMsg());
-    this.setDeliveryTime(orderDO.getDeliveryTime());
-    this.setBuyerId(orderDO.getBuyerId());
-    this.setSellerId(orderDO.getSellerId());
     this.setStatus(orderDO.getStatus());
+    this.setSellerId(orderDO.getSellerId());
+    this.setBuyerId(orderDO.getBuyerId());
+    this.setDeliveryTime(orderDO.getDeliveryTime());
+    this.setLeaveMsg(orderDO.getLeaveMsg());
+    this.setGoodsId(orderDO.getGoodsId());
 }
 
 }

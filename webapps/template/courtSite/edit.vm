@@ -1,0 +1,54 @@
+编辑
+
+<form name="courtSiteEditForm" action="$!homeServer.getURI("courtSite/doUpdate.htm")" method="post">
+  <table class="table">
+  #springBind("courtSiteEditForm.id")
+  <input type="hidden" name="${status.expression}" value="$!status.value" />
+
+          #springBind("courtSiteEditForm.open")
+          <tr>
+              <td>是否开放</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("courtSiteEditForm.siteType")
+          <tr>
+              <td>场地类型</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("courtSiteEditForm.siteName")
+          <tr>
+              <td>场地名称</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("courtSiteEditForm.courtId")
+          <tr>
+              <td>场地ID</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+      #springBind("courtSiteEditForm.openTemplate")
+      <tr>
+          <td>场地开放模版</td>
+          <td>
+              <textarea rows="10" cols="80" name="${status.expression}">$!status.value</textarea>
+
+              #foreach($error in $status.errorMessages) <b>$error</b>  #end
+          </td>
+      </tr>
+      	  <tr>
+	  <td colspan="2">
+	  <input type="submit" class="btn" value="提交"/></td>
+	  </tr>
+  </table>
+</form>

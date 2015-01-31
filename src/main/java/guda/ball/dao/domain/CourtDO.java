@@ -1,42 +1,44 @@
 package guda.ball.dao.domain;
 
+import guda.gen.GenField;
+
 import java.util.Date;
 
 public class CourtDO {
-    private Integer id;
-
+    private Long id;
+    @GenField(cn="用户ID",order=1,inSearchForm = false,canNull = false)
+    private Long userId;
+    @GenField(cn="名称",order=1,inSearchForm = false,canNull = false)
     private String name;
-
+    @GenField(cn="地址",order=1,inSearchForm = false,canNull = false)
     private String address;
-
-    private String type;
-
-    private String openTime;
-
-    private String square;
-
-    private Integer userId;
-
-    private Integer isDeleted;
-
+    @GenField(cn="联系人",order=1,inSearchForm = false,canNull = false)
+    private String contactName;
+    @GenField(cn="联系电话",order=1,inSearchForm = false,canNull = false)
+    private String tel;
+    @GenField(cn="场地状态",order=1,inSearchForm = false,canNull = false)
     private Integer status;
-
+    @GenField(cn="场地描述",order=1,inSearchForm = false,canNull = false)
     private String courtDesc;
 
     private Date gmtModify;
 
     private Date gmtCreate;
 
-    private String tel;
-
-    private Long price;
-
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public String getName() {
@@ -55,44 +57,20 @@ public class CourtDO {
         this.address = address == null ? null : address.trim();
     }
 
-    public String getType() {
-        return type;
+    public String getContactName() {
+        return contactName;
     }
 
-    public void setType(String type) {
-        this.type = type == null ? null : type.trim();
+    public void setContactName(String contactName) {
+        this.contactName = contactName == null ? null : contactName.trim();
     }
 
-    public String getOpenTime() {
-        return openTime;
+    public String getTel() {
+        return tel;
     }
 
-    public void setOpenTime(String openTime) {
-        this.openTime = openTime == null ? null : openTime.trim();
-    }
-
-    public String getSquare() {
-        return square;
-    }
-
-    public void setSquare(String square) {
-        this.square = square == null ? null : square.trim();
-    }
-
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
-
-    public Integer getIsDeleted() {
-        return isDeleted;
-    }
-
-    public void setIsDeleted(Integer isDeleted) {
-        this.isDeleted = isDeleted;
+    public void setTel(String tel) {
+        this.tel = tel == null ? null : tel.trim();
     }
 
     public Integer getStatus() {
@@ -125,21 +103,5 @@ public class CourtDO {
 
     public void setGmtCreate(Date gmtCreate) {
         this.gmtCreate = gmtCreate;
-    }
-
-    public String getTel() {
-        return tel;
-    }
-
-    public void setTel(String tel) {
-        this.tel = tel == null ? null : tel.trim();
-    }
-
-    public Long getPrice() {
-        return price;
-    }
-
-    public void setPrice(Long price) {
-        this.price = price;
     }
 }

@@ -1,62 +1,61 @@
 package guda.ball.web.form;
 
-import guda.ball.dao.domain.GoodsDO;
+import java.util.Date;
+
+import javax.validation.constraints.Size;
+
 import org.hibernate.validator.constraints.NotEmpty;
 
+import guda.ball.dao.domain.GoodsDO;
 import javax.validation.constraints.NotNull;
 
 public class GoodsForm {
-    @NotEmpty(message = "{不能为空}")
-    private String goodsName;
+                    @NotNull     private Long courtId;
 
-    @NotEmpty(message = "{不能为空}")
-    private String goodsDesc;
+                    @NotNull     private Long price;
 
-    @NotNull
-    private Long price;
+                    @NotEmpty(message = "{不能为空}")
+            private String goodsDesc;
 
-    @NotNull
-    private Integer courtId;
+                    @NotEmpty(message = "{不能为空}")
+            private String goodsName;
 
-    public String getGoodsName() {
-        return goodsName;
+    public Long getCourtId() {
+       return courtId;
     }
 
-    public void setGoodsName(String goodsName) {
-        this.goodsName = goodsName;
+    public void setCourtId(Long courtId) {
+       this.courtId = courtId;
     }
-
-    public String getGoodsDesc() {
-        return goodsDesc;
-    }
-
-    public void setGoodsDesc(String goodsDesc) {
-        this.goodsDesc = goodsDesc;
-    }
-
     public Long getPrice() {
-        return price;
+       return price;
     }
 
     public void setPrice(Long price) {
-        this.price = price;
+       this.price = price;
+    }
+    public String getGoodsDesc() {
+       return goodsDesc;
     }
 
-    public Integer getCourtId() {
-        return courtId;
+    public void setGoodsDesc(String goodsDesc) {
+       this.goodsDesc = goodsDesc;
+    }
+    public String getGoodsName() {
+       return goodsName;
     }
 
-    public void setCourtId(Integer courtId) {
-        this.courtId = courtId;
+    public void setGoodsName(String goodsName) {
+       this.goodsName = goodsName;
     }
 
-    public GoodsDO toDO() {
-        GoodsDO goodsDO = new GoodsDO();
-        goodsDO.setGoodsName(this.goodsName);
-        goodsDO.setGoodsDesc(this.goodsDesc);
-        goodsDO.setPrice(this.price);
-        goodsDO.setCourtId(this.courtId);
-        return goodsDO;
-    }
+    public GoodsDO toDO(){
+       GoodsDO goodsDO  = new GoodsDO();
+            goodsDO.setCourtId(this.courtId);
+                goodsDO.setPrice(this.price);
+                goodsDO.setGoodsDesc(this.goodsDesc);
+                goodsDO.setGoodsName(this.goodsName);
+           return goodsDO;
+}
 
 }

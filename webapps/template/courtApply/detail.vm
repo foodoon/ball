@@ -1,16 +1,9 @@
 $!courtApply详情
   <table class="table">
                 <tr>
-              <td>预定用户ID</td>
+              <td>预定日期</td>
               <td>
-                  $!courtApplyDO.userId
-              </td>
-          </tr>
-
-                <tr>
-              <td>预定场地ID</td>
-              <td>
-                  $!courtApplyDO.courtId
+                  $!courtApplyDO.bookingDate
               </td>
           </tr>
 
@@ -22,9 +15,30 @@ $!courtApply详情
           </tr>
 
                 <tr>
+              <td>预定场地ID</td>
+              <td>
+                  $!courtApplyDO.courtSiteId
+              </td>
+          </tr>
+
+                <tr>
               <td>状态</td>
               <td>
                   $!courtApplyDO.status
+              </td>
+          </tr>
+
+                <tr>
+              <td>预定场馆ID</td>
+              <td>
+                  $!courtApplyDO.courtId
+              </td>
+          </tr>
+
+                <tr>
+              <td>预定用户ID</td>
+              <td>
+                  $!courtApplyDO.userId
               </td>
           </tr>
 

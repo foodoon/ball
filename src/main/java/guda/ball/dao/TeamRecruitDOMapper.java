@@ -2,13 +2,12 @@ package guda.ball.dao;
 
 import guda.ball.dao.domain.TeamRecruitDO;
 import guda.ball.dao.domain.TeamRecruitDOCriteria;
-
 import java.util.List;
 
 public interface TeamRecruitDOMapper {
     int countByExample(TeamRecruitDOCriteria example);
 
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(Long id);
 
     int insert(TeamRecruitDO record);
 
@@ -16,7 +15,7 @@ public interface TeamRecruitDOMapper {
 
     List<TeamRecruitDO> selectByExample(TeamRecruitDOCriteria example);
 
-    TeamRecruitDO selectByPrimaryKey(Integer id);
+    TeamRecruitDO selectByPrimaryKey(Long id);
 
     int updateByPrimaryKeySelective(TeamRecruitDO record);
 

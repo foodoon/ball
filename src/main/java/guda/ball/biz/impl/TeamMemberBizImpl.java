@@ -1,16 +1,17 @@
 package guda.ball.biz.impl;
 
-import guda.tools.web.page.BaseQuery;
-import guda.tools.web.page.BizResult;
-import guda.ball.biz.TeamMemberBiz;
-import guda.ball.dao.TeamMemberDOMapper;
-import guda.ball.dao.domain.TeamMemberDO;
-import guda.ball.dao.domain.TeamMemberDOCriteria;
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.List;
+import guda.ball.biz.TeamMemberBiz;
+import guda.ball.dao.TeamMemberDOMapper;
+import guda.ball.dao.domain.TeamMemberDO;
+import guda.ball.dao.domain.TeamMemberDOCriteria;
+import guda.tools.web.page.BaseQuery;
+import guda.tools.web.page.BizResult;
 
 public class TeamMemberBizImpl implements TeamMemberBiz{
 
@@ -19,7 +20,7 @@ public class TeamMemberBizImpl implements TeamMemberBiz{
     @Autowired
     private TeamMemberDOMapper teamMemberDOMapper;
 
-    public BizResult detail(int id) {
+    public BizResult detail(long id) {
         BizResult bizResult = new BizResult();
         try{
             TeamMemberDO teamMemberDO = teamMemberDOMapper.selectByPrimaryKey(id);
@@ -49,7 +50,7 @@ public class TeamMemberBizImpl implements TeamMemberBiz{
             return bizResult;
      }
 
-    public BizResult delete(int id) {
+    public BizResult delete(long id) {
         BizResult bizResult = new BizResult();
         try {
             teamMemberDOMapper.deleteByPrimaryKey(id);
@@ -63,8 +64,8 @@ public class TeamMemberBizImpl implements TeamMemberBiz{
     public BizResult create(TeamMemberDO teamMemberDO) {
         BizResult bizResult = new BizResult();
         try {
-            int id = teamMemberDOMapper.insert(teamMemberDO);
-            bizResult.data.put("count", id);
+            int count = teamMemberDOMapper.insert(teamMemberDO);
+            bizResult.data.put("count", count);
             bizResult.success = true;
         } catch (Exception e) {
             logger.error("create TeamMember error", e);
@@ -75,8 +76,8 @@ public class TeamMemberBizImpl implements TeamMemberBiz{
     public BizResult update(TeamMemberDO teamMemberDO) {
         BizResult bizResult = new BizResult();
         try {
-            int id = teamMemberDOMapper.updateByPrimaryKeySelective(teamMemberDO);
-            bizResult.data.put("count", id);
+            int count = teamMemberDOMapper.updateByPrimaryKeySelective(teamMemberDO);
+            bizResult.data.put("count", count);
             bizResult.success = true;
         } catch (Exception e) {
             logger.error("update TeamMember error", e);

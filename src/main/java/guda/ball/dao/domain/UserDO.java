@@ -1,51 +1,57 @@
 package guda.ball.dao.domain;
 
+import guda.gen.GenField;
+
 import java.util.Date;
 
 public class UserDO {
-    private Integer id;
-
+    private Long id;
+    @GenField(cn="登录名",order=1,inSearchForm = false,canNull = false)
     private String userName;
-
+    @GenField(cn="用户名",order=1,inSearchForm = false,canNull = false)
     private String realName;
-
+    @GenField(cn="邮箱",order=1,inSearchForm = false,canNull = false)
     private String email;
-
+    @GenField(cn="地址",order=1,inSearchForm = false,canNull = false)
     private String address;
-
+    @GenField(cn="密码",order=1,inSearchForm = false,canNull = false)
     private String password;
-
+    @GenField(cn="手机号",order=1,inSearchForm = false,canNull = false)
     private String phone;
-
+    @GenField(cn="喜欢的场地",order=1,inSearchForm = false,canNull = false)
     private String groundTypeOfEnjoy;
-
+    @GenField(cn="特长",order=1,inSearchForm = false,canNull = false)
     private String special;
-
+    @GenField(cn="经常去的场地",order=1,inSearchForm = false,canNull = false)
     private String groundOfDaily;
-
+    @GenField(cn="状态",order=1,inSearchForm = false,canNull = false)
     private Integer status;
-
+    @GenField(cn="头像",order=1,inSearchForm = false,canNull = false)
     private String img;
 
     private Date gmtModify;
 
     private Date gmtCreate;
-
+    @GenField(cn="擅长的位置",order=1,inSearchForm = false,canNull = false)
     private String expertLocation;
-
+    @GenField(cn="身高",order=1,inSearchForm = false,canNull = false)
     private String height;
-
+    @GenField(cn="体重",order=1,inSearchForm = false,canNull = false)
     private String weight;
-
+    @GenField(cn="家乡",order=1,inSearchForm = false,canNull = false)
     private String hometown;
-
+    @GenField(cn="擅长哪只脚",order=1,inSearchForm = false,canNull = false)
     private String expertFooter;
+    @GenField(cn="个性签名",order=1,inSearchForm = false,canNull = false)
+    private String sign;
+    @GenField(cn="性别",order=1,inSearchForm = false,canNull = false)
+    private String sex;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -191,5 +197,21 @@ public class UserDO {
 
     public void setExpertFooter(String expertFooter) {
         this.expertFooter = expertFooter == null ? null : expertFooter.trim();
+    }
+
+    public String getSign() {
+        return sign;
+    }
+
+    public void setSign(String sign) {
+        this.sign = sign == null ? null : sign.trim();
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex == null ? null : sex.trim();
     }
 }

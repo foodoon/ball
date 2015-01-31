@@ -1,12 +1,14 @@
 package guda.ball.dao.domain;
 
+import guda.gen.GenField;
+
 import java.util.Date;
 
 public class CourtServiceDO {
     private Long id;
-
+    @GenField(cn="场地ID",order=1,inSearchForm = false,canNull = false)
     private Long courtId;
-
+    @GenField(cn="服务名称",order=1,inSearchForm = false,canNull = false)
     private String serviceName;
 
     private Date gmtCreated;

@@ -5,13 +5,13 @@ import guda.ball.dao.domain.TeamDO;
 
 public class TeamEditForm extends TeamForm{
 
-    private Integer id;
+    private Long id;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -25,9 +25,13 @@ public class TeamEditForm extends TeamForm{
         if(teamDO == null){
         return ;
     }
-    this.setName(teamDO.getName());
-    this.setTeamDesc(teamDO.getTeamDesc());
+    this.setJerseyColor(teamDO.getJerseyColor());
+    this.setHomeCourt(teamDO.getHomeCourt());
+    this.setArea(teamDO.getArea());
     this.setCanJoin(teamDO.getCanJoin());
+    this.setTeamType(teamDO.getTeamType());
+    this.setTeamDesc(teamDO.getTeamDesc());
+    this.setName(teamDO.getName());
     this.setUserId(teamDO.getUserId());
 }
 

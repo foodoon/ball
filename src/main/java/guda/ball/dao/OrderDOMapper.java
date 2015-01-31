@@ -2,13 +2,12 @@ package guda.ball.dao;
 
 import guda.ball.dao.domain.OrderDO;
 import guda.ball.dao.domain.OrderDOCriteria;
-
 import java.util.List;
 
 public interface OrderDOMapper {
     int countByExample(OrderDOCriteria example);
 
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(Long id);
 
     int insert(OrderDO record);
 
@@ -16,7 +15,7 @@ public interface OrderDOMapper {
 
     List<OrderDO> selectByExample(OrderDOCriteria example);
 
-    OrderDO selectByPrimaryKey(Integer id);
+    OrderDO selectByPrimaryKey(Long id);
 
     int updateByPrimaryKeySelective(OrderDO record);
 

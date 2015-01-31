@@ -1,51 +1,65 @@
 $!challenge详情
   <table class="table">
                 <tr>
-              <td>球队ID</td>
+              <td>比赛结束时间</td>
               <td>
-                  $!challengeDO.teamId
+                  $!challengeDO.endTime
               </td>
           </tr>
 
                 <tr>
-              <td>场地ID</td>
+              <td>比赛开始时间</td>
               <td>
-                  $!challengeDO.courtId
+                  $!challengeDO.startTime
               </td>
           </tr>
 
                 <tr>
-              <td>约战日期</td>
+              <td>状态</td>
               <td>
-                  $!challengeDO.challengeTime
+                  $!challengeDO.status
               </td>
           </tr>
 
                 <tr>
-              <td>约战条件</td>
-              <td>
-                  $!challengeDO.challengeDesc
-              </td>
-          </tr>
-
-                <tr>
-              <td>约战结果</td>
-              <td>
-                  $!challengeDO.challengeResult
-              </td>
-          </tr>
-
-                <tr>
-              <td>比赛进球数</td>
+              <td>进球数量</td>
               <td>
                   $!challengeDO.goalCount
               </td>
           </tr>
 
                 <tr>
-              <td>是否接受应战</td>
+              <td>比赛结果</td>
               <td>
-                  $!challengeDO.status
+                  $!challengeDO.challengeResult
+              </td>
+          </tr>
+
+                <tr>
+              <td>比赛说明</td>
+              <td>
+                  $!challengeDO.challengeDesc
+              </td>
+          </tr>
+
+                <tr>
+              <td>场地申请ID</td>
+              <td>
+                  $!challengeDO.courtApplyId
+              </td>
+          </tr>
+
+                <tr>
+              <td>应战球队ID</td>
+              <td>
+                  $!challengeDO.applyTeamId
+              </td>
+          </tr>
+
+                <tr>
+              <td>约战球队ID</td>
+              <td>
+                  $!challengeDO.requestTeamId
               </td>
           </tr>
 

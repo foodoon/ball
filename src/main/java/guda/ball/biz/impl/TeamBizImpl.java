@@ -20,7 +20,7 @@ public class TeamBizImpl implements TeamBiz{
     @Autowired
     private TeamDOMapper teamDOMapper;
 
-    public BizResult detail(int id) {
+    public BizResult detail(long id) {
         BizResult bizResult = new BizResult();
         try{
             TeamDO teamDO = teamDOMapper.selectByPrimaryKey(id);
@@ -50,7 +50,7 @@ public class TeamBizImpl implements TeamBiz{
             return bizResult;
      }
 
-    public BizResult delete(int id) {
+    public BizResult delete(long id) {
         BizResult bizResult = new BizResult();
         try {
             teamDOMapper.deleteByPrimaryKey(id);
@@ -64,8 +64,8 @@ public class TeamBizImpl implements TeamBiz{
     public BizResult create(TeamDO teamDO) {
         BizResult bizResult = new BizResult();
         try {
-            int count = teamDOMapper.insert(teamDO);
-            bizResult.data.put("count", count);
+            long id = teamDOMapper.insert(teamDO);
+            bizResult.data.put("id", id);
             bizResult.success = true;
         } catch (Exception e) {
             logger.error("create Team error", e);

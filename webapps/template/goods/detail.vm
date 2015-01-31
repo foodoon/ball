@@ -1,16 +1,9 @@
 $!goods详情
   <table class="table">
                 <tr>
-              <td>名称</td>
+              <td>所在场地</td>
               <td>
-                  $!goodsDO.goodsName
-              </td>
-          </tr>
-
-                <tr>
-              <td>描述</td>
-              <td>
-                  $!goodsDO.goodsDesc
+                  $!goodsDO.courtId
               </td>
           </tr>
 
@@ -22,9 +15,16 @@ $!goods详情
           </tr>
 
                 <tr>
-              <td>所在场地</td>
+              <td>描述</td>
               <td>
-                  $!goodsDO.courtId
+                  $!goodsDO.goodsDesc
+              </td>
+          </tr>
+
+                <tr>
+              <td>名称</td>
+              <td>
+                  $!goodsDO.goodsName
               </td>
           </tr>
 

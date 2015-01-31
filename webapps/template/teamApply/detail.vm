@@ -1,9 +1,16 @@
 $!teamApply详情
   <table class="table">
                 <tr>
-              <td>球队ID</td>
+              <td>附加说明</td>
               <td>
-                  $!teamApplyDO.teamId
+                  $!teamApplyDO.applyMsg
+              </td>
+          </tr>
+
+                <tr>
+              <td>申请状态</td>
+              <td>
+                  $!teamApplyDO.status
               </td>
           </tr>
 
@@ -15,9 +22,9 @@ $!teamApply详情
           </tr>
 
                 <tr>
-              <td>是否通过</td>
+              <td>球队ID</td>
               <td>
-                  $!teamApplyDO.status
+                  $!teamApplyDO.teamId
               </td>
           </tr>
 

@@ -2,9 +2,9 @@
 
 <form name="teamRecruitForm" action="$!homeServer.getURI("teamRecruit/doCreate.htm")" method="post">
   <table class="table">
-    #springBind("teamRecruitForm.userId")
+    #springBind("teamRecruitForm.teamId")
     <tr>
-        <td>用户ID</td>
+        <td>球队ID</td>
         <td>
             <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
             #foreach($error in $status.errorMessages) <b>$error</b>  #end
@@ -13,6 +13,14 @@
     #springBind("teamRecruitForm.recruitDesc")
     <tr>
         <td>招募宣言</td>
+        <td>
+            <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+            #foreach($error in $status.errorMessages) <b>$error</b>  #end
+        </td>
+    </tr>
+    #springBind("teamRecruitForm.userId")
+    <tr>
+        <td>发布用户ID</td>
         <td>
             <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
             #foreach($error in $status.errorMessages) <b>$error</b>  #end

@@ -5,53 +5,75 @@ import guda.gen.GenField;
 import java.util.Date;
 
 public class CourtApplyDO {
-    private Integer id;
+    private Long id;
+
 
     @GenField(cn="预定用户ID",order=1,inSearchForm = false,canNull = false)
-    private Integer userId;
-    @GenField(cn="预定场地ID",order=1,inSearchForm = false,canNull = false)
-    private Integer courtId;
-    @GenField(cn="预定时间",order=1,inSearchForm = false,canNull = false)
-    private Date bookingTime;
+    private Long userId;
+    @GenField(cn="预定场馆ID",order=1,inSearchForm = false,canNull = false)
+    private Long courtId;
+
     @GenField(cn="状态",order=1,inSearchForm = false,canNull = false)
     private Integer status;
 
-    private Integer isDeleted;
+    @GenField(cn="预定场地ID",order=1,inSearchForm = false,canNull = false)
+    private Long courtSiteId;
+    @GenField(cn="预定时间",order=1,inSearchForm = false,canNull = false)
+    private String bookingTime;
+    @GenField(cn="预定日期",order=1,inSearchForm = false,canNull = false)
+    private Date bookingDate;
+
 
     private Date gmtModify;
 
     private Date gmtCreate;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public Integer getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 
-    public Integer getCourtId() {
+    public Long getCourtId() {
         return courtId;
     }
 
-    public void setCourtId(Integer courtId) {
+    public void setCourtId(Long courtId) {
         this.courtId = courtId;
     }
 
-    public Date getBookingTime() {
+    public Long getCourtSiteId() {
+        return courtSiteId;
+    }
+
+    public void setCourtSiteId(Long courtSiteId) {
+        this.courtSiteId = courtSiteId;
+    }
+
+    public String getBookingTime() {
         return bookingTime;
     }
 
-    public void setBookingTime(Date bookingTime) {
-        this.bookingTime = bookingTime;
+    public void setBookingTime(String bookingTime) {
+        this.bookingTime = bookingTime == null ? null : bookingTime.trim();
+    }
+
+    public Date getBookingDate() {
+        return bookingDate;
+    }
+
+    public void setBookingDate(Date bookingDate) {
+        this.bookingDate = bookingDate;
     }
 
     public Integer getStatus() {
@@ -60,14 +82,6 @@ public class CourtApplyDO {
 
     public void setStatus(Integer status) {
         this.status = status;
-    }
-
-    public Integer getIsDeleted() {
-        return isDeleted;
-    }
-
-    public void setIsDeleted(Integer isDeleted) {
-        this.isDeleted = isDeleted;
     }
 
     public Date getGmtModify() {

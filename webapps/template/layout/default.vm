@@ -70,8 +70,9 @@
                      <li><a href="$!homeServer.getURI("challenge/list.htm")">约战信息</a></li>
                      <li><a href="$!homeServer.getURI("team/list.htm")">球队信息</a></li>
                      <li><a href="$!homeServer.getURI("teamApply/list.htm")">球队申请审核</a></li>
-                     <li class="nav-header">老板</li>
-                     <li><a href="$!homeServer.getURI("court/list.htm")">发布场地信息</a></li>
+                     <li class="nav-header">场地</li>
+                     <li><a href="$!homeServer.getURI("court/list.htm")">场馆信息信息</a></li>
+                     <li><a href="$!homeServer.getURI("courtSite/list.htm")">场地信息</a></li>
                      <li><a href="$!homeServer.getURI("goods/list.htm")">发布商品服务信息</a></li>
                      <li><a href="$!homeServer.getURI("courtApply/list.htm")">场地申请审核</a></li>
 

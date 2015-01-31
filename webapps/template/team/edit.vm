@@ -4,17 +4,25 @@
   <table class="table">
   #springBind("teamEditForm.id")
   <input type="hidden" name="${status.expression}" value="$!status.value" />
-                #springBind("teamEditForm.name")
+                #springBind("teamEditForm.jerseyColor")
           <tr>
-              <td>球队名</td>
+              <td>球服颜色</td>
               <td>
                   <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
                   #foreach($error in $status.errorMessages) <b>$error</b>  #end
               </td>
           </tr>
-                #springBind("teamEditForm.teamDesc")
+                #springBind("teamEditForm.homeCourt")
           <tr>
-              <td>简单介绍</td>
+              <td>主场</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("teamEditForm.area")
+          <tr>
+              <td>球队活动区域</td>
               <td>
                   <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
                   #foreach($error in $status.errorMessages) <b>$error</b>  #end
@@ -28,9 +36,33 @@
                   #foreach($error in $status.errorMessages) <b>$error</b>  #end
               </td>
           </tr>
+                #springBind("teamEditForm.teamType")
+          <tr>
+              <td>球队类型</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("teamEditForm.teamDesc")
+          <tr>
+              <td>球队口号</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("teamEditForm.name")
+          <tr>
+              <td>球队名称</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
                 #springBind("teamEditForm.userId")
           <tr>
-              <td>用户ID</td>
+              <td>创建人ID</td>
               <td>
                   <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
                   #foreach($error in $status.errorMessages) <b>$error</b>  #end

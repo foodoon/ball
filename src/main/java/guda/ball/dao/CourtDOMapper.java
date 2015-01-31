@@ -7,7 +7,7 @@ import java.util.List;
 public interface CourtDOMapper {
     int countByExample(CourtDOCriteria example);
 
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(Long id);
 
     int insert(CourtDO record);
 
@@ -15,7 +15,7 @@ public interface CourtDOMapper {
 
     List<CourtDO> selectByExample(CourtDOCriteria example);
 
-    CourtDO selectByPrimaryKey(Integer id);
+    CourtDO selectByPrimaryKey(Long id);
 
     int updateByPrimaryKeySelective(CourtDO record);
 

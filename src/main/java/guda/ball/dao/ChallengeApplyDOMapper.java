@@ -2,21 +2,20 @@ package guda.ball.dao;
 
 import guda.ball.dao.domain.ChallengeApplyDO;
 import guda.ball.dao.domain.ChallengeApplyDOCriteria;
-
 import java.util.List;
 
 public interface ChallengeApplyDOMapper {
     int countByExample(ChallengeApplyDOCriteria example);
 
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(Long id);
 
-    int insert(ChallengeApplyDO record);
+    long insert(ChallengeApplyDO record);
 
-    int insertSelective(ChallengeApplyDO record);
+    long insertSelective(ChallengeApplyDO record);
 
     List<ChallengeApplyDO> selectByExample(ChallengeApplyDOCriteria example);
 
-    ChallengeApplyDO selectByPrimaryKey(Integer id);
+    ChallengeApplyDO selectByPrimaryKey(Long id);
 
     int updateByPrimaryKeySelective(ChallengeApplyDO record);
 

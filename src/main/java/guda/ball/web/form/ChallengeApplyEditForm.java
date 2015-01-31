@@ -5,13 +5,13 @@ import guda.ball.dao.domain.ChallengeApplyDO;
 
 public class ChallengeApplyEditForm extends ChallengeApplyForm{
 
-    private Integer id;
+    private Long id;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -25,11 +25,11 @@ public class ChallengeApplyEditForm extends ChallengeApplyForm{
         if(challengeApplyDO == null){
         return ;
     }
-    this.setChallengeId(challengeApplyDO.getChallengeId());
-    this.setTeamId(challengeApplyDO.getTeamId());
-    this.setGoalCount(challengeApplyDO.getGoalCount());
-    this.setChallengeResult(challengeApplyDO.getChallengeResult());
     this.setAccept(challengeApplyDO.getAccept());
+    this.setChallengeResult(challengeApplyDO.getChallengeResult());
+    this.setGoalCount(challengeApplyDO.getGoalCount());
+    this.setTeamId(challengeApplyDO.getTeamId());
+    this.setChallengeId(challengeApplyDO.getChallengeId());
 }
 
 }

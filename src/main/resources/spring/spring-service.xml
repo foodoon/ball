@@ -1,13 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
        default-autowire="byName">
-
+<!--
     <bean id="userSerivce" class="guda.ball.biz.service.impl.UserServiceImpl"></bean>
     <bean id="teamSerivce" class="guda.ball.biz.service.impl.TeamServiceImpl"></bean>
     <bean id="courtSerivce" class="guda.ball.biz.service.impl.CourtServiceImpl"></bean>
     <bean id="challengeSerivce" class="guda.ball.biz.service.impl.ChallengeServiceImpl"></bean>
     <bean id="goodsSerivce" class="guda.ball.biz.service.impl.GoodsServiceImpl"></bean>
     <bean id="commentSerivce" class="guda.ball.biz.service.impl.CommentSerivceImpl"></bean>
+    -->
 </beans>

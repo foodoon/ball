@@ -1,39 +1,50 @@
 package guda.ball.web.form;
 
+import java.util.Date;
 
-import guda.ball.dao.domain.TeamRecruitDO;
+import javax.validation.constraints.Size;
+
 import org.hibernate.validator.constraints.NotEmpty;
 
+import guda.ball.dao.domain.TeamRecruitDO;
 import javax.validation.constraints.NotNull;
 
 public class TeamRecruitForm {
-    @NotNull
-    private Integer userId;
+                    @NotNull     private Long teamId;
 
-    @NotEmpty(message = "{不能为空}")
-    private String recruitDesc;
+                    @NotEmpty(message = "{不能为空}")
+            private String recruitDesc;
 
-    public Integer getUserId() {
-        return userId;
+                    @NotNull     private Long userId;
+
+    public Long getTeamId() {
+       return teamId;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setTeamId(Long teamId) {
+       this.teamId = teamId;
     }
-
     public String getRecruitDesc() {
-        return recruitDesc;
+       return recruitDesc;
     }
 
-    public void setRecruitDesc(String desc) {
-        this.recruitDesc = desc;
+    public void setRecruitDesc(String recruitDesc) {
+       this.recruitDesc = recruitDesc;
+    }
+    public Long getUserId() {
+       return userId;
     }
 
-    public TeamRecruitDO toDO() {
-        TeamRecruitDO teamRecruitDO = new TeamRecruitDO();
-        teamRecruitDO.setUserId(this.userId);
-        teamRecruitDO.setRecruitDesc(this.recruitDesc);
-        return teamRecruitDO;
+    public void setUserId(Long userId) {
+       this.userId = userId;
     }
+
+    public TeamRecruitDO toDO(){
+       TeamRecruitDO teamRecruitDO  = new TeamRecruitDO();
+            teamRecruitDO.setTeamId(this.teamId);
+                teamRecruitDO.setRecruitDesc(this.recruitDesc);
+                teamRecruitDO.setUserId(this.userId);
+           return teamRecruitDO;
+}
 
 }

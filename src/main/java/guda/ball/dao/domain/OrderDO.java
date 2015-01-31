@@ -5,59 +5,55 @@ import guda.gen.GenField;
 import java.util.Date;
 
 public class OrderDO {
-    private Integer id;
+    private Long id;
 
     @GenField(cn="商品ID",order=1,inSearchForm = false,canNull = false)
-    private Integer goodsId;
-
+    private Long goodsId;
     @GenField(cn="留言",order=1,inSearchForm = false,canNull = false)
     private String leaveMsg;
-
     @GenField(cn="配送时间",order=1,inSearchForm = false,canNull = false)
     private Date deliveryTime;
-
     @GenField(cn="买家ID",order=1,inSearchForm = false,canNull = false)
-    private Integer buyerId;
+    private Long buyerId;
     @GenField(cn="卖家ID",order=1,inSearchForm = false,canNull = false)
-    private Integer sellerId;
+    private Long sellerId;
     @GenField(cn="订单状态",order=1,inSearchForm = false,canNull = false)
     private Integer status;
 
-    private Integer isDeleted;
 
     private Date gmtModify;
 
     private Date gmtCreate;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public Integer getGoodsId() {
+    public Long getGoodsId() {
         return goodsId;
     }
 
-    public void setGoodsId(Integer goodsId) {
+    public void setGoodsId(Long goodsId) {
         this.goodsId = goodsId;
     }
 
-    public Integer getBuyerId() {
+    public Long getBuyerId() {
         return buyerId;
     }
 
-    public void setBuyerId(Integer buyerId) {
+    public void setBuyerId(Long buyerId) {
         this.buyerId = buyerId;
     }
 
-    public Integer getSellerId() {
+    public Long getSellerId() {
         return sellerId;
     }
 
-    public void setSellerId(Integer sellerId) {
+    public void setSellerId(Long sellerId) {
         this.sellerId = sellerId;
     }
 
@@ -83,14 +79,6 @@ public class OrderDO {
 
     public void setStatus(Integer status) {
         this.status = status;
-    }
-
-    public Integer getIsDeleted() {
-        return isDeleted;
-    }
-
-    public void setIsDeleted(Integer isDeleted) {
-        this.isDeleted = isDeleted;
     }
 
     public Date getGmtModify() {

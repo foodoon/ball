@@ -4,9 +4,17 @@
   <table class="table">
   #springBind("teamApplyEditForm.id")
   <input type="hidden" name="${status.expression}" value="$!status.value" />
-                #springBind("teamApplyEditForm.teamId")
+                #springBind("teamApplyEditForm.applyMsg")
           <tr>
-              <td>球队ID</td>
+              <td>附加说明</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("teamApplyEditForm.status")
+          <tr>
+              <td>申请状态</td>
               <td>
                   <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
                   #foreach($error in $status.errorMessages) <b>$error</b>  #end
@@ -20,9 +28,9 @@
                   #foreach($error in $status.errorMessages) <b>$error</b>  #end
               </td>
           </tr>
-                #springBind("teamApplyEditForm.status")
+                #springBind("teamApplyEditForm.teamId")
           <tr>
-              <td>是否通过</td>
+              <td>球队ID</td>
               <td>
                   <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
                   #foreach($error in $status.errorMessages) <b>$error</b>  #end

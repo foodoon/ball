@@ -5,65 +5,62 @@ import guda.gen.GenField;
 import java.util.Date;
 
 public class ChallengeDO {
-    private Integer id;
+    private Long id;
 
-    @GenField(cn="球队ID",order=1,inSearchForm = false,canNull = false)
-    private Integer teamId;
-
-    @GenField(cn="场地ID",order=1,inSearchForm = false,canNull = false)
-    private Integer courtId;
-
-    @GenField(cn="约战日期",order=1,inSearchForm = false,canNull = false)
-    private Date challengeTime;
-
-    @GenField(cn="约战条件",order=1,inSearchForm = false,canNull = false)
+    @GenField(cn="约战球队ID",order=1,inSearchForm = false,canNull = false)
+    private Long requestTeamId;
+    @GenField(cn="应战球队ID",order=1,inSearchForm = false,canNull = false)
+    private Long applyTeamId;
+    @GenField(cn="场地申请ID",order=1,inSearchForm = false,canNull = false)
+    private Long courtApplyId;
+    @GenField(cn="比赛说明",order=1,inSearchForm = false,canNull = false)
     private String challengeDesc;
-
-    @GenField(cn="约战结果",order=1,inSearchForm = false,canNull = false)
+    @GenField(cn="比赛结果",order=1,inSearchForm = false,canNull = false)
     private String challengeResult;
-
-    @GenField(cn="比赛进球数",order=1,inSearchForm = false,canNull = false)
+    @GenField(cn="进球数量",order=1,inSearchForm = false,canNull = false)
     private Integer goalCount;
-
-    @GenField(cn="是否接受应战",order=1,inSearchForm = false,canNull = false)
+    @GenField(cn="状态",order=1,inSearchForm = false,canNull = false)
     private Integer status;
+    @GenField(cn="比赛开始时间",order=1,inSearchForm = false,canNull = false)
+    private Date startTime;
+    @GenField(cn="比赛结束时间",order=1,inSearchForm = false,canNull = false)
+    private Date endTime;
 
-    private Integer isDeleted;
 
     private Date gmtModify;
 
     private Date gmtCreate;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public Integer getTeamId() {
-        return teamId;
+    public Long getRequestTeamId() {
+        return requestTeamId;
     }
 
-    public void setTeamId(Integer teamId) {
-        this.teamId = teamId;
+    public void setRequestTeamId(Long requestTeamId) {
+        this.requestTeamId = requestTeamId;
     }
 
-    public Integer getCourtId() {
-        return courtId;
+    public Long getApplyTeamId() {
+        return applyTeamId;
     }
 
-    public void setCourtId(Integer courtId) {
-        this.courtId = courtId;
+    public void setApplyTeamId(Long applyTeamId) {
+        this.applyTeamId = applyTeamId;
     }
 
-    public Date getChallengeTime() {
-        return challengeTime;
+    public Long getCourtApplyId() {
+        return courtApplyId;
     }
 
-    public void setChallengeTime(Date challengeTime) {
-        this.challengeTime = challengeTime;
+    public void setCourtApplyId(Long courtApplyId) {
+        this.courtApplyId = courtApplyId;
     }
 
     public String getChallengeDesc() {
@@ -82,6 +79,22 @@ public class ChallengeDO {
         this.challengeResult = challengeResult == null ? null : challengeResult.trim();
     }
 
+    public Date getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Date startTime) {
+        this.startTime = startTime;
+    }
+
+    public Date getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(Date endTime) {
+        this.endTime = endTime;
+    }
+
     public Integer getGoalCount() {
         return goalCount;
     }
@@ -96,14 +109,6 @@ public class ChallengeDO {
 
     public void setStatus(Integer status) {
         this.status = status;
-    }
-
-    public Integer getIsDeleted() {
-        return isDeleted;
-    }
-
-    public void setIsDeleted(Integer isDeleted) {
-        this.isDeleted = isDeleted;
     }
 
     public Date getGmtModify() {

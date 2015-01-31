@@ -1,16 +1,17 @@
 package guda.ball.biz.impl;
 
-import guda.tools.web.page.BaseQuery;
-import guda.tools.web.page.BizResult;
-import guda.ball.biz.OrderBiz;
-import guda.ball.dao.OrderDOMapper;
-import guda.ball.dao.domain.OrderDO;
-import guda.ball.dao.domain.OrderDOCriteria;
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.List;
+import guda.ball.biz.OrderBiz;
+import guda.ball.dao.OrderDOMapper;
+import guda.ball.dao.domain.OrderDO;
+import guda.ball.dao.domain.OrderDOCriteria;
+import guda.tools.web.page.BaseQuery;
+import guda.tools.web.page.BizResult;
 
 public class OrderBizImpl implements OrderBiz{
 
@@ -19,7 +20,7 @@ public class OrderBizImpl implements OrderBiz{
     @Autowired
     private OrderDOMapper orderDOMapper;
 
-    public BizResult detail(int id) {
+    public BizResult detail(long id) {
         BizResult bizResult = new BizResult();
         try{
             OrderDO orderDO = orderDOMapper.selectByPrimaryKey(id);
@@ -49,7 +50,7 @@ public class OrderBizImpl implements OrderBiz{
             return bizResult;
      }
 
-    public BizResult delete(int id) {
+    public BizResult delete(long id) {
         BizResult bizResult = new BizResult();
         try {
             orderDOMapper.deleteByPrimaryKey(id);

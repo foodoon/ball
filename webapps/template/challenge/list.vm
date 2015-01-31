@@ -3,25 +3,29 @@
 <table  class="table">
     <thead>
  <tr>
-              <th>球队ID</th>
-              <th>场地ID</th>
-              <th>约战日期</th>
-              <th>约战条件</th>
-              <th>约战结果</th>
-              <th>比赛进球数</th>
-              <th>是否接受应战</th>
+              <th>比赛结束时间</th>
+              <th>比赛开始时间</th>
+              <th>状态</th>
+              <th>进球数量</th>
+              <th>比赛结果</th>
+              <th>比赛说明</th>
+              <th>场地申请ID</th>
+              <th>应战球队ID</th>
+              <th>约战球队ID</th>
           <th>操作</th>
  </tr>
     </thead>
 #foreach($f in $challengeDOList)
   <tr>
-               <td> $!f.teamId</td>
-               <td> $!f.courtId</td>
-               <td> $!f.challengeTime</td>
-               <td> $!f.challengeDesc</td>
-               <td> $!f.challengeResult</td>
-               <td> $!f.goalCount</td>
+               <td> $!f.endTime</td>
+               <td> $!f.startTime</td>
                <td> $!f.status</td>
+               <td> $!f.goalCount</td>
+               <td> $!f.challengeResult</td>
+               <td> $!f.challengeDesc</td>
+               <td> $!f.courtApplyId</td>
+               <td> $!f.applyTeamId</td>
+               <td> $!f.requestTeamId</td>
           <td><a href="$!homeServer.getURI("challenge/edit.htm").addQueryData('id',"$!f.id")" >编辑</a></td>
     <td><a href="$!homeServer.getURI("challenge/detail.htm").addQueryData('id',"$!f.id")" >查看详情</a></td>
       <td><a href="$!homeServer.getURI("challenge/doDelete.htm").addQueryData('id',"$!f.id")" onclick="return confirm('确定删除吗?')">删除</a></td>
@@ -29,4 +33,4 @@
 #end
 </table>
 
-$tile.load('/template/common/page.vm').param('query',$query).param('path','${doNameLower}/list.htm')
+$tile.load('template/common/page.vm').param('query',$query).param('path','${doNameLower}/list.htm')

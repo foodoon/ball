@@ -1,0 +1,36 @@
+编辑
+
+<form name="teamMemberEditForm" action="$!homeServer.getURI("teamMember/doUpdate.htm")" method="post">
+  <table class="table">
+  #springBind("teamMemberEditForm.id")
+  <input type="hidden" name="${status.expression}" value="$!status.value" />
+                #springBind("teamMemberEditForm.creator")
+          <tr>
+              <td>是否创建者</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("teamMemberEditForm.userId")
+          <tr>
+              <td>球员ID</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("teamMemberEditForm.teamId")
+          <tr>
+              <td>球队ID</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+      	  <tr>
+	  <td colspan="2">
+	  <input type="submit" class="btn" value="提交"/></td>
+	  </tr>
+  </table>
+</form>

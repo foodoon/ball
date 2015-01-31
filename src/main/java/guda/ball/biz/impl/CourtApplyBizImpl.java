@@ -1,16 +1,17 @@
 package guda.ball.biz.impl;
 
-import guda.tools.web.page.BaseQuery;
-import guda.tools.web.page.BizResult;
-import guda.ball.biz.CourtApplyBiz;
-import guda.ball.dao.CourtApplyDOMapper;
-import guda.ball.dao.domain.CourtApplyDO;
-import guda.ball.dao.domain.CourtApplyDOCriteria;
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.List;
+import guda.ball.biz.CourtApplyBiz;
+import guda.ball.dao.CourtApplyDOMapper;
+import guda.ball.dao.domain.CourtApplyDO;
+import guda.ball.dao.domain.CourtApplyDOCriteria;
+import guda.tools.web.page.BaseQuery;
+import guda.tools.web.page.BizResult;
 
 public class CourtApplyBizImpl implements CourtApplyBiz{
 
@@ -19,7 +20,7 @@ public class CourtApplyBizImpl implements CourtApplyBiz{
     @Autowired
     private CourtApplyDOMapper courtApplyDOMapper;
 
-    public BizResult detail(int id) {
+    public BizResult detail(long id) {
         BizResult bizResult = new BizResult();
         try{
             CourtApplyDO courtApplyDO = courtApplyDOMapper.selectByPrimaryKey(id);
@@ -49,7 +50,7 @@ public class CourtApplyBizImpl implements CourtApplyBiz{
             return bizResult;
      }
 
-    public BizResult delete(int id) {
+    public BizResult delete(long id) {
         BizResult bizResult = new BizResult();
         try {
             courtApplyDOMapper.deleteByPrimaryKey(id);
@@ -63,8 +64,8 @@ public class CourtApplyBizImpl implements CourtApplyBiz{
     public BizResult create(CourtApplyDO courtApplyDO) {
         BizResult bizResult = new BizResult();
         try {
-            int id = courtApplyDOMapper.insert(courtApplyDO);
-            bizResult.data.put("id", id);
+            long count = courtApplyDOMapper.insert(courtApplyDO);
+            bizResult.data.put("count", count);
             bizResult.success = true;
         } catch (Exception e) {
             logger.error("create CourtApply error", e);
@@ -75,8 +76,8 @@ public class CourtApplyBizImpl implements CourtApplyBiz{
     public BizResult update(CourtApplyDO courtApplyDO) {
         BizResult bizResult = new BizResult();
         try {
-            int id = courtApplyDOMapper.updateByPrimaryKeySelective(courtApplyDO);
-            bizResult.data.put("id", id);
+            int count = courtApplyDOMapper.updateByPrimaryKeySelective(courtApplyDO);
+            bizResult.data.put("count", count);
             bizResult.success = true;
         } catch (Exception e) {
             logger.error("update CourtApply error", e);

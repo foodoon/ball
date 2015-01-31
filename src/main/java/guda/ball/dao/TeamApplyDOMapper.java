@@ -7,7 +7,7 @@ import java.util.List;
 public interface TeamApplyDOMapper {
     int countByExample(TeamApplyDOCriteria example);
 
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(Long id);
 
     int insert(TeamApplyDO record);
 
@@ -15,7 +15,7 @@ public interface TeamApplyDOMapper {
 
     List<TeamApplyDO> selectByExample(TeamApplyDOCriteria example);
 
-    TeamApplyDO selectByPrimaryKey(Integer id);
+    TeamApplyDO selectByPrimaryKey(Long id);
 
     int updateByPrimaryKeySelective(TeamApplyDO record);
 

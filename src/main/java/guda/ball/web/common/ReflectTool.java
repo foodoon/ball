@@ -1,6 +1,5 @@
 package guda.ball.web.common;
 
-import guda.ball.web.form.UserForm;
 import org.springframework.util.ReflectionUtils;
 
 import java.lang.reflect.Field;
@@ -113,13 +112,13 @@ public class ReflectTool {
     }
 
     public static void main(String args[]) throws IllegalAccessException, InstantiationException, ParseException {
-        Map<String, String> map = new HashMap<String, String>();
-        map.put("userName", "张三");
-        map.put("status", "3");
-        System.out.println(isSimpleClass(UserForm.class));
-        Object obj = resolveField(Date.class, map, "2014-12-12 11:32:42");
-        System.out.println(obj);
-        System.out.println(obj.getClass());
+//        Map<String, String> map = new HashMap<String, String>();
+//        map.put("userName", "张三");
+//        map.put("status", "3");
+//        System.out.println(isSimpleClass(UserForm.class));
+//        Object obj = resolveField(Date.class, map, "2014-12-12 11:32:42");
+//        System.out.println(obj);
+//        System.out.println(obj.getClass());
     }
 
 

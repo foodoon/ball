@@ -7,26 +7,28 @@ import guda.ball.dao.domain.CourtDO;
  */
 public interface CourtService {
 
-    public BizResult create(String sid, CourtDO courtDO);
-
-    public BizResult update(String sid, CourtDO courtDO);
-
-    public BizResult delete(String sid, int id);
-
-    public BizResult apply(String sid, int courtId, String applyTime);
-
-    public BizResult cancelApply(String sid, int applyId);
-
-    public BizResult passApply(String sid, int applyId);
-
-    public BizResult rejectApply(String sid, int applyId);
-
-    public BizResult queryBookingList(String sid, int pageNo, int pageSize);
-
-    public BizResult queryBookingListForReview(String sid, int pageNo, int pageSize);
+//    public BizResult create(String sid, CourtDO courtDO);
+//
+//    public BizResult update(String sid, CourtDO courtDO);
+//
+//    public BizResult delete(String sid, long id);
+//
+//    public BizResult apply(String sid, long courtId, String applyTime);
+//
+//    public BizResult cancelApply(String sid, long applyId);
+//
+//    public BizResult passApply(String sid, long applyId);
+//
+//    public BizResult rejectApply(String sid, long applyId);
+//
+//    public BizResult queryBookingList(String sid, int pageNo, int pageSize);
+//
+//    public BizResult queryBookingListForReview(String sid, int pageNo, int pageSize);
 
     public BizResult queryList(String sid, int pageNo, int pageSize);
 
     public BizResult queryListByName(String sid, String name,int pageNo, int pageSize);
+
+    public BizResult querySiteForBooking(String sid, long siteId);
 
 }

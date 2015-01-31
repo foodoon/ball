@@ -43,6 +43,7 @@ public class CommonResultCode {
 
     public static final String COURT_NOT_EXIST = "COURT_NOT_EXIST";
 
+
     public static final String COURT_APPLY_NOT_EXIST = "COURT_APPLY_NOT_EXIST";
     public static final String COURT_APPLY_DULPLICATE = "COURT_APPLY_DULPLICATE";
 
@@ -59,11 +60,14 @@ public class CommonResultCode {
     public static final String CHALLENGE_TIME_EXPIRE = "CHALLENGE_TIME_EXPIRE";
 
     public static final String CHALLENGE_APPLY_NOT_EXIST = "CHALLENGE_APPLY_NOT_EXIST";
+    public static final String CHALLENGE_APPLY_REPEAT = "CHALLENGE_APPLY_REPEAT";
 
     public static final String ORDER_NOT_EXIST = "ORDER_NOT_EXIST";
     public static final String ORDER_STATUS_ERROR = "ORDER_STATUS_ERROR";
 
     public static final String COMENT_TYPE_ERROR = "COMENT_TYPE_ERROR";
+
+    public static final String COURT_SITE_NOT_EXIST = "COURT_SITE_NOT_EXIST";
 
 
 }

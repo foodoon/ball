@@ -2,8 +2,11 @@
 
 
 <tools>
-	
 
+    <toolbox scope="application">
+        <tool key="week"
+              class="guda.ball.util.WeekHelper" />
+    </toolbox>
 
 
 </tools>

@@ -4,17 +4,9 @@
   <table class="table">
   #springBind("goodsEditForm.id")
   <input type="hidden" name="${status.expression}" value="$!status.value" />
-                #springBind("goodsEditForm.goodsName")
+                #springBind("goodsEditForm.courtId")
           <tr>
-              <td>名称</td>
-              <td>
-                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
-                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
-              </td>
-          </tr>
-                #springBind("goodsEditForm.goodsDesc")
-          <tr>
-              <td>描述</td>
+              <td>所在场地</td>
               <td>
                   <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
                   #foreach($error in $status.errorMessages) <b>$error</b>  #end
@@ -28,9 +20,17 @@
                   #foreach($error in $status.errorMessages) <b>$error</b>  #end
               </td>
           </tr>
-                #springBind("goodsEditForm.courtId")
+                #springBind("goodsEditForm.goodsDesc")
           <tr>
-              <td>所在场地</td>
+              <td>描述</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("goodsEditForm.goodsName")
+          <tr>
+              <td>名称</td>
               <td>
                   <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
                   #foreach($error in $status.errorMessages) <b>$error</b>  #end

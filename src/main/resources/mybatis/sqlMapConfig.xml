@@ -16,5 +16,9 @@
   <mapper resource="mybatis/ChallengeApplyDOMapper.xml"/>
   <mapper resource="mybatis/CommentDOMapper.xml"/>
   <mapper resource="mybatis/CourtServiceDOMapper.xml"/>
+  <mapper resource="mybatis/ChallengeMemberDOMapper.xml"/>
+  <mapper resource="mybatis/CourtSiteDOMapper.xml"/>
+  <mapper resource="mybatis/CourtSiteSectionDOMapper.xml"/>
+     <mapper resource="mybatis/ChallengeApplyMemberDOMapper.xml"/>
  </mappers>
 </configuration>

@@ -1,0 +1,24 @@
+<a  class="btn btn-default"  href="$!homeServer.getURI("teamMember/create.htm")" >新建</a>
+
+<table  class="table">
+    <thead>
+ <tr>
+              <th>是否创建者</th>
+              <th>球员ID</th>
+              <th>球队ID</th>
+          <th>操作</th>
+ </tr>
+    </thead>
+#foreach($f in $teamMemberDOList)
+  <tr>
+               <td> $!f.creator</td>
+               <td> $!f.userId</td>
+               <td> $!f.teamId</td>
+          <td><a href="$!homeServer.getURI("teamMember/edit.htm").addQueryData('id',"$!f.id")" >编辑</a></td>
+    <td><a href="$!homeServer.getURI("teamMember/detail.htm").addQueryData('id',"$!f.id")" >查看详情</a></td>
+      <td><a href="$!homeServer.getURI("teamMember/doDelete.htm").addQueryData('id',"$!f.id")" onclick="return confirm('确定删除吗?')">删除</a></td>
+ </tr>
+#end
+</table>
+
+$tile.load('template/common/page.vm').param('query',$query).param('path','${doNameLower}/list.htm')

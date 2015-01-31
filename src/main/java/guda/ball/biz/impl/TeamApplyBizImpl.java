@@ -20,7 +20,7 @@ public class TeamApplyBizImpl implements TeamApplyBiz{
     @Autowired
     private TeamApplyDOMapper teamApplyDOMapper;
 
-    public BizResult detail(int id) {
+    public BizResult detail(long id) {
         BizResult bizResult = new BizResult();
         try{
             TeamApplyDO teamApplyDO = teamApplyDOMapper.selectByPrimaryKey(id);
@@ -50,7 +50,7 @@ public class TeamApplyBizImpl implements TeamApplyBiz{
             return bizResult;
      }
 
-    public BizResult delete(int id) {
+    public BizResult delete(long id) {
         BizResult bizResult = new BizResult();
         try {
             teamApplyDOMapper.deleteByPrimaryKey(id);

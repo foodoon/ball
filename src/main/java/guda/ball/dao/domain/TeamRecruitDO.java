@@ -5,50 +5,52 @@ import guda.gen.GenField;
 import java.util.Date;
 
 public class TeamRecruitDO {
-    private Integer id;
+    private Long id;
 
-    @GenField(cn="用户ID",order=1,inSearchForm = false,canNull = false)
-    private Integer userId;
+    @GenField(cn="发布用户ID",order=1,inSearchForm = false,canNull = false)
+    private Long userId;
 
     @GenField(cn="招募宣言",order=1,inSearchForm = false,canNull = false)
     private String recruitDesc;
 
-    private Integer isDeleted;
+    @GenField(cn="球队ID",order=1,inSearchForm = false,canNull = false)
+    private Long teamId;
+
 
     private Date gmtModify;
 
     private Date gmtCreate;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public Integer getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
+    }
+
+    public Long getTeamId() {
+        return teamId;
+    }
+
+    public void setTeamId(Long teamId) {
+        this.teamId = teamId;
     }
 
     public String getRecruitDesc() {
         return recruitDesc;
     }
 
-    public void setRecruitDesc(String desc) {
-        this.recruitDesc = desc == null ? null : desc.trim();
-    }
-
-    public Integer getIsDeleted() {
-        return isDeleted;
-    }
-
-    public void setIsDeleted(Integer isDeleted) {
-        this.isDeleted = isDeleted;
+    public void setRecruitDesc(String recruitDesc) {
+        this.recruitDesc = recruitDesc == null ? null : recruitDesc.trim();
     }
 
     public Date getGmtModify() {

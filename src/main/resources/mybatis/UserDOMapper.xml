@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="guda.ball.dao.UserDOMapper">
   <resultMap id="BaseResultMap" type="guda.ball.dao.domain.UserDO">
-    <id column="id" jdbcType="INTEGER" property="id" />
+    <id column="id" jdbcType="BIGINT" property="id" />
     <result column="user_name" jdbcType="VARCHAR" property="userName" />
     <result column="real_name" jdbcType="VARCHAR" property="realName" />
     <result column="email" jdbcType="VARCHAR" property="email" />
@@ -21,6 +21,8 @@
     <result column="weight" jdbcType="VARCHAR" property="weight" />
     <result column="hometown" jdbcType="VARCHAR" property="hometown" />
     <result column="expert_footer" jdbcType="VARCHAR" property="expertFooter" />
+    <result column="sign" jdbcType="VARCHAR" property="sign" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -54,7 +56,7 @@
   <sql id="Base_Column_List">
     id, user_name, real_name, email, address, password, phone, ground_type_of_enjoy, 
     special, ground_of_daily, status, img, gmt_modify, gmt_create, expert_location, height, 
-    weight, hometown, expert_footer
+    weight, hometown, expert_footer, sign, sex
   </sql>
   <select id="selectByExample" parameterType="guda.ball.dao.domain.UserDOCriteria" resultMap="BaseResultMap">
     select
@@ -73,18 +75,18 @@
       limit ${startRow} , ${pageSize}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from user
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from user
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="guda.ball.dao.domain.UserDO">
-    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into user (user_name, real_name, email, 
@@ -92,18 +94,18 @@
       ground_type_of_enjoy, special, ground_of_daily, 
       status, img, gmt_modify, 
       gmt_create, expert_location, height, 
-      weight, hometown, expert_footer
-      )
+      weight, hometown, expert_footer, 
+      sign, sex)
     values (#{userName,jdbcType=VARCHAR}, #{realName,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
       #{address,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
       #{groundTypeOfEnjoy,jdbcType=VARCHAR}, #{special,jdbcType=VARCHAR}, #{groundOfDaily,jdbcType=VARCHAR}, 
       #{status,jdbcType=INTEGER}, #{img,jdbcType=VARCHAR}, #{gmtModify,jdbcType=TIMESTAMP}, 
       #{gmtCreate,jdbcType=TIMESTAMP}, #{expertLocation,jdbcType=VARCHAR}, #{height,jdbcType=VARCHAR}, 
-      #{weight,jdbcType=VARCHAR}, #{hometown,jdbcType=VARCHAR}, #{expertFooter,jdbcType=VARCHAR}
-      )
+      #{weight,jdbcType=VARCHAR}, #{hometown,jdbcType=VARCHAR}, #{expertFooter,jdbcType=VARCHAR}, 
+      #{sign,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="guda.ball.dao.domain.UserDO">
-    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into user
@@ -162,6 +164,12 @@
       <if test="expertFooter != null">
         expert_footer,
       </if>
+      <if test="sign != null">
+        sign,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="userName != null">
@@ -217,6 +225,12 @@
       </if>
       <if test="expertFooter != null">
         #{expertFooter,jdbcType=VARCHAR},
+      </if>
+      <if test="sign != null">
+        #{sign,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -283,8 +297,14 @@
       <if test="expertFooter != null">
         expert_footer = #{expertFooter,jdbcType=VARCHAR},
       </if>
+      <if test="sign != null">
+        sign = #{sign,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="guda.ball.dao.domain.UserDO">
     update user
@@ -305,8 +325,11 @@
       height = #{height,jdbcType=VARCHAR},
       weight = #{weight,jdbcType=VARCHAR},
       hometown = #{hometown,jdbcType=VARCHAR},
-      expert_footer = #{expertFooter,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=INTEGER}
+      expert_footer = #{expertFooter,jdbcType=VARCHAR},
+      sign = #{sign,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
   </update>
+
 
 </mapper>

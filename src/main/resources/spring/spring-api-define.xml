@@ -30,17 +30,10 @@
                 <ref local="team.queryMyTeamInfo"></ref>
                 <ref local="team.queryMyTeamList"></ref>
 
-                <ref local="court.apply"></ref>
-                <ref local="court.cancelApply"></ref>
-                <ref local="court.create"></ref>
-                <ref local="court.delete"></ref>
-                <ref local="court.passApply"></ref>
-                <ref local="court.queryBookingList"></ref>
-                <ref local="court.queryBookingListForReview"></ref>
-                <ref local="court.rejectApply"></ref>
-                <ref local="court.update"></ref>
+
                 <ref local="court.queryList"></ref>
                 <ref local="court.queryListByName"></ref>
+                <ref local="court.querySiteForBooking"></ref>
 
                 <ref local="challenge.apply"></ref>
                 <ref local="challenge.cancelApply"></ref>
@@ -49,8 +42,6 @@
                 <ref local="challenge.queryMyApplyList"></ref>
                 <ref local="challenge.queryListForApply"></ref>
                 <ref local="challenge.queryMyChallengeList"></ref>
-                <ref local="challenge.comment"></ref>
-                <ref local="challenge.update"></ref>
                 <ref local="challenge.create"></ref>
                 <ref local="challenge.delete"></ref>
                 <ref local="challenge.queryChallengeCount"></ref>
@@ -361,70 +352,6 @@
     </bean>
 
 
-
-
-    <bean id="court.create" class="guda.ball.biz.entity.ApiDefine">
-        <property name="apiName" value="court.create"></property>
-        <property name="apiVersion" value="1.0"></property>
-        <property name="params">
-            <map>
-                <entry key="userName" value="登录名"></entry>
-                <entry key="password" value="密码"></entry>
-                <entry key="name" value="场地名称"></entry>
-                <entry key="address" value="场地地址"></entry>
-                <entry key="type" value="场地类型(可取的值为3,5,7,9,11分别代表3V3,5V5,7V7,9V9,11V11)"></entry>
-                <entry key="openTime" value="场地开放时间(ALL:所有时间均开放;WEEKEND:仅周末开放;WORKDAY:仅工作日开放)"></entry>
-                <entry key="courtDesc" value="场地描述"></entry>
-                <entry key="square" value="场地面积"></entry>
-                <entry key="status" value="是否开放"></entry>
-
-            </map>
-        </property>
-    </bean>
-
-    <bean id="court.update" class="guda.ball.biz.entity.ApiDefine">
-        <property name="apiName" value="court.update"></property>
-        <property name="apiVersion" value="1.0"></property>
-        <property name="params">
-            <map>
-                <entry key="userName" value="登录名"></entry>
-                <entry key="password" value="密码"></entry>
-                <entry key="id" value="场地ID"></entry>
-                <entry key="name" value="场地名称"></entry>
-                <entry key="address" value="场地地址"></entry>
-                <entry key="type" value="场地类型(可取的值为3,5,7,9,11分别代表3V3,5V5,7V7,9V9,11V11)"></entry>
-                <entry key="openTime" value="场地开放时间(ALL:所有时间均开放;WEEKEND:仅周末开放;WORKDAY:仅工作日开放)"></entry>
-                <entry key="courtDesc" value="场地描述"></entry>
-                <entry key="square" value="场地面积"></entry>
-                <entry key="status" value="是否开放"></entry>
-
-            </map>
-        </property>
-    </bean>
-    <bean id="court.delete" class="guda.ball.biz.entity.ApiDefine">
-        <property name="apiName" value="court.delete"></property>
-        <property name="apiVersion" value="1.0"></property>
-        <property name="params">
-            <map>
-                <entry key="userName" value="登录名"></entry>
-                <entry key="password" value="密码"></entry>
-                <entry key="id" value="场地ID"></entry>
-
-            </map>
-        </property>
-    </bean>
-    <bean id="court.apply" class="guda.ball.biz.entity.ApiDefine">
-        <property name="apiName" value="court.apply"></property>
-        <property name="apiVersion" value="1.0"></property>
-        <property name="params">
-            <map>
-                <entry key="userName" value="登录名"></entry>
-                <entry key="password" value="密码"></entry>
-                <entry key="courtId" value="场地ID"></entry>
-                <entry key="applyTime" value="预定时间(yyyyMMddHHmmss格式)"></entry>
-            </map>
-        </property>
-    </bean>
     <bean id="court.queryList" class="guda.ball.biz.entity.ApiDefine">
         <property name="apiName" value="court.queryList"></property>
         <property name="apiVersion" value="1.0"></property>
@@ -450,61 +377,15 @@
             </map>
         </property>
     </bean>
-    <bean id="court.cancelApply" class="guda.ball.biz.entity.ApiDefine">
-        <property name="apiName" value="court.cancelApply"></property>
-        <property name="apiVersion" value="1.0"></property>
-        <property name="params">
-            <map>
-                <entry key="userName" value="登录名"></entry>
-                <entry key="password" value="密码"></entry>
-                <entry key="applyId" value="预约ID"></entry>
-            </map>
-        </property>
-    </bean>
-    <bean id="court.passApply" class="guda.ball.biz.entity.ApiDefine">
-        <property name="apiName" value="court.passApply"></property>
-        <property name="apiVersion" value="1.0"></property>
-        <property name="params">
-            <map>
-                <entry key="userName" value="登录名"></entry>
-                <entry key="password" value="密码"></entry>
-                <entry key="applyId" value="预约ID"></entry>
-            </map>
-        </property>
-    </bean>
-    <bean id="court.rejectApply" class="guda.ball.biz.entity.ApiDefine">
-        <property name="apiName" value="court.rejectApply"></property>
-        <property name="apiVersion" value="1.0"></property>
-        <property name="params">
-            <map>
-                <entry key="userName" value="登录名"></entry>
-                <entry key="password" value="密码"></entry>
-                <entry key="applyId" value="预约ID"></entry>
-            </map>
-        </property>
-    </bean>
 
-    <bean id="court.queryBookingList" class="guda.ball.biz.entity.ApiDefine">
-        <property name="apiName" value="court.queryBookingList"></property>
+    <bean id="court.querySiteForBooking" class="guda.ball.biz.entity.ApiDefine">
+        <property name="apiName" value="court.querySiteForBooking"></property>
         <property name="apiVersion" value="1.0"></property>
         <property name="params">
             <map>
                 <entry key="userName" value="登录名"></entry>
                 <entry key="password" value="密码"></entry>
-                <entry key="pageNo" value="页码"></entry>
-                <entry key="pageSize" value="每页记录数(可为空，默认20)"></entry>
-            </map>
-        </property>
-    </bean>
-    <bean id="court.queryBookingListForReview" class="guda.ball.biz.entity.ApiDefine">
-        <property name="apiName" value="court.queryBookingListForReview"></property>
-        <property name="apiVersion" value="1.0"></property>
-        <property name="params">
-            <map>
-                <entry key="userName" value="登录名"></entry>
-                <entry key="password" value="密码"></entry>
-                <entry key="pageNo" value="页码"></entry>
-                <entry key="pageSize" value="每页记录数(可为空，默认20)"></entry>
+                <entry key="siteId" value="场馆ID（不是场地）"></entry>
             </map>
         </property>
     </bean>
@@ -516,31 +397,15 @@
             <map>
                 <entry key="userName" value="登录名"></entry>
                 <entry key="password" value="密码"></entry>
-                <entry key="courtId" value="场地ID"></entry>
-                <entry key="challengeTime" value="比赛时间(yyyyMMddHHmmss)"></entry>
-                <entry key="challengeDesc" value="约战描述"></entry>
+                <entry key="userIds" value="出战球队成员ID（“-”分割）"></entry>
+                <entry key="siteNo" value="场地编号（查询场地信息返回,格式:courtid-siteid-date-starttime-endtime）"></entry>
+                <entry key="challengeDesc" value="约战描述,可为空"></entry>
              
             </map>
         </property>
     </bean>
 
-    <bean id="challenge.update" class="guda.ball.biz.entity.ApiDefine">
-        <property name="apiName" value="challenge.update"></property>
-        <property name="apiVersion" value="1.0"></property>
-        <property name="params">
-            <map>
-                <entry key="userName" value="登录名"></entry>
-                <entry key="password" value="密码"></entry>
-                <entry key="courtId" value="场地ID"></entry>
-                <entry key="challengeTime" value="比赛时间(yyyyMMddHHmmss)"></entry>
-                <entry key="challengeDesc" value="约战描述"></entry>
-                <entry key="challengeResult" value="比赛结果(比分)"></entry>
-                <entry key="goalCount" value="进球数"></entry>
-                <entry key="pageNo" value="页码"></entry>
-                <entry key="pageSize" value="每页记录数(可为空，默认20)"></entry>
-            </map>
-        </property>
-    </bean>
+
     <bean id="challenge.delete" class="guda.ball.biz.entity.ApiDefine">
         <property name="apiName" value="challenge.delete"></property>
         <property name="apiVersion" value="1.0"></property>
@@ -651,6 +516,7 @@
                 <entry key="userName" value="登录名"></entry>
                 <entry key="password" value="密码"></entry>
                 <entry key="challengeId" value="约战ID"></entry>
+                <entry key="userIds" value="出战球队成员ID（“-”分割）"></entry>
             </map>
         </property>
     </bean>

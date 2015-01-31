@@ -1,38 +1,48 @@
 package guda.ball.web.form;
 
-import guda.ball.dao.domain.OrderDO;
-import org.hibernate.validator.constraints.NotEmpty;
-
-import javax.validation.constraints.NotNull;
 import java.util.Date;
 
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotEmpty;
+
+import guda.ball.dao.domain.OrderDO;
+import javax.validation.constraints.NotNull;
+
 public class OrderForm {
-                    @NotNull     private Integer goodsId;
+                    @NotNull     private Integer status;
+
+                    @NotNull     private Long sellerId;
+
+                    @NotNull     private Long buyerId;
+
+                    @NotNull     private Date deliveryTime;
 
                     @NotEmpty(message = "{不能为空}")
             private String leaveMsg;
 
-                    @NotNull     private Date deliveryTime;
+                    @NotNull     private Long goodsId;
 
-                    @NotNull     private Integer buyerId;
-
-                    @NotNull     private Integer sellerId;
-
-                    @NotNull     private Integer status;
-
-    public Integer getGoodsId() {
-       return goodsId;
+    public Integer getStatus() {
+       return status;
     }
 
-    public void setGoodsId(Integer goodsId) {
-       this.goodsId = goodsId;
+    public void setStatus(Integer status) {
+       this.status = status;
     }
-    public String getLeaveMsg() {
-       return leaveMsg;
+    public Long getSellerId() {
+       return sellerId;
     }
 
-    public void setLeaveMsg(String leaveMsg) {
-       this.leaveMsg = leaveMsg;
+    public void setSellerId(Long sellerId) {
+       this.sellerId = sellerId;
+    }
+    public Long getBuyerId() {
+       return buyerId;
+    }
+
+    public void setBuyerId(Long buyerId) {
+       this.buyerId = buyerId;
     }
     public Date getDeliveryTime() {
        return deliveryTime;
@@ -41,36 +51,29 @@ public class OrderForm {
     public void setDeliveryTime(Date deliveryTime) {
        this.deliveryTime = deliveryTime;
     }
-    public Integer getBuyerId() {
-       return buyerId;
+    public String getLeaveMsg() {
+       return leaveMsg;
     }
 
-    public void setBuyerId(Integer buyerId) {
-       this.buyerId = buyerId;
+    public void setLeaveMsg(String leaveMsg) {
+       this.leaveMsg = leaveMsg;
     }
-    public Integer getSellerId() {
-       return sellerId;
-    }
-
-    public void setSellerId(Integer sellerId) {
-       this.sellerId = sellerId;
-    }
-    public Integer getStatus() {
-       return status;
+    public Long getGoodsId() {
+       return goodsId;
     }
 
-    public void setStatus(Integer status) {
-       this.status = status;
+    public void setGoodsId(Long goodsId) {
+       this.goodsId = goodsId;
     }
 
     public OrderDO toDO(){
        OrderDO orderDO  = new OrderDO();
-            orderDO.setGoodsId(this.goodsId);
-                orderDO.setLeaveMsg(this.leaveMsg);
-                orderDO.setDeliveryTime(this.deliveryTime);
-                orderDO.setBuyerId(this.buyerId);
+            orderDO.setStatus(this.status);
                 orderDO.setSellerId(this.sellerId);
-                orderDO.setStatus(this.status);
+                orderDO.setBuyerId(this.buyerId);
+                orderDO.setDeliveryTime(this.deliveryTime);
+                orderDO.setLeaveMsg(this.leaveMsg);
+                orderDO.setGoodsId(this.goodsId);
            return orderDO;
 }
 

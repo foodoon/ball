@@ -1,12 +1,11 @@
 package guda.ball.web.action;
 
-import guda.tools.web.page.BaseQuery;
-import guda.tools.web.page.BizResult;
-import guda.tools.web.util.RequestUtil;
-import guda.ball.biz.OrderBiz;
-import guda.ball.dao.domain.OrderDO;
-import guda.ball.web.form.OrderEditForm;
-import guda.ball.web.form.OrderForm;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -14,10 +13,13 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.validation.Valid;
-import java.util.Map;
+import guda.ball.biz.OrderBiz;
+import guda.ball.dao.domain.OrderDO;
+import guda.ball.web.form.OrderEditForm;
+import guda.ball.web.form.OrderForm;
+import guda.tools.web.page.BaseQuery;
+import guda.tools.web.page.BizResult;
+import guda.tools.web.util.RequestUtil;
 
 
 @Controller
@@ -47,7 +49,7 @@ public class OrderAction {
     @RequestMapping(value = "order/edit.htm", method = RequestMethod.GET)
     public String edit(HttpServletRequest request, ModelMap modelMap, OrderEditForm orderEditForm,
         BindingResult result, Map<String,Object> model) {
-        int id = RequestUtil.getInt(request, "id");
+        long id = RequestUtil.getLong(request, "id");
         BizResult bizResult = orderBiz.detail(id);
         if (bizResult.success) {
             modelMap.putAll(bizResult.data);
@@ -61,7 +63,7 @@ public class OrderAction {
 
     @RequestMapping(value = "order/detail.htm", method = RequestMethod.GET)
     public String detail(HttpServletRequest request, ModelMap modelMap) {
-        int id = RequestUtil.getInt(request, "id");
+        long id = RequestUtil.getLong(request, "id");
         BizResult bizResult = orderBiz.detail(id);
         if (bizResult.success) {
             modelMap.putAll(bizResult.data);
@@ -112,7 +114,7 @@ public class OrderAction {
 
     @RequestMapping(value = "order/doDelete.htm")
     public String doDelete(HttpServletRequest request, ModelMap modelMap) {
-        int id = RequestUtil.getInt(request, "id");
+        long id = RequestUtil.getLong(request, "id");
         BizResult bizResult = orderBiz.delete(id);
         if (bizResult.success) {
             return "order/list.htm";

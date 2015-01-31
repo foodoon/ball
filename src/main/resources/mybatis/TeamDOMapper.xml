@@ -2,13 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="guda.ball.dao.TeamDOMapper">
   <resultMap id="BaseResultMap" type="guda.ball.dao.domain.TeamDO">
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="team_desc" jdbcType="VARCHAR" property="teamDesc" />
     <result column="team_type" jdbcType="VARCHAR" property="teamType" />
     <result column="can_join" jdbcType="INTEGER" property="canJoin" />
-    <result column="is_deleted" jdbcType="INTEGER" property="isDeleted" />
     <result column="gmt_modify" jdbcType="TIMESTAMP" property="gmtModify" />
     <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
     <result column="area" jdbcType="VARCHAR" property="area" />
@@ -45,8 +44,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, user_id, name, team_desc, team_type, can_join, is_deleted, gmt_modify, gmt_create, 
-    area, home_court, jersey_color
+    id, user_id, name, team_desc, team_type, can_join, gmt_modify, gmt_create, area, 
+    home_court, jersey_color
   </sql>
   <select id="selectByExample" parameterType="guda.ball.dao.domain.TeamDOCriteria" resultMap="BaseResultMap">
     select
@@ -65,31 +64,31 @@
       limit ${startRow} , ${pageSize}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from team
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from team
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="guda.ball.dao.domain.TeamDO">
-    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into team (user_id, name, team_desc, 
-      team_type, can_join, is_deleted, 
-      gmt_modify, gmt_create, area, 
-      home_court, jersey_color)
-    values (#{userId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{teamDesc,jdbcType=VARCHAR}, 
-      #{teamType,jdbcType=VARCHAR}, #{canJoin,jdbcType=INTEGER}, #{isDeleted,jdbcType=INTEGER}, 
-      #{gmtModify,jdbcType=TIMESTAMP}, #{gmtCreate,jdbcType=TIMESTAMP}, #{area,jdbcType=VARCHAR}, 
-      #{homeCourt,jdbcType=VARCHAR}, #{jerseyColor,jdbcType=VARCHAR})
+      team_type, can_join, gmt_modify, 
+      gmt_create, area, home_court, 
+      jersey_color)
+    values (#{userId,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{teamDesc,jdbcType=VARCHAR}, 
+      #{teamType,jdbcType=VARCHAR}, #{canJoin,jdbcType=INTEGER}, #{gmtModify,jdbcType=TIMESTAMP}, 
+      #{gmtCreate,jdbcType=TIMESTAMP}, #{area,jdbcType=VARCHAR}, #{homeCourt,jdbcType=VARCHAR}, 
+      #{jerseyColor,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="guda.ball.dao.domain.TeamDO">
-    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into team
@@ -109,9 +108,6 @@
       <if test="canJoin != null">
         can_join,
       </if>
-      <if test="isDeleted != null">
-        is_deleted,
-      </if>
       <if test="gmtModify != null">
         gmt_modify,
       </if>
@@ -130,7 +126,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="userId != null">
-        #{userId,jdbcType=INTEGER},
+        #{userId,jdbcType=BIGINT},
       </if>
       <if test="name != null">
         #{name,jdbcType=VARCHAR},
@@ -143,9 +139,6 @@
       </if>
       <if test="canJoin != null">
         #{canJoin,jdbcType=INTEGER},
-      </if>
-      <if test="isDeleted != null">
-        #{isDeleted,jdbcType=INTEGER},
       </if>
       <if test="gmtModify != null">
         #{gmtModify,jdbcType=TIMESTAMP},
@@ -174,7 +167,7 @@
     update team
     <set>
       <if test="userId != null">
-        user_id = #{userId,jdbcType=INTEGER},
+        user_id = #{userId,jdbcType=BIGINT},
       </if>
       <if test="name != null">
         name = #{name,jdbcType=VARCHAR},
@@ -187,9 +180,6 @@
       </if>
       <if test="canJoin != null">
         can_join = #{canJoin,jdbcType=INTEGER},
-      </if>
-      <if test="isDeleted != null">
-        is_deleted = #{isDeleted,jdbcType=INTEGER},
       </if>
       <if test="gmtModify != null">
         gmt_modify = #{gmtModify,jdbcType=TIMESTAMP},
@@ -207,22 +197,21 @@
         jersey_color = #{jerseyColor,jdbcType=VARCHAR},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="guda.ball.dao.domain.TeamDO">
     update team
-    set user_id = #{userId,jdbcType=INTEGER},
+    set user_id = #{userId,jdbcType=BIGINT},
       name = #{name,jdbcType=VARCHAR},
       team_desc = #{teamDesc,jdbcType=VARCHAR},
       team_type = #{teamType,jdbcType=VARCHAR},
       can_join = #{canJoin,jdbcType=INTEGER},
-      is_deleted = #{isDeleted,jdbcType=INTEGER},
       gmt_modify = #{gmtModify,jdbcType=TIMESTAMP},
       gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
       area = #{area,jdbcType=VARCHAR},
       home_court = #{homeCourt,jdbcType=VARCHAR},
       jersey_color = #{jerseyColor,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </update>
 
 

@@ -6,11 +6,11 @@ import guda.ball.dao.domain.UserDO;
 
 public interface UserBiz {
 
-    BizResult detail(int id);
+    BizResult detail(long id);
 
     BizResult list(BaseQuery baseQuery);
 
-    BizResult delete(int id);
+    BizResult delete(long id);
 
     BizResult create(UserDO userDO);
 

@@ -1,16 +1,17 @@
 package guda.ball.biz.impl;
 
-import guda.tools.web.page.BaseQuery;
-import guda.tools.web.page.BizResult;
-import guda.ball.biz.ChallengeBiz;
-import guda.ball.dao.ChallengeDOMapper;
-import guda.ball.dao.domain.ChallengeDO;
-import guda.ball.dao.domain.ChallengeDOCriteria;
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.List;
+import guda.ball.biz.ChallengeBiz;
+import guda.ball.dao.ChallengeDOMapper;
+import guda.ball.dao.domain.ChallengeDO;
+import guda.ball.dao.domain.ChallengeDOCriteria;
+import guda.tools.web.page.BaseQuery;
+import guda.tools.web.page.BizResult;
 
 public class ChallengeBizImpl implements ChallengeBiz{
 
@@ -19,7 +20,7 @@ public class ChallengeBizImpl implements ChallengeBiz{
     @Autowired
     private ChallengeDOMapper challengeDOMapper;
 
-    public BizResult detail(int id) {
+    public BizResult detail(long id) {
         BizResult bizResult = new BizResult();
         try{
             ChallengeDO challengeDO = challengeDOMapper.selectByPrimaryKey(id);
@@ -49,7 +50,7 @@ public class ChallengeBizImpl implements ChallengeBiz{
             return bizResult;
      }
 
-    public BizResult delete(int id) {
+    public BizResult delete(long id) {
         BizResult bizResult = new BizResult();
         try {
             challengeDOMapper.deleteByPrimaryKey(id);
@@ -63,7 +64,7 @@ public class ChallengeBizImpl implements ChallengeBiz{
     public BizResult create(ChallengeDO challengeDO) {
         BizResult bizResult = new BizResult();
         try {
-            int count = challengeDOMapper.insert(challengeDO);
+            long count = challengeDOMapper.insert(challengeDO);
             bizResult.data.put("count", count);
             bizResult.success = true;
         } catch (Exception e) {

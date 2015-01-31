@@ -1,9 +1,9 @@
 $!teamRecruit详情
   <table class="table">
                 <tr>
-              <td>用户ID</td>
+              <td>球队ID</td>
               <td>
-                  $!teamRecruitDO.userId
+                  $!teamRecruitDO.teamId
               </td>
           </tr>
 
@@ -11,6 +11,13 @@ $!teamRecruit详情
               <td>招募宣言</td>
               <td>
                   $!teamRecruitDO.recruitDesc
+              </td>
+          </tr>
+
+                <tr>
+              <td>发布用户ID</td>
+              <td>
+                  $!teamRecruitDO.userId
               </td>
           </tr>
 

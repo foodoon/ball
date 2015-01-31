@@ -2,20 +2,16 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="guda.ball.dao.CourtDOMapper">
   <resultMap id="BaseResultMap" type="guda.ball.dao.domain.CourtDO">
-    <id column="id" jdbcType="INTEGER" property="id" />
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="address" jdbcType="VARCHAR" property="address" />
-    <result column="type" jdbcType="VARCHAR" property="type" />
-    <result column="open_time" jdbcType="VARCHAR" property="openTime" />
-    <result column="square" jdbcType="VARCHAR" property="square" />
-    <result column="user_id" jdbcType="INTEGER" property="userId" />
-    <result column="is_deleted" jdbcType="INTEGER" property="isDeleted" />
+    <result column="contact_name" jdbcType="VARCHAR" property="contactName" />
+    <result column="tel" jdbcType="VARCHAR" property="tel" />
     <result column="status" jdbcType="INTEGER" property="status" />
     <result column="court_desc" jdbcType="VARCHAR" property="courtDesc" />
     <result column="gmt_modify" jdbcType="TIMESTAMP" property="gmtModify" />
     <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
-    <result column="tel" jdbcType="VARCHAR" property="tel" />
-    <result column="price" jdbcType="BIGINT" property="price" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -47,8 +43,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, name, address, type, open_time, square, user_id, is_deleted, status, court_desc, 
-    gmt_modify, gmt_create, tel, price
+    id, user_id, name, address, contact_name, tel, status, court_desc, gmt_modify, gmt_create
   </sql>
   <select id="selectByExample" parameterType="guda.ball.dao.domain.CourtDOCriteria" resultMap="BaseResultMap">
     select
@@ -67,57 +62,49 @@
       limit ${startRow} , ${pageSize}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from court
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from court
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="guda.ball.dao.domain.CourtDO">
-    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into court (name, address, type, 
-      open_time, square, user_id, 
-      is_deleted, status, court_desc, 
-      gmt_modify, gmt_create, tel, 
-      price)
-    values (#{name,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, 
-      #{openTime,jdbcType=VARCHAR}, #{square,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, 
-      #{isDeleted,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{courtDesc,jdbcType=VARCHAR}, 
-      #{gmtModify,jdbcType=TIMESTAMP}, #{gmtCreate,jdbcType=TIMESTAMP}, #{tel,jdbcType=VARCHAR}, 
-      #{price,jdbcType=BIGINT})
+    insert into court (user_id, name, address, 
+      contact_name, tel, status, 
+      court_desc, gmt_modify, gmt_create
+      )
+    values (#{userId,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{contactName,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
+      #{courtDesc,jdbcType=VARCHAR}, #{gmtModify,jdbcType=TIMESTAMP}, #{gmtCreate,jdbcType=TIMESTAMP}
+      )
   </insert>
   <insert id="insertSelective" parameterType="guda.ball.dao.domain.CourtDO">
-    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into court
     <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
       <if test="name != null">
         name,
       </if>
       <if test="address != null">
         address,
       </if>
-      <if test="type != null">
-        type,
+      <if test="contactName != null">
+        contact_name,
       </if>
-      <if test="openTime != null">
-        open_time,
-      </if>
-      <if test="square != null">
-        square,
-      </if>
-      <if test="userId != null">
-        user_id,
-      </if>
-      <if test="isDeleted != null">
-        is_deleted,
+      <if test="tel != null">
+        tel,
       </if>
       <if test="status != null">
         status,
@@ -131,34 +118,22 @@
       <if test="gmtCreate != null">
         gmt_create,
       </if>
-      <if test="tel != null">
-        tel,
-      </if>
-      <if test="price != null">
-        price,
-      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
       <if test="name != null">
         #{name,jdbcType=VARCHAR},
       </if>
       <if test="address != null">
         #{address,jdbcType=VARCHAR},
       </if>
-      <if test="type != null">
-        #{type,jdbcType=VARCHAR},
+      <if test="contactName != null">
+        #{contactName,jdbcType=VARCHAR},
       </if>
-      <if test="openTime != null">
-        #{openTime,jdbcType=VARCHAR},
-      </if>
-      <if test="square != null">
-        #{square,jdbcType=VARCHAR},
-      </if>
-      <if test="userId != null">
-        #{userId,jdbcType=INTEGER},
-      </if>
-      <if test="isDeleted != null">
-        #{isDeleted,jdbcType=INTEGER},
+      <if test="tel != null">
+        #{tel,jdbcType=VARCHAR},
       </if>
       <if test="status != null">
         #{status,jdbcType=INTEGER},
@@ -172,12 +147,6 @@
       <if test="gmtCreate != null">
         #{gmtCreate,jdbcType=TIMESTAMP},
       </if>
-      <if test="tel != null">
-        #{tel,jdbcType=VARCHAR},
-      </if>
-      <if test="price != null">
-        #{price,jdbcType=BIGINT},
-      </if>
     </trim>
   </insert>
   <select id="countByExample" parameterType="guda.ball.dao.domain.CourtDOCriteria" resultType="java.lang.Integer">
@@ -189,26 +158,20 @@
   <update id="updateByPrimaryKeySelective" parameterType="guda.ball.dao.domain.CourtDO">
     update court
     <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
       <if test="name != null">
         name = #{name,jdbcType=VARCHAR},
       </if>
       <if test="address != null">
         address = #{address,jdbcType=VARCHAR},
       </if>
-      <if test="type != null">
-        type = #{type,jdbcType=VARCHAR},
+      <if test="contactName != null">
+        contact_name = #{contactName,jdbcType=VARCHAR},
       </if>
-      <if test="openTime != null">
-        open_time = #{openTime,jdbcType=VARCHAR},
-      </if>
-      <if test="square != null">
-        square = #{square,jdbcType=VARCHAR},
-      </if>
-      <if test="userId != null">
-        user_id = #{userId,jdbcType=INTEGER},
-      </if>
-      <if test="isDeleted != null">
-        is_deleted = #{isDeleted,jdbcType=INTEGER},
+      <if test="tel != null">
+        tel = #{tel,jdbcType=VARCHAR},
       </if>
       <if test="status != null">
         status = #{status,jdbcType=INTEGER},
@@ -222,31 +185,21 @@
       <if test="gmtCreate != null">
         gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
       </if>
-      <if test="tel != null">
-        tel = #{tel,jdbcType=VARCHAR},
-      </if>
-      <if test="price != null">
-        price = #{price,jdbcType=BIGINT},
-      </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="guda.ball.dao.domain.CourtDO">
     update court
-    set name = #{name,jdbcType=VARCHAR},
+    set user_id = #{userId,jdbcType=BIGINT},
+      name = #{name,jdbcType=VARCHAR},
       address = #{address,jdbcType=VARCHAR},
-      type = #{type,jdbcType=VARCHAR},
-      open_time = #{openTime,jdbcType=VARCHAR},
-      square = #{square,jdbcType=VARCHAR},
-      user_id = #{userId,jdbcType=INTEGER},
-      is_deleted = #{isDeleted,jdbcType=INTEGER},
+      contact_name = #{contactName,jdbcType=VARCHAR},
+      tel = #{tel,jdbcType=VARCHAR},
       status = #{status,jdbcType=INTEGER},
       court_desc = #{courtDesc,jdbcType=VARCHAR},
       gmt_modify = #{gmtModify,jdbcType=TIMESTAMP},
-      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
-      tel = #{tel,jdbcType=VARCHAR},
-      price = #{price,jdbcType=BIGINT}
-    where id = #{id,jdbcType=INTEGER}
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
   </update>
 
 

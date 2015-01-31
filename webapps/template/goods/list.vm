@@ -3,19 +3,19 @@
 <table  class="table">
     <thead>
  <tr>
-              <th>名称</th>
-              <th>描述</th>
-              <th>价格</th>
               <th>所在场地</th>
+              <th>价格</th>
+              <th>描述</th>
+              <th>名称</th>
           <th>操作</th>
  </tr>
     </thead>
 #foreach($f in $goodsDOList)
   <tr>
-               <td> $!f.goodsName</td>
-               <td> $!f.goodsDesc</td>
-               <td> $!f.price</td>
                <td> $!f.courtId</td>
+               <td> $!f.price</td>
+               <td> $!f.goodsDesc</td>
+               <td> $!f.goodsName</td>
           <td><a href="$!homeServer.getURI("goods/edit.htm").addQueryData('id',"$!f.id")" >编辑</a></td>
     <td><a href="$!homeServer.getURI("goods/detail.htm").addQueryData('id',"$!f.id")" >查看详情</a></td>
       <td><a href="$!homeServer.getURI("goods/doDelete.htm").addQueryData('id',"$!f.id")" onclick="return confirm('确定删除吗?')">删除</a></td>
@@ -23,4 +23,4 @@
 #end
 </table>
 
-$tile.load('/template/common/page.vm').param('query',$query).param('path','goods/list.htm')
+$tile.load('template/common/page.vm').param('query',$query).param('path','${doNameLower}/list.htm')

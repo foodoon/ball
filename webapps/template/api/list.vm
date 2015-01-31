@@ -36,12 +36,9 @@
         <div class="col-md-4">
             <h2>比赛相关</h2>
             <ul>
-                <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','court.apply').addQueryData('apiVersion','1.0')">预约场地</a></li>
-                <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','court.cancelApply').addQueryData('apiVersion','1.0')">取消场地预约</a></li>
 
 
                 <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','challenge.create').addQueryData('apiVersion','1.0')">发布约战信息</a></li>
-                <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','challenge.update').addQueryData('apiVersion','1.0')">修改约战信息</a></li>
                 <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','challenge.delete').addQueryData('apiVersion','1.0')">删除约战信息</a></li>
 
                 <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','challenge.apply').addQueryData('apiVersion','1.0')">申请应战</a></li>
@@ -56,7 +53,7 @@
 
 
 
-                <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','court.update').addQueryData('apiVersion','1.0')">录入比赛结果（发起人才能录入）</a></li>
+
 
                 <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','challenge.queryChallengeCount').addQueryData('apiVersion','1.0')">统计我的比赛数量</a></li>
                 <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','challenge.queryWaitStartChallengeList').addQueryData('apiVersion','1.0')">查询将要开始的比赛列表</a></li>
@@ -66,45 +63,20 @@
 
             </ul>
         </div>
-
+</div>
 
         <div class="row">
             <div class="col-md-4">
-                <h2>场地相关（需要老板角色）</h2>
+                <h2>场地相关</h2>
                 <ul>
-                    <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','court.create').addQueryData('apiVersion','1.0')">添加场地信息</a></li>
-                    <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','court.update').addQueryData('apiVersion','1.0')">修改场地信息</a></li>
-                    <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','court.delete').addQueryData('apiVersion','1.0')">删除场地信息</a></li>
-                    <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','court.queryBookingList').addQueryData('apiVersion','1.0')">查询我的预约记录</a></li>
-                    <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','court.queryBookingListForReview').addQueryData('apiVersion','1.0')">查询待审批预约记录</a></li>
-                    <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','court.passApply').addQueryData('apiVersion','1.0')">批准场地预约申请</a></li>
-                    <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','court.rejectApply').addQueryData('apiVersion','1.0')">拒绝场地预约申请</a></li>
-                    <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','court.queryList').addQueryData('apiVersion','1.0')">查询场地</a></li>
-                    <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','court.queryListByName').addQueryData('apiVersion','1.0')">根据名称搜索场地</a></li>
+
+                    <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','court.queryList').addQueryData('apiVersion','1.0')">查询场馆</a></li>
+                    <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','court.queryListByName').addQueryData('apiVersion','1.0')">根据名称搜索场馆</a></li>
+                    <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','court.querySiteForBooking').addQueryData('apiVersion','1.0')">根据场地ID查询7天场地的预约列表</a></li>
                 </ul>
             </div>
-            <div class="col-md-4">
-                <h2>商品，服务相关</h2>
-                <ul>
-                    <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','goods.queryListByCourtId').addQueryData('apiVersion','1.0')">查询某个场地的商品，服务信息</a></li>
-                    <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','goods.buy').addQueryData('apiVersion','1.0')">购买商品，呼叫服务</a></li>
-                    <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','goods.confirmBuy').addQueryData('apiVersion','1.0')">接受商品购买，服务呼叫</a></li>
-                    <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','goods.cancelBuy').addQueryData('apiVersion','1.0')">取消购买</a></li>
-                    <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','goods.confirmGoods').addQueryData('apiVersion','1.0')">确认收货</a></li>
-                    <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','goods.queryOrderListByBuyer').addQueryData('apiVersion','1.0')">查询我的购买记录</a></li>
-                    <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','goods.queryOrderListBySeller').addQueryData('apiVersion','1.0')">查询我的卖出记录</a></li>
-                    <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','goods.create').addQueryData('apiVersion','1.0')">发布商品，服务信息</a></li>
-                    <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','goods.update').addQueryData('apiVersion','1.0')">修改商品，服务信息</a></li>
-                    <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','goods.delete').addQueryData('apiVersion','1.0')">删除商品，服务信息</a></li>
-                </ul>
-            </div>
-            <div class="col-md-4">
-                <h2>评论</h2>
-                <ul>
-                    <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','comment.create').addQueryData('apiVersion','1.0')">发表评论</a></li>
-                    <li><a href="$!homeServer.getURI("api/index.htm").addQueryData('apiName','comment.queryCommentList').addQueryData('apiVersion','1.0')">分页查询评论</a></li>
-                </ul>
-            </div>
+
+
 
             <div class="col-md-4">
                 <h2>其他</h2>

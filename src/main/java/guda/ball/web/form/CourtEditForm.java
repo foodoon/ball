@@ -3,36 +3,35 @@ package guda.ball.web.form;
 import guda.ball.dao.domain.CourtDO;
 
 
-public class CourtEditForm extends CourtForm {
+public class CourtEditForm extends CourtForm{
 
-    private Integer id;
+    private Long id;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public CourtDO toDO() {
-        CourtDO courtDO = super.toDO();
+    public CourtDO toDO(){
+        CourtDO courtDO  =super.toDO();
         courtDO.setId(this.id);
         return courtDO;
     }
 
-    public void initForm(CourtDO courtDO) {
-        if (courtDO == null) {
-            return;
-        }
-        this.setName(courtDO.getName());
-        this.setAddress(courtDO.getAddress());
-        this.setType(courtDO.getType());
-        this.setOpenTime(courtDO.getOpenTime());
-        this.setUserId(courtDO.getUserId());
-        this.setStatus(courtDO.getStatus());
-        this.setCourtDesc(courtDO.getCourtDesc());
-        this.setSquare(courtDO.getSquare());
+    public void initForm(CourtDO courtDO){
+        if(courtDO == null){
+        return ;
     }
+    this.setCourtDesc(courtDO.getCourtDesc());
+    this.setStatus(courtDO.getStatus());
+    this.setTel(courtDO.getTel());
+    this.setContactName(courtDO.getContactName());
+    this.setAddress(courtDO.getAddress());
+    this.setName(courtDO.getName());
+    this.setUserId(courtDO.getUserId());
+}
 
 }

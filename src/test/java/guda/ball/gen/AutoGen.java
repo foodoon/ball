@@ -19,10 +19,10 @@ public class AutoGen {
         demoGen.setJdbUrl(jdbUrl);
         demoGen.setDriverClass("com.mysql.jdbc.Driver");
         String baseDir = (String)System.getProperties().get("user.dir");
-     //  demoGen.genDAOWithDir("team", "ball", "guda",baseDir);
-     // demoGen.genDaoXMLWithDir("team","ball","guda",baseDir);
-      //demoGen.genBizWithDir(baseDir,"team_apply","ball","guda");
-//        demoGen.genActionWithDir(baseDir,"account_detail","task","guda","/webapps/template/");
+//        demoGen.genDAOWithDir("court_site_section", "ball", "guda",baseDir);
+//        demoGen.genDaoXMLWithDir("court_site_section","ball","guda",baseDir);
+//      demoGen.genBizWithDir(baseDir,"court_site_section","ball","guda");
+//        demoGen.genActionWithDir(baseDir,"court_site","ball","guda","/webapps/template/");
 
 
 

@@ -1,69 +1,48 @@
 package guda.ball.web.form;
 
-import guda.ball.dao.domain.ChallengeDO;
-import org.hibernate.validator.constraints.NotEmpty;
-
-import javax.validation.constraints.NotNull;
 import java.util.Date;
 
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotEmpty;
+
+import guda.ball.dao.domain.ChallengeDO;
+import javax.validation.constraints.NotNull;
+
 public class ChallengeForm {
-                    @NotNull     private Integer teamId;
+                    @NotNull     private Date endTime;
 
-                    @NotNull     private Integer courtId;
+                    @NotNull     private Date startTime;
 
-                    @NotNull     private Date challengeTime;
+                    @NotNull     private Integer status;
 
-                    @NotEmpty(message = "{不能为空}")
-            private String challengeDesc;
+                    @NotNull     private Integer goalCount;
 
                     @NotEmpty(message = "{不能为空}")
             private String challengeResult;
 
-                    @NotNull     private Integer goalCount;
+                    @NotEmpty(message = "{不能为空}")
+            private String challengeDesc;
 
-                    @NotNull     private Integer status;
+                    @NotNull     private Long courtApplyId;
 
-    public Integer getTeamId() {
-       return teamId;
-    }
+                    @NotNull     private Long applyTeamId;
 
-    public void setTeamId(Integer teamId) {
-       this.teamId = teamId;
-    }
-    public Integer getCourtId() {
-       return courtId;
+                    @NotNull     private Long requestTeamId;
+
+    public Date getEndTime() {
+       return endTime;
     }
 
-    public void setCourtId(Integer courtId) {
-       this.courtId = courtId;
+    public void setEndTime(Date endTime) {
+       this.endTime = endTime;
     }
-    public Date getChallengeTime() {
-       return challengeTime;
-    }
-
-    public void setChallengeTime(Date challengeTime) {
-       this.challengeTime = challengeTime;
-    }
-    public String getChallengeDesc() {
-       return challengeDesc;
+    public Date getStartTime() {
+       return startTime;
     }
 
-    public void setChallengeDesc(String challengeDesc) {
-       this.challengeDesc = challengeDesc;
-    }
-    public String getChallengeResult() {
-       return challengeResult;
-    }
-
-    public void setChallengeResult(String challengeResult) {
-       this.challengeResult = challengeResult;
-    }
-    public Integer getGoalCount() {
-       return goalCount;
-    }
-
-    public void setGoalCount(Integer goalCount) {
-       this.goalCount = goalCount;
+    public void setStartTime(Date startTime) {
+       this.startTime = startTime;
     }
     public Integer getStatus() {
        return status;
@@ -72,16 +51,60 @@ public class ChallengeForm {
     public void setStatus(Integer status) {
        this.status = status;
     }
+    public Integer getGoalCount() {
+       return goalCount;
+    }
+
+    public void setGoalCount(Integer goalCount) {
+       this.goalCount = goalCount;
+    }
+    public String getChallengeResult() {
+       return challengeResult;
+    }
+
+    public void setChallengeResult(String challengeResult) {
+       this.challengeResult = challengeResult;
+    }
+    public String getChallengeDesc() {
+       return challengeDesc;
+    }
+
+    public void setChallengeDesc(String challengeDesc) {
+       this.challengeDesc = challengeDesc;
+    }
+    public Long getCourtApplyId() {
+       return courtApplyId;
+    }
+
+    public void setCourtApplyId(Long courtApplyId) {
+       this.courtApplyId = courtApplyId;
+    }
+    public Long getApplyTeamId() {
+       return applyTeamId;
+    }
+
+    public void setApplyTeamId(Long applyTeamId) {
+       this.applyTeamId = applyTeamId;
+    }
+    public Long getRequestTeamId() {
+       return requestTeamId;
+    }
+
+    public void setRequestTeamId(Long requestTeamId) {
+       this.requestTeamId = requestTeamId;
+    }
 
     public ChallengeDO toDO(){
        ChallengeDO challengeDO  = new ChallengeDO();
-            challengeDO.setTeamId(this.teamId);
-                challengeDO.setCourtId(this.courtId);
-                challengeDO.setChallengeTime(this.challengeTime);
-                challengeDO.setChallengeDesc(this.challengeDesc);
-                challengeDO.setChallengeResult(this.challengeResult);
-                challengeDO.setGoalCount(this.goalCount);
+            challengeDO.setEndTime(this.endTime);
+                challengeDO.setStartTime(this.startTime);
                 challengeDO.setStatus(this.status);
+                challengeDO.setGoalCount(this.goalCount);
+                challengeDO.setChallengeResult(this.challengeResult);
+                challengeDO.setChallengeDesc(this.challengeDesc);
+                challengeDO.setCourtApplyId(this.courtApplyId);
+                challengeDO.setApplyTeamId(this.applyTeamId);
+                challengeDO.setRequestTeamId(this.requestTeamId);
            return challengeDO;
 }
 

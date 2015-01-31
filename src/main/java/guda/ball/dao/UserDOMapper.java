@@ -7,7 +7,7 @@ import java.util.List;
 public interface UserDOMapper {
     int countByExample(UserDOCriteria example);
 
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(Long id);
 
     int insert(UserDO record);
 
@@ -15,7 +15,7 @@ public interface UserDOMapper {
 
     List<UserDO> selectByExample(UserDOCriteria example);
 
-    UserDO selectByPrimaryKey(Integer id);
+    UserDO selectByPrimaryKey(Long id);
 
     int updateByPrimaryKeySelective(UserDO record);
 

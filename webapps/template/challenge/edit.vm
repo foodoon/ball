@@ -4,49 +4,17 @@
   <table class="table">
   #springBind("challengeEditForm.id")
   <input type="hidden" name="${status.expression}" value="$!status.value" />
-                #springBind("challengeEditForm.teamId")
+                #springBind("challengeEditForm.endTime")
           <tr>
-              <td>球队ID</td>
+              <td>比赛结束时间</td>
               <td>
                   <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
                   #foreach($error in $status.errorMessages) <b>$error</b>  #end
               </td>
           </tr>
-                #springBind("challengeEditForm.courtId")
+                #springBind("challengeEditForm.startTime")
           <tr>
-              <td>场地ID</td>
-              <td>
-                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
-                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
-              </td>
-          </tr>
-                #springBind("challengeEditForm.challengeTime")
-          <tr>
-              <td>约战日期</td>
-              <td>
-                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
-                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
-              </td>
-          </tr>
-                #springBind("challengeEditForm.challengeDesc")
-          <tr>
-              <td>约战条件</td>
-              <td>
-                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
-                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
-              </td>
-          </tr>
-                #springBind("challengeEditForm.challengeResult")
-          <tr>
-              <td>约战结果</td>
-              <td>
-                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
-                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
-              </td>
-          </tr>
-                #springBind("challengeEditForm.goalCount")
-          <tr>
-              <td>比赛进球数</td>
+              <td>比赛开始时间</td>
               <td>
                   <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
                   #foreach($error in $status.errorMessages) <b>$error</b>  #end
@@ -54,7 +22,55 @@
           </tr>
                 #springBind("challengeEditForm.status")
           <tr>
-              <td>是否接受应战</td>
+              <td>状态</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("challengeEditForm.goalCount")
+          <tr>
+              <td>进球数量</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("challengeEditForm.challengeResult")
+          <tr>
+              <td>比赛结果</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("challengeEditForm.challengeDesc")
+          <tr>
+              <td>比赛说明</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("challengeEditForm.courtApplyId")
+          <tr>
+              <td>场地申请ID</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("challengeEditForm.applyTeamId")
+          <tr>
+              <td>应战球队ID</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("challengeEditForm.requestTeamId")
+          <tr>
+              <td>约战球队ID</td>
               <td>
                   <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
                   #foreach($error in $status.errorMessages) <b>$error</b>  #end

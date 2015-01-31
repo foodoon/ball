@@ -2,14 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="guda.ball.dao.OrderDOMapper">
   <resultMap id="BaseResultMap" type="guda.ball.dao.domain.OrderDO">
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="goods_id" jdbcType="INTEGER" property="goodsId" />
-    <result column="buyer_id" jdbcType="INTEGER" property="buyerId" />
-    <result column="seller_id" jdbcType="INTEGER" property="sellerId" />
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="goods_id" jdbcType="BIGINT" property="goodsId" />
+    <result column="buyer_id" jdbcType="BIGINT" property="buyerId" />
+    <result column="seller_id" jdbcType="BIGINT" property="sellerId" />
     <result column="delivery_time" jdbcType="TIMESTAMP" property="deliveryTime" />
     <result column="leave_msg" jdbcType="VARCHAR" property="leaveMsg" />
     <result column="status" jdbcType="INTEGER" property="status" />
-    <result column="is_deleted" jdbcType="INTEGER" property="isDeleted" />
     <result column="gmt_modify" jdbcType="TIMESTAMP" property="gmtModify" />
     <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
   </resultMap>
@@ -43,8 +42,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, goods_id, buyer_id, seller_id, delivery_time, leave_msg, status, is_deleted, 
-    gmt_modify, gmt_create
+    id, goods_id, buyer_id, seller_id, delivery_time, leave_msg, status, gmt_modify, 
+    gmt_create
   </sql>
   <select id="selectByExample" parameterType="guda.ball.dao.domain.OrderDOCriteria" resultMap="BaseResultMap">
     select
@@ -63,31 +62,29 @@
       limit ${startRow} , ${pageSize}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from order
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from order
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="guda.ball.dao.domain.OrderDO">
-    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into order (goods_id, buyer_id, seller_id,
+    insert into order (goods_id, buyer_id, seller_id, 
       delivery_time, leave_msg, status, 
-      is_deleted, gmt_modify, gmt_create
-      )
-    values (#{goodsId,jdbcType=INTEGER}, #{buyerId,jdbcType=INTEGER}, #{sellerId,jdbcType=INTEGER}, 
+      gmt_modify, gmt_create)
+    values (#{goodsId,jdbcType=BIGINT}, #{buyerId,jdbcType=BIGINT}, #{sellerId,jdbcType=BIGINT}, 
       #{deliveryTime,jdbcType=TIMESTAMP}, #{leaveMsg,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
-      #{isDeleted,jdbcType=INTEGER}, #{gmtModify,jdbcType=TIMESTAMP}, #{gmtCreate,jdbcType=TIMESTAMP}
-      )
+      #{gmtModify,jdbcType=TIMESTAMP}, #{gmtCreate,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="guda.ball.dao.domain.OrderDO">
-    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into order
@@ -110,9 +107,6 @@
       <if test="status != null">
         status,
       </if>
-      <if test="isDeleted != null">
-        is_deleted,
-      </if>
       <if test="gmtModify != null">
         gmt_modify,
       </if>
@@ -122,13 +116,13 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="goodsId != null">
-        #{goodsId,jdbcType=INTEGER},
+        #{goodsId,jdbcType=BIGINT},
       </if>
       <if test="buyerId != null">
-        #{buyerId,jdbcType=INTEGER},
+        #{buyerId,jdbcType=BIGINT},
       </if>
       <if test="sellerId != null">
-        #{sellerId,jdbcType=INTEGER},
+        #{sellerId,jdbcType=BIGINT},
       </if>
       <if test="deliveryTime != null">
         #{deliveryTime,jdbcType=TIMESTAMP},
@@ -138,9 +132,6 @@
       </if>
       <if test="status != null">
         #{status,jdbcType=INTEGER},
-      </if>
-      <if test="isDeleted != null">
-        #{isDeleted,jdbcType=INTEGER},
       </if>
       <if test="gmtModify != null">
         #{gmtModify,jdbcType=TIMESTAMP},
@@ -160,13 +151,13 @@
     update order
     <set>
       <if test="goodsId != null">
-        goods_id = #{goodsId,jdbcType=INTEGER},
+        goods_id = #{goodsId,jdbcType=BIGINT},
       </if>
       <if test="buyerId != null">
-        buyer_id = #{buyerId,jdbcType=INTEGER},
+        buyer_id = #{buyerId,jdbcType=BIGINT},
       </if>
       <if test="sellerId != null">
-        seller_id = #{sellerId,jdbcType=INTEGER},
+        seller_id = #{sellerId,jdbcType=BIGINT},
       </if>
       <if test="deliveryTime != null">
         delivery_time = #{deliveryTime,jdbcType=TIMESTAMP},
@@ -177,9 +168,6 @@
       <if test="status != null">
         status = #{status,jdbcType=INTEGER},
       </if>
-      <if test="isDeleted != null">
-        is_deleted = #{isDeleted,jdbcType=INTEGER},
-      </if>
       <if test="gmtModify != null">
         gmt_modify = #{gmtModify,jdbcType=TIMESTAMP},
       </if>
@@ -187,20 +175,19 @@
         gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="guda.ball.dao.domain.OrderDO">
     update order
-    set goods_id = #{goodsId,jdbcType=INTEGER},
-      buyer_id = #{buyerId,jdbcType=INTEGER},
-      seller_id = #{sellerId,jdbcType=INTEGER},
+    set goods_id = #{goodsId,jdbcType=BIGINT},
+      buyer_id = #{buyerId,jdbcType=BIGINT},
+      seller_id = #{sellerId,jdbcType=BIGINT},
       delivery_time = #{deliveryTime,jdbcType=TIMESTAMP},
       leave_msg = #{leaveMsg,jdbcType=VARCHAR},
       status = #{status,jdbcType=INTEGER},
-      is_deleted = #{isDeleted,jdbcType=INTEGER},
       gmt_modify = #{gmtModify,jdbcType=TIMESTAMP},
       gmt_create = #{gmtCreate,jdbcType=TIMESTAMP}
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </update>
 
 

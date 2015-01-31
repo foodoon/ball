@@ -3,18 +3,26 @@
 <table  class="table">
     <thead>
  <tr>
-              <th>球队名</th>
-              <th>简单介绍</th>
+              <th>球服颜色</th>
+              <th>主场</th>
+              <th>球队活动区域</th>
               <th>是否开放加入</th>
-              <th>用户ID</th>
+              <th>球队类型</th>
+              <th>球队口号</th>
+              <th>球队名称</th>
+              <th>创建人ID</th>
           <th>操作</th>
  </tr>
     </thead>
 #foreach($f in $teamDOList)
   <tr>
-               <td> $!f.name</td>
-               <td> $!f.teamDesc</td>
+               <td> $!f.jerseyColor</td>
+               <td> $!f.homeCourt</td>
+               <td> $!f.area</td>
                <td> $!f.canJoin</td>
+               <td> $!f.teamType</td>
+               <td> $!f.teamDesc</td>
+               <td> $!f.name</td>
                <td> $!f.userId</td>
           <td><a href="$!homeServer.getURI("team/edit.htm").addQueryData('id',"$!f.id")" >编辑</a></td>
     <td><a href="$!homeServer.getURI("team/detail.htm").addQueryData('id',"$!f.id")" >查看详情</a></td>
@@ -23,4 +31,4 @@
 #end
 </table>
 
-$tile.load('/template/common/page.vm').param('query',$query).param('path','${doNameLower}/list.htm')
+$tile.load('template/common/page.vm').param('query',$query).param('path','${doNameLower}/list.htm')

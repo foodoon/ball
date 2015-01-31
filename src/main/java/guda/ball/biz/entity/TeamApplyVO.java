@@ -21,7 +21,6 @@ public class TeamApplyVO extends TeamApplyDO {
         this.setTeamId(teamApplyDO.getTeamId());
         this.setUserId(teamApplyDO.getUserId());
         this.setStatus(teamApplyDO.getStatus());
-        this.setIsDeleted(teamApplyDO.getIsDeleted());
         this.setGmtModify(teamApplyDO.getGmtModify());
         this.setGmtCreate(teamApplyDO.getGmtCreate());
         ApplyStatusEnum byValue = ApplyStatusEnum.getByValue(teamApplyDO.getStatus());

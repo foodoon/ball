@@ -1,0 +1,17 @@
+$!courtService详情
+  <table class="table">
+                <tr>
+              <td>服务名称</td>
+              <td>
+                  $!courtServiceDO.serviceName
+              </td>
+          </tr>
+
+                <tr>
+              <td>场地ID</td>
+              <td>
+                  $!courtServiceDO.courtId
+              </td>
+          </tr>
+
+        </table>

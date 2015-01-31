@@ -1,63 +1,80 @@
 package guda.ball.web.form;
 
-import guda.ball.dao.domain.CourtApplyDO;
-
-import javax.validation.constraints.NotNull;
 import java.util.Date;
 
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotEmpty;
+
+import guda.ball.dao.domain.CourtApplyDO;
+import javax.validation.constraints.NotNull;
 
 public class CourtApplyForm {
-    @NotNull
-    private Integer userId;
+                    @NotNull     private Date bookingDate;
 
-    @NotNull
-    private Integer courtId;
+                    @NotEmpty(message = "{不能为空}")
+            private String bookingTime;
 
-    @NotNull
-    private Date bookingTime;
+                    @NotNull     private Long courtSiteId;
 
-    @NotNull
-    private Integer status;
+                    @NotNull     private Integer status;
 
-    public Integer getUserId() {
-        return userId;
+                    @NotNull     private Long courtId;
+
+                    @NotNull     private Long userId;
+
+    public Date getBookingDate() {
+       return bookingDate;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setBookingDate(Date bookingDate) {
+       this.bookingDate = bookingDate;
+    }
+    public String getBookingTime() {
+       return bookingTime;
     }
 
-    public Integer getCourtId() {
-        return courtId;
+    public void setBookingTime(String bookingTime) {
+       this.bookingTime = bookingTime;
+    }
+    public Long getCourtSiteId() {
+       return courtSiteId;
     }
 
-    public void setCourtId(Integer courtId) {
-        this.courtId = courtId;
+    public void setCourtSiteId(Long courtSiteId) {
+       this.courtSiteId = courtSiteId;
     }
-
-    public Date getBookingTime() {
-        return bookingTime;
-    }
-
-    public void setBookingTime(Date bookingTime) {
-        this.bookingTime = bookingTime;
-    }
-
     public Integer getStatus() {
-        return status;
+       return status;
     }
 
     public void setStatus(Integer status) {
-        this.status = status;
+       this.status = status;
+    }
+    public Long getCourtId() {
+       return courtId;
     }
 
-    public CourtApplyDO toDO() {
-        CourtApplyDO courtApplyDO = new CourtApplyDO();
-        courtApplyDO.setUserId(this.userId);
-        courtApplyDO.setCourtId(this.courtId);
-        courtApplyDO.setBookingTime(this.bookingTime);
-        courtApplyDO.setStatus(this.status);
-        return courtApplyDO;
+    public void setCourtId(Long courtId) {
+       this.courtId = courtId;
     }
+    public Long getUserId() {
+       return userId;
+    }
+
+    public void setUserId(Long userId) {
+       this.userId = userId;
+    }
+
+    public CourtApplyDO toDO(){
+       CourtApplyDO courtApplyDO  = new CourtApplyDO();
+            courtApplyDO.setBookingDate(this.bookingDate);
+                courtApplyDO.setBookingTime(this.bookingTime);
+                courtApplyDO.setCourtSiteId(this.courtSiteId);
+                courtApplyDO.setStatus(this.status);
+                courtApplyDO.setCourtId(this.courtId);
+                courtApplyDO.setUserId(this.userId);
+           return courtApplyDO;
+}
 
 }

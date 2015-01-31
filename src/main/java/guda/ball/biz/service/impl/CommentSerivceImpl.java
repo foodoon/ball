@@ -23,8 +23,8 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Created by well on 2014/8/10.
- */
+* Created by well on 2014/8/10.
+*/
 @Service
 public class CommentSerivceImpl implements CommentSerivce{
 
@@ -43,7 +43,7 @@ public class CommentSerivceImpl implements CommentSerivce{
     private CommentDOMapper commentDOMapper;
 
     @AppRequestMapping(apiName = "comment.create", apiVersion = "1.0")
-    public BizResult comment(@AppRequestParam("sid") String sid,@AppRequestParam("commentId") int commentId,@AppRequestParam("commentType")  String commentType,@AppRequestParam("msg")  String msg) {
+    public BizResult comment(@AppRequestParam("sid") String sid,@AppRequestParam("commentId") long commentId,@AppRequestParam("commentType")  String commentType,@AppRequestParam("msg")  String msg) {
         if (!StringUtils.hasText(sid) || commentId < 1
                 || !StringUtils.hasText(commentType)
                 || !StringUtils.hasText(msg)) {
@@ -64,7 +64,7 @@ public class CommentSerivceImpl implements CommentSerivce{
                 return BizResultHelper.newResultCode(CommonResultCode.CHALLENGE_NOT_EXIST);
             }
         }else if(CommentTypeEnum.COURT.value.equals(commentType)){
-            CourtDO courtDO = courtDOMapper.selectByPrimaryKey(commentId);
+            CourtDO courtDO= courtDOMapper.selectByPrimaryKey(commentId);
             if(courtDO == null){
                 return BizResultHelper.newResultCode(CommonResultCode.COURT_NOT_EXIST);
             }
@@ -89,7 +89,6 @@ public class CommentSerivceImpl implements CommentSerivce{
         }
         CommentDO commentDO = new CommentDO();
         commentDO.setCommentType(commentType);
-        commentDO.setIsDeleted(0);
         commentDO.setGmtCreate(new Date());
         commentDO.setGmtModify(new Date());
         commentDO.setCommentId(commentId);
@@ -105,7 +104,7 @@ public class CommentSerivceImpl implements CommentSerivce{
     }
 
     @AppRequestMapping(apiName = "comment.queryCommentList", apiVersion = "1.0")
-    public BizResult queryCommentList(@AppRequestParam("sid") String sid,@AppRequestParam("commentId") int commentId, @AppRequestParam("commentType") String commentType,@AppRequestParam("pageNo")  int pageNo,@AppRequestParam("pageSize")  int pageSize) {
+    public BizResult queryCommentList(@AppRequestParam("sid") String sid,@AppRequestParam("commentId") long commentId, @AppRequestParam("commentType") String commentType,@AppRequestParam("pageNo")  int pageNo,@AppRequestParam("pageSize")  int pageSize) {
         if (!StringUtils.hasText(sid)) {
             return BizResultHelper.newResultCode(CommonResultCode.PARAM_MISS);
         }

@@ -1,45 +1,46 @@
 package guda.ball.dao.domain;
 
+import guda.gen.GenField;
+
 import java.util.Date;
 
 public class TeamDO {
-    private Integer id;
+    private Long id;
 
-    private Integer userId;
-
+    @GenField(cn="创建人ID",order=1,inSearchForm = false,canNull = false)
+    private Long userId;
+    @GenField(cn="球队名称",order=1,inSearchForm = false,canNull = false)
     private String name;
-
+    @GenField(cn="球队口号",order=1,inSearchForm = false,canNull = false)
     private String teamDesc;
-
+    @GenField(cn="球队类型",order=1,inSearchForm = false,canNull = false)
     private String teamType;
-
+    @GenField(cn="是否开放加入",order=1,inSearchForm = false,canNull = false)
     private Integer canJoin;
-
-    private Integer isDeleted;
 
     private Date gmtModify;
 
     private Date gmtCreate;
-
+    @GenField(cn="球队活动区域",order=1,inSearchForm = false,canNull = false)
     private String area;
-
+    @GenField(cn="主场",order=1,inSearchForm = false,canNull = false)
     private String homeCourt;
-
+    @GenField(cn="球服颜色",order=1,inSearchForm = false,canNull = false)
     private String jerseyColor;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public Integer getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 
@@ -73,14 +74,6 @@ public class TeamDO {
 
     public void setCanJoin(Integer canJoin) {
         this.canJoin = canJoin;
-    }
-
-    public Integer getIsDeleted() {
-        return isDeleted;
-    }
-
-    public void setIsDeleted(Integer isDeleted) {
-        this.isDeleted = isDeleted;
     }
 
     public Date getGmtModify() {

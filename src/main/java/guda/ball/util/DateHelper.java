@@ -27,6 +27,56 @@ public class DateHelper {
 
     }
 
+    public static Date getStartDay()  {
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.HOUR_OF_DAY,0);
+        calendar.set(Calendar.MINUTE,0);
+        calendar.set(Calendar.SECOND,0);
+        calendar.set(Calendar.MILLISECOND,0);
+        return calendar.getTime();
+
+    }
+    public static Date get7Day()  {
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DAY_OF_YEAR,7);
+        calendar.set(Calendar.HOUR_OF_DAY,0);
+        calendar.set(Calendar.MINUTE,0);
+        calendar.set(Calendar.SECOND,0);
+        calendar.set(Calendar.MILLISECOND,0);
+        return calendar.getTime();
+
+    }
+
+    public static Date parseDate(String d) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd");
+        try {
+            Date date = simpleDateFormat.parse(d);
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(date);
+            calendar.set(Calendar.HOUR_OF_DAY, 0);
+            calendar.set(Calendar.MINUTE, 0);
+            calendar.set(Calendar.SECOND, 0);
+            calendar.set(Calendar.MILLISECOND, 0);
+            return calendar.getTime();
+        }catch(Exception e){
+
+        }
+        return null;
+
+    }
+
+    public static Date parseDateTime(String d) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
+        try {
+            return simpleDateFormat.parse(d);
+
+        }catch(Exception e){
+
+        }
+        return null;
+
+    }
+
     public static Date getStartTime(Date time) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(time);
@@ -94,6 +144,11 @@ public class DateHelper {
 
     }
 
+    public static int getDayOfWeek() {
+        Calendar calendar = Calendar.getInstance();
+        return calendar.get(Calendar.DAY_OF_WEEK);
+    }
+
     public static boolean isWorkday(Date date)  {
         Locale.setDefault(Locale.SIMPLIFIED_CHINESE);
         Calendar calendar = Calendar.getInstance();
@@ -123,12 +178,35 @@ public class DateHelper {
         return simpleDateFormat.format(time);
     }
 
+    public static String formatYMDHMCN(Date time)  {
+        if(time == null){
+            return null;
+        }
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy年MM月dd HH时mm分");
+        return simpleDateFormat.format(time);
+    }
+
+    public static String formatHMCN(Date time)  {
+        if(time == null){
+            return null;
+        }
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH时mm分");
+        return simpleDateFormat.format(time);
+    }
+
 
     public static String formatYMD(Date time) {
         if (time == null) {
             return null;
         }
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd");
+        return simpleDateFormat.format(time);
+    }
+    public static String formatYMDCN(Date time) {
+        if (time == null) {
+            return null;
+        }
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy年MM月dd日");
         return simpleDateFormat.format(time);
     }
 

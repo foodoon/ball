@@ -1,0 +1,12 @@
+编辑
+
+<form name="challengeMemberEditForm" action="$!homeServer.getURI("challengeMember/doUpdate.htm")" method="post">
+  <table class="table">
+  #springBind("challengeMemberEditForm.id")
+  <input type="hidden" name="${status.expression}" value="$!status.value" />
+      	  <tr>
+	  <td colspan="2">
+	  <input type="submit" class="btn" value="提交"/></td>
+	  </tr>
+  </table>
+</form>

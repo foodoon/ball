@@ -1,17 +1,17 @@
 package guda.ball.biz.impl;
 
-import guda.tools.web.page.BaseQuery;
-import guda.tools.web.page.BizResult;
-import guda.ball.biz.TeamRecruitBiz;
-import guda.ball.dao.TeamRecruitDOMapper;
-import guda.ball.dao.domain.TeamRecruitDO;
-import guda.ball.dao.domain.TeamRecruitDOCriteria;
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.Date;
-import java.util.List;
+import guda.ball.biz.TeamRecruitBiz;
+import guda.ball.dao.TeamRecruitDOMapper;
+import guda.ball.dao.domain.TeamRecruitDO;
+import guda.ball.dao.domain.TeamRecruitDOCriteria;
+import guda.tools.web.page.BaseQuery;
+import guda.tools.web.page.BizResult;
 
 public class TeamRecruitBizImpl implements TeamRecruitBiz{
 
@@ -20,7 +20,7 @@ public class TeamRecruitBizImpl implements TeamRecruitBiz{
     @Autowired
     private TeamRecruitDOMapper teamRecruitDOMapper;
 
-    public BizResult detail(int id) {
+    public BizResult detail(long id) {
         BizResult bizResult = new BizResult();
         try{
             TeamRecruitDO teamRecruitDO = teamRecruitDOMapper.selectByPrimaryKey(id);
@@ -50,7 +50,7 @@ public class TeamRecruitBizImpl implements TeamRecruitBiz{
             return bizResult;
      }
 
-    public BizResult delete(int id) {
+    public BizResult delete(long id) {
         BizResult bizResult = new BizResult();
         try {
             teamRecruitDOMapper.deleteByPrimaryKey(id);
@@ -62,13 +62,10 @@ public class TeamRecruitBizImpl implements TeamRecruitBiz{
     }
 
     public BizResult create(TeamRecruitDO teamRecruitDO) {
-        teamRecruitDO.setGmtModify(new Date());
-        teamRecruitDO.setGmtCreate(new Date());
-        teamRecruitDO.setIsDeleted(0);
         BizResult bizResult = new BizResult();
         try {
-            int id = teamRecruitDOMapper.insert(teamRecruitDO);
-            bizResult.data.put("count", id);
+            int count = teamRecruitDOMapper.insert(teamRecruitDO);
+            bizResult.data.put("count", count);
             bizResult.success = true;
         } catch (Exception e) {
             logger.error("create TeamRecruit error", e);
@@ -79,8 +76,8 @@ public class TeamRecruitBizImpl implements TeamRecruitBiz{
     public BizResult update(TeamRecruitDO teamRecruitDO) {
         BizResult bizResult = new BizResult();
         try {
-            int id = teamRecruitDOMapper.updateByPrimaryKeySelective(teamRecruitDO);
-            bizResult.data.put("count", id);
+            int count = teamRecruitDOMapper.updateByPrimaryKeySelective(teamRecruitDO);
+            bizResult.data.put("count", count);
             bizResult.success = true;
         } catch (Exception e) {
             logger.error("update TeamRecruit error", e);

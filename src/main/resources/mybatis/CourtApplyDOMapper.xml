@@ -2,12 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="guda.ball.dao.CourtApplyDOMapper">
   <resultMap id="BaseResultMap" type="guda.ball.dao.domain.CourtApplyDO">
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="user_id" jdbcType="INTEGER" property="userId" />
-    <result column="court_id" jdbcType="INTEGER" property="courtId" />
-    <result column="booking_time" jdbcType="TIMESTAMP" property="bookingTime" />
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="court_id" jdbcType="BIGINT" property="courtId" />
+    <result column="court_site_id" jdbcType="BIGINT" property="courtSiteId" />
+    <result column="booking_time" jdbcType="VARCHAR" property="bookingTime" />
+    <result column="booking_date" jdbcType="DATE" property="bookingDate" />
     <result column="status" jdbcType="INTEGER" property="status" />
-    <result column="is_deleted" jdbcType="INTEGER" property="isDeleted" />
     <result column="gmt_modify" jdbcType="TIMESTAMP" property="gmtModify" />
     <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
   </resultMap>
@@ -41,7 +42,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, user_id, court_id, booking_time, status, is_deleted, gmt_modify, gmt_create
+    id, user_id, court_id, court_site_id, booking_time, booking_date, status, gmt_modify, 
+    gmt_create
   </sql>
   <select id="selectByExample" parameterType="guda.ball.dao.domain.CourtApplyDOCriteria" resultMap="BaseResultMap">
     select
@@ -60,29 +62,29 @@
       limit ${startRow} , ${pageSize}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from court_apply
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from court_apply
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="guda.ball.dao.domain.CourtApplyDO">
-    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into court_apply (user_id, court_id, booking_time,
-      status, is_deleted, gmt_modify, 
-      gmt_create)
-    values (#{userId,jdbcType=INTEGER}, #{courtId,jdbcType=INTEGER}, #{bookingTime,jdbcType=TIMESTAMP}, 
-      #{status,jdbcType=INTEGER}, #{isDeleted,jdbcType=INTEGER}, #{gmtModify,jdbcType=TIMESTAMP}, 
-      #{gmtCreate,jdbcType=TIMESTAMP})
+    insert into court_apply (user_id, court_id, court_site_id, 
+      booking_time, booking_date, status, 
+      gmt_modify, gmt_create)
+    values (#{userId,jdbcType=BIGINT}, #{courtId,jdbcType=BIGINT}, #{courtSiteId,jdbcType=BIGINT}, 
+      #{bookingTime,jdbcType=VARCHAR}, #{bookingDate,jdbcType=DATE}, #{status,jdbcType=INTEGER}, 
+      #{gmtModify,jdbcType=TIMESTAMP}, #{gmtCreate,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="guda.ball.dao.domain.CourtApplyDO">
-    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into court_apply
@@ -93,14 +95,17 @@
       <if test="courtId != null">
         court_id,
       </if>
+      <if test="courtSiteId != null">
+        court_site_id,
+      </if>
       <if test="bookingTime != null">
         booking_time,
       </if>
+      <if test="bookingDate != null">
+        booking_date,
+      </if>
       <if test="status != null">
         status,
-      </if>
-      <if test="isDeleted != null">
-        is_deleted,
       </if>
       <if test="gmtModify != null">
         gmt_modify,
@@ -111,19 +116,22 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="userId != null">
-        #{userId,jdbcType=INTEGER},
+        #{userId,jdbcType=BIGINT},
       </if>
       <if test="courtId != null">
-        #{courtId,jdbcType=INTEGER},
+        #{courtId,jdbcType=BIGINT},
+      </if>
+      <if test="courtSiteId != null">
+        #{courtSiteId,jdbcType=BIGINT},
       </if>
       <if test="bookingTime != null">
-        #{bookingTime,jdbcType=TIMESTAMP},
+        #{bookingTime,jdbcType=VARCHAR},
+      </if>
+      <if test="bookingDate != null">
+        #{bookingDate,jdbcType=DATE},
       </if>
       <if test="status != null">
         #{status,jdbcType=INTEGER},
-      </if>
-      <if test="isDeleted != null">
-        #{isDeleted,jdbcType=INTEGER},
       </if>
       <if test="gmtModify != null">
         #{gmtModify,jdbcType=TIMESTAMP},
@@ -143,19 +151,22 @@
     update court_apply
     <set>
       <if test="userId != null">
-        user_id = #{userId,jdbcType=INTEGER},
+        user_id = #{userId,jdbcType=BIGINT},
       </if>
       <if test="courtId != null">
-        court_id = #{courtId,jdbcType=INTEGER},
+        court_id = #{courtId,jdbcType=BIGINT},
+      </if>
+      <if test="courtSiteId != null">
+        court_site_id = #{courtSiteId,jdbcType=BIGINT},
       </if>
       <if test="bookingTime != null">
-        booking_time = #{bookingTime,jdbcType=TIMESTAMP},
+        booking_time = #{bookingTime,jdbcType=VARCHAR},
+      </if>
+      <if test="bookingDate != null">
+        booking_date = #{bookingDate,jdbcType=DATE},
       </if>
       <if test="status != null">
         status = #{status,jdbcType=INTEGER},
-      </if>
-      <if test="isDeleted != null">
-        is_deleted = #{isDeleted,jdbcType=INTEGER},
       </if>
       <if test="gmtModify != null">
         gmt_modify = #{gmtModify,jdbcType=TIMESTAMP},
@@ -164,18 +175,20 @@
         gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="guda.ball.dao.domain.CourtApplyDO">
     update court_apply
-    set user_id = #{userId,jdbcType=INTEGER},
-      court_id = #{courtId,jdbcType=INTEGER},
-      booking_time = #{bookingTime,jdbcType=TIMESTAMP},
+    set user_id = #{userId,jdbcType=BIGINT},
+      court_id = #{courtId,jdbcType=BIGINT},
+      court_site_id = #{courtSiteId,jdbcType=BIGINT},
+      booking_time = #{bookingTime,jdbcType=VARCHAR},
+      booking_date = #{bookingDate,jdbcType=DATE},
       status = #{status,jdbcType=INTEGER},
-      is_deleted = #{isDeleted,jdbcType=INTEGER},
       gmt_modify = #{gmtModify,jdbcType=TIMESTAMP},
       gmt_create = #{gmtCreate,jdbcType=TIMESTAMP}
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </update>
+
 
 </mapper>

@@ -5,41 +5,35 @@ import guda.gen.GenField;
 import java.util.Date;
 
 public class CommentDO {
-    private Integer id;
-
-
-    @GenField(cn="约战ID",order=1,inSearchForm = false,canNull = false)
-    private Integer challengeId;
+    private Long id;
 
     @GenField(cn="评论内容",order=1,inSearchForm = false,canNull = false)
     private String msg;
     @GenField(cn="用户ID",order=1,inSearchForm = false,canNull = false)
-    private Integer userId;
+    private Long userId;
 
     @GenField(cn="被评论ID（球员，球场，比赛）",order=1,inSearchForm = false,canNull = false)
-    private Integer commentId;
+    private Long commentId;
     @GenField(cn="被评论类型（球员，球场，比赛）",order=1,inSearchForm = false,canNull = false)
     private String commentType;
-
-    private Integer isDeleted;
 
     private Date gmtModify;
 
     private Date gmtCreate;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public Integer getCommentId() {
+    public Long getCommentId() {
         return commentId;
     }
 
-    public void setCommentId(Integer commentId) {
+    public void setCommentId(Long commentId) {
         this.commentId = commentId;
     }
 
@@ -51,11 +45,11 @@ public class CommentDO {
         this.commentType = commentType == null ? null : commentType.trim();
     }
 
-    public Integer getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 
@@ -65,14 +59,6 @@ public class CommentDO {
 
     public void setMsg(String msg) {
         this.msg = msg == null ? null : msg.trim();
-    }
-
-    public Integer getIsDeleted() {
-        return isDeleted;
-    }
-
-    public void setIsDeleted(Integer isDeleted) {
-        this.isDeleted = isDeleted;
     }
 
     public Date getGmtModify() {

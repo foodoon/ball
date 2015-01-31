@@ -29,7 +29,7 @@ public class UserBizImpl implements UserBiz{
     @Autowired
     private SessionDOMapper sessionDOMapper;
 
-    public BizResult detail(int id) {
+    public BizResult detail(long id) {
         BizResult bizResult = new BizResult();
         try{
             UserDO userDO = userDOMapper.selectByPrimaryKey(id);
@@ -59,7 +59,7 @@ public class UserBizImpl implements UserBiz{
         return bizResult;
     }
 
-    public BizResult delete(int id) {
+    public BizResult delete(long id) {
         BizResult bizResult = new BizResult();
         try {
             userDOMapper.deleteByPrimaryKey(id);
@@ -78,8 +78,8 @@ public class UserBizImpl implements UserBiz{
         try {
             userDO.setGmtCreate(new Date());
             userDO.setGmtModify(new Date());
-            int count = userDOMapper.insert(userDO);
-            bizResult.data.put("count", userDO.getId());
+            userDOMapper.insert(userDO);
+            bizResult.data.put("id", userDO.getId());
             bizResult.success = true;
         } catch (Exception e) {
             logger.error("create User error", e);
@@ -93,7 +93,7 @@ public class UserBizImpl implements UserBiz{
         BizResult bizResult = new BizResult();
         try {
             int count = userDOMapper.updateByPrimaryKeySelective(userDO);
-            bizResult.data.put("count", count);
+            bizResult.data.put("id", count);
             bizResult.success = true;
         } catch (Exception e) {
             logger.error("update User error", e);

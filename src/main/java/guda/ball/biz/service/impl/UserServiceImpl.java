@@ -7,10 +7,10 @@ import guda.ball.biz.entity.AppUserForm;
 import guda.ball.biz.entity.UserVO;
 import guda.ball.biz.helper.FileHelper;
 import guda.ball.biz.service.UserService;
+import guda.ball.dao.TeamDOMapper;
+import guda.ball.dao.TeamMemberDOMapper;
 import guda.ball.dao.UserDOMapper;
-import guda.ball.dao.domain.SessionDO;
-import guda.ball.dao.domain.UserDO;
-import guda.ball.dao.domain.UserDOCriteria;
+import guda.ball.dao.domain.*;
 import guda.ball.util.*;
 import guda.tools.web.page.BizResult;
 import org.slf4j.Logger;
@@ -25,8 +25,8 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Created by foodoon on 2014/7/31.
- */
+* Created by foodoon on 2014/7/31.
+*/
 @Service
 public class UserServiceImpl implements UserService {
     private final static Logger log = LoggerFactory.getLogger(UserServiceImpl.class);
@@ -39,6 +39,10 @@ public class UserServiceImpl implements UserService {
     private SessionBiz sessionBiz;
     @Autowired
     private FileHelper fileHelper;
+    @Autowired
+    private TeamMemberDOMapper teamMemberDOMapper;
+    @Autowired
+    private TeamDOMapper teamDOMapper;
 
     @AppRequestMapping(apiName = "user.reg", apiVersion = "1.0")
     public BizResult create(AppUserForm appUserForm) {
@@ -119,7 +123,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @AppRequestMapping(apiName = "user.queryUserInfoById", apiVersion = "1.0")
-    public BizResult queryUserInfoById(@AppRequestParam("sid") String sid, @AppRequestParam("userId") int userId) {
+    public BizResult queryUserInfoById(@AppRequestParam("sid") String sid, @AppRequestParam("userId") long userId) {
         if(sid == null){
             return BizResultHelper.newResultCode(CommonResultCode.NEED_LOGIN);
         }
@@ -194,7 +198,9 @@ public class UserServiceImpl implements UserService {
             return BizResultHelper.newResultCode(CommonResultCode.NEED_LOGIN);
         }
         UserDOCriteria userDOCriteria = new UserDOCriteria();
-        userDOCriteria.createCriteria().andRealNameLike("%"+realName+"%");
+        if(StringUtils.hasText(realName)) {
+            userDOCriteria.createCriteria().andRealNameLike("%" + realName + "%");
+        }
         userDOCriteria.setStartRow(0);
         userDOCriteria.setPageSize(10);
         List<UserDO> userDOs = userDOMapper.selectByExample(userDOCriteria);
@@ -204,7 +210,14 @@ public class UserServiceImpl implements UserService {
                 public UserVO transform(UserDO object) {
                     UserVO userVO = new UserVO(object);
                     userVO.setImg(fileHelper.getFileSever() + object.getImg());
-                    return new UserVO(object);
+                    TeamMemberDOCriteria teamMemberDOCriteria = new TeamMemberDOCriteria();
+                    teamMemberDOCriteria.createCriteria().andUserIdEqualTo(object.getId());
+                    List<TeamMemberDO> teamMemberDOs = teamMemberDOMapper.selectByExample(teamMemberDOCriteria);
+                    if(teamMemberDOs.size()>0){
+                        TeamMemberDO teamMemberDO = teamMemberDOs.get(0);
+                        userVO.setTeam(teamDOMapper.selectByPrimaryKey(teamMemberDO.getTeamId()));
+                    }
+                    return userVO;
                 }
             });
 

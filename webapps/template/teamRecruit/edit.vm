@@ -4,9 +4,9 @@
   <table class="table">
   #springBind("teamRecruitEditForm.id")
   <input type="hidden" name="${status.expression}" value="$!status.value" />
-                #springBind("teamRecruitEditForm.userId")
+                #springBind("teamRecruitEditForm.teamId")
           <tr>
-              <td>用户ID</td>
+              <td>球队ID</td>
               <td>
                   <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
                   #foreach($error in $status.errorMessages) <b>$error</b>  #end
@@ -15,6 +15,14 @@
                 #springBind("teamRecruitEditForm.recruitDesc")
           <tr>
               <td>招募宣言</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("teamRecruitEditForm.userId")
+          <tr>
+              <td>发布用户ID</td>
               <td>
                   <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
                   #foreach($error in $status.errorMessages) <b>$error</b>  #end

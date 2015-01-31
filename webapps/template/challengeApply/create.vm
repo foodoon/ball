@@ -2,25 +2,9 @@
 
 <form name="challengeApplyForm" action="$!homeServer.getURI("challengeApply/doCreate.htm")" method="post">
   <table class="table">
-    #springBind("challengeApplyForm.challengeId")
+    #springBind("challengeApplyForm.accept")
     <tr>
-        <td>约战ID</td>
-        <td>
-            <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
-            #foreach($error in $status.errorMessages) <b>$error</b>  #end
-        </td>
-    </tr>
-    #springBind("challengeApplyForm.teamId")
-    <tr>
-        <td>球队ID</td>
-        <td>
-            <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
-            #foreach($error in $status.errorMessages) <b>$error</b>  #end
-        </td>
-    </tr>
-    #springBind("challengeApplyForm.goalCount")
-    <tr>
-        <td>比赛进球数</td>
+        <td>是否接受</td>
         <td>
             <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
             #foreach($error in $status.errorMessages) <b>$error</b>  #end
@@ -34,9 +18,25 @@
             #foreach($error in $status.errorMessages) <b>$error</b>  #end
         </td>
     </tr>
-    #springBind("challengeApplyForm.accept")
+    #springBind("challengeApplyForm.goalCount")
     <tr>
-        <td>是否接受</td>
+        <td>比赛进球数</td>
+        <td>
+            <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+            #foreach($error in $status.errorMessages) <b>$error</b>  #end
+        </td>
+    </tr>
+    #springBind("challengeApplyForm.teamId")
+    <tr>
+        <td>球队ID</td>
+        <td>
+            <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+            #foreach($error in $status.errorMessages) <b>$error</b>  #end
+        </td>
+    </tr>
+    #springBind("challengeApplyForm.challengeId")
+    <tr>
+        <td>约战ID</td>
         <td>
             <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
             #foreach($error in $status.errorMessages) <b>$error</b>  #end

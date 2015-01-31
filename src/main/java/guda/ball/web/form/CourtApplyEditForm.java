@@ -5,13 +5,13 @@ import guda.ball.dao.domain.CourtApplyDO;
 
 public class CourtApplyEditForm extends CourtApplyForm{
 
-    private Integer id;
+    private Long id;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -25,10 +25,12 @@ public class CourtApplyEditForm extends CourtApplyForm{
         if(courtApplyDO == null){
         return ;
     }
-    this.setUserId(courtApplyDO.getUserId());
-    this.setCourtId(courtApplyDO.getCourtId());
+    this.setBookingDate(courtApplyDO.getBookingDate());
     this.setBookingTime(courtApplyDO.getBookingTime());
+    this.setCourtSiteId(courtApplyDO.getCourtSiteId());
     this.setStatus(courtApplyDO.getStatus());
+    this.setCourtId(courtApplyDO.getCourtId());
+    this.setUserId(courtApplyDO.getUserId());
 }
 
 }

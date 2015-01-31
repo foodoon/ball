@@ -1,0 +1,38 @@
+$!courtSite详情
+  <table class="table">
+                <tr>
+              <td>场地开放模版</td>
+              <td>
+                  $!courtSiteDO.openTemplate
+              </td>
+          </tr>
+
+                <tr>
+              <td>是否开放</td>
+              <td>
+                  $!courtSiteDO.open
+              </td>
+          </tr>
+
+                <tr>
+              <td>场地类型</td>
+              <td>
+                  $!courtSiteDO.siteType
+              </td>
+          </tr>
+
+                <tr>
+              <td>场地名称</td>
+              <td>
+                  $!courtSiteDO.siteName
+              </td>
+          </tr>
+
+                <tr>
+              <td>场地ID</td>
+              <td>
+                  $!courtSiteDO.courtId
+              </td>
+          </tr>
+
+        </table>

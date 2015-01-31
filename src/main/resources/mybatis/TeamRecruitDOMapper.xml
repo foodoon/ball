@@ -2,10 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="guda.ball.dao.TeamRecruitDOMapper">
   <resultMap id="BaseResultMap" type="guda.ball.dao.domain.TeamRecruitDO">
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="team_id" jdbcType="BIGINT" property="teamId" />
     <result column="recruit_desc" jdbcType="VARCHAR" property="recruitDesc" />
-    <result column="is_deleted" jdbcType="INTEGER" property="isDeleted" />
     <result column="gmt_modify" jdbcType="TIMESTAMP" property="gmtModify" />
     <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
   </resultMap>
@@ -39,7 +39,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, user_id, recruit_desc, is_deleted, gmt_modify, gmt_create
+    id, user_id, team_id, recruit_desc, gmt_modify, gmt_create
   </sql>
   <select id="selectByExample" parameterType="guda.ball.dao.domain.TeamRecruitDOCriteria" resultMap="BaseResultMap">
     select
@@ -58,38 +58,39 @@
       limit ${startRow} , ${pageSize}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from team_recruit
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from team_recruit
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="guda.ball.dao.domain.TeamRecruitDO">
-    insert into team_recruit (id, user_id, recruit_desc,
-      is_deleted, gmt_modify, gmt_create
-      )
-    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{recruitDesc,jdbcType=VARCHAR}, 
-      #{isDeleted,jdbcType=INTEGER}, #{gmtModify,jdbcType=TIMESTAMP}, #{gmtCreate,jdbcType=TIMESTAMP}
-      )
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into team_recruit (user_id, team_id, recruit_desc, 
+      gmt_modify, gmt_create)
+    values (#{userId,jdbcType=BIGINT}, #{teamId,jdbcType=BIGINT}, #{recruitDesc,jdbcType=VARCHAR}, 
+      #{gmtModify,jdbcType=TIMESTAMP}, #{gmtCreate,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="guda.ball.dao.domain.TeamRecruitDO">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
     insert into team_recruit
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
       <if test="userId != null">
         user_id,
       </if>
+      <if test="teamId != null">
+        team_id,
+      </if>
       <if test="recruitDesc != null">
         recruit_desc,
-      </if>
-      <if test="isDeleted != null">
-        is_deleted,
       </if>
       <if test="gmtModify != null">
         gmt_modify,
@@ -99,17 +100,14 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
       <if test="userId != null">
-        #{userId,jdbcType=INTEGER},
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="teamId != null">
+        #{teamId,jdbcType=BIGINT},
       </if>
       <if test="recruitDesc != null">
         #{recruitDesc,jdbcType=VARCHAR},
-      </if>
-      <if test="isDeleted != null">
-        #{isDeleted,jdbcType=INTEGER},
       </if>
       <if test="gmtModify != null">
         #{gmtModify,jdbcType=TIMESTAMP},
@@ -129,13 +127,13 @@
     update team_recruit
     <set>
       <if test="userId != null">
-        user_id = #{userId,jdbcType=INTEGER},
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="teamId != null">
+        team_id = #{teamId,jdbcType=BIGINT},
       </if>
       <if test="recruitDesc != null">
         recruit_desc = #{recruitDesc,jdbcType=VARCHAR},
-      </if>
-      <if test="isDeleted != null">
-        is_deleted = #{isDeleted,jdbcType=INTEGER},
       </if>
       <if test="gmtModify != null">
         gmt_modify = #{gmtModify,jdbcType=TIMESTAMP},
@@ -144,16 +142,16 @@
         gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="guda.ball.dao.domain.TeamRecruitDO">
     update team_recruit
-    set user_id = #{userId,jdbcType=INTEGER},
+    set user_id = #{userId,jdbcType=BIGINT},
+      team_id = #{teamId,jdbcType=BIGINT},
       recruit_desc = #{recruitDesc,jdbcType=VARCHAR},
-      is_deleted = #{isDeleted,jdbcType=INTEGER},
       gmt_modify = #{gmtModify,jdbcType=TIMESTAMP},
       gmt_create = #{gmtCreate,jdbcType=TIMESTAMP}
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </update>
 
 </mapper>

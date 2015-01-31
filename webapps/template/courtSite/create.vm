@@ -1,0 +1,76 @@
+新增
+
+<form name="courtSiteForm" action="$!homeServer.getURI("courtSite/doCreate.htm")" method="post">
+  <table class="table">
+      #springBind("courtSiteForm.courtId")
+      <input type="hidden" name="${status.expression}" value="$!status.value">
+
+
+    #springBind("courtSiteForm.siteType")
+    <tr>
+        <td>场地类型</td>
+        <td>
+            <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+            #foreach($error in $status.errorMessages) <b>$error</b>  #end
+        </td>
+    </tr>
+    #springBind("courtSiteForm.siteName")
+    <tr>
+        <td>场地名称</td>
+        <td>
+            <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+            #foreach($error in $status.errorMessages) <b>$error</b>  #end
+        </td>
+    </tr>
+      #springBind("courtSiteForm.open")
+      <tr>
+          <td>是否开放</td>
+          <td>
+              <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+              #foreach($error in $status.errorMessages) <b>$error</b>  #end
+          </td>
+      </tr>
+      #springBind("courtSiteForm.openTemplate")
+      <tr>
+          <td>场地开放模版</td>
+          <td>
+              <textarea rows="10" cols="80" name="${status.expression}">$!status.value</textarea>
+
+              #foreach($error in $status.errorMessages) <b>$error</b>  #end
+          </td>
+      </tr>
+      <tr>
+          <td>场地开放预览</td>
+          <td>
+              <table  class="table">
+                  <thead>
+                  <tr>
+                      <th>
+                          星期
+                      </th>
+                      <th>
+                          开放时段
+                      </th>
+                  </tr>
+                  </thead>
+                  #foreach($f in $openInfo)
+                      <tr>
+                          <td>$week.cn($f.week)</td>
+                          <td>
+
+                              #foreach($s in $f.timeSection)
+                                $s.timeInfo &nbsp;
+                              #end
+                           </td>
+                      </tr>
+                  #end
+
+              </table>
+          </td>
+      </tr>
+	  <tr>
+	  <td colspan="2">
+	  <input type="submit" class="btn" value="提交"/></td>
+	  </tr>
+  </table>
+</form>

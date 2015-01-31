@@ -1,12 +1,12 @@
 package guda.ball.biz.service.impl;
 
+import guda.ball.biz.TeamBiz;
 import guda.ball.biz.entity.TeamVO;
 import guda.ball.dao.*;
 import guda.ball.util.*;
 import guda.tools.web.page.BaseQuery;
 import guda.tools.web.page.BizResult;
 import guda.ball.biz.SessionBiz;
-import guda.ball.biz.TeamBiz;
 import guda.ball.biz.entity.TeamApplyVO;
 import guda.ball.biz.entity.TeamMemberVO;
 import guda.ball.biz.service.TeamService;
@@ -24,8 +24,8 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Created by foodoon on 2014/8/2.
- */
+* Created by foodoon on 2014/8/2.
+*/
 @Service
 public class TeamServiceImpl implements TeamService{
 
@@ -49,7 +49,7 @@ public class TeamServiceImpl implements TeamService{
     private ChallengeDOMapper challengeDOMapper;
 
     @AppRequestMapping(apiName = "team.apply", apiVersion = "1.0")
-    public BizResult apply(@AppRequestParam("sid") String sid, @AppRequestParam("teamId") int teamId) {
+    public BizResult apply(@AppRequestParam("sid") String sid, @AppRequestParam("teamId") long teamId) {
         //检查team 是否存在，并且是否在招人
         if(teamId<1 || !StringUtils.hasText(sid)){
             return BizResultHelper.newResultCode(CommonResultCode.PARAM_MISS);
@@ -80,7 +80,6 @@ public class TeamServiceImpl implements TeamService{
         TeamApplyDO teamApplyDO = new TeamApplyDO();
         teamApplyDO.setGmtCreate(new Date());
         teamApplyDO.setGmtModify(new Date());
-        teamApplyDO.setIsDeleted(0);
         teamApplyDO.setUserId(sessionDO.getUserId());
         teamApplyDO.setTeamId(teamDO.getId());
         teamApplyDO.setStatus(ApplyStatusEnum.INIT.value);
@@ -95,7 +94,7 @@ public class TeamServiceImpl implements TeamService{
         return BizResultHelper.newCommonError();
     }
     @AppRequestMapping(apiName = "team.cancelApply", apiVersion = "1.0")
-    public BizResult cancelApply(@AppRequestParam("sid") String sid, @AppRequestParam("applyId") int applyId) {
+    public BizResult cancelApply(@AppRequestParam("sid") String sid, @AppRequestParam("applyId") long applyId) {
         if(applyId<1 || !StringUtils.hasText(sid)){
             return BizResultHelper.newResultCode(CommonResultCode.PARAM_MISS);
         }
@@ -149,10 +148,21 @@ public class TeamServiceImpl implements TeamService{
         teamDO.setGmtCreate(new Date());
         teamDO.setGmtModify(new Date());
         teamDO.setCanJoin(1);
-        teamDO.setIsDeleted(0);
         teamDO.setUserId(userDO.getId());
         try {
-            return teamBiz.create(teamDO);
+            teamDOMapper.insert(teamDO);
+
+            TeamMemberDO teamMemberDO = new TeamMemberDO();
+            teamMemberDO.setGmtCreate(new Date());
+            teamMemberDO.setGmtModify(new Date());
+            teamMemberDO.setTeamId(teamDO.getId());
+            teamMemberDO.setUserId(userDO.getId());
+            teamMemberDO.setCreator(1);
+            teamMemberDOMapper.insert(teamMemberDO);
+            BizResult bizResult1 = new BizResult();
+            bizResult1.data.put("id",teamDO.getId());
+            bizResult1.success = true;
+            return bizResult1;
         }catch(Exception e){
             log.error("create team error", e);
         }
@@ -189,7 +199,7 @@ public class TeamServiceImpl implements TeamService{
     }
 
     @AppRequestMapping(apiName = "team.delete", apiVersion = "1.0")
-    public BizResult delete(@AppRequestParam("sid") String sid,@AppRequestParam("id") int id) {
+    public BizResult delete(@AppRequestParam("sid") String sid,@AppRequestParam("id") long id) {
 
         if(!StringUtils.hasText(sid) || id <1){
             return BizResultHelper.newResultCode(CommonResultCode.PARAM_MISS);
@@ -274,9 +284,9 @@ public class TeamServiceImpl implements TeamService{
         TeamMemberDOCriteria.Criteria criteria1 = teamMemberDOCriteria.createCriteria();
         criteria1.andUserIdEqualTo(userDO.getId());
         List<TeamMemberDO> teamMemberDOs = teamMemberDOMapper.selectByExample(teamMemberDOCriteria);
-        List<Integer> teamIdList = CollectionHelper.transformList(teamMemberDOs,new Transformer<TeamMemberDO, Integer>() {
+        List<Long> teamIdList = CollectionHelper.transformList(teamMemberDOs,new Transformer<TeamMemberDO, Long>() {
             @Override
-            public Integer transform(TeamMemberDO object) {
+            public Long transform(TeamMemberDO object) {
                 return object.getId();
             }
         });
@@ -302,7 +312,7 @@ public class TeamServiceImpl implements TeamService{
 
 
     @AppRequestMapping(apiName = "team.passApply", apiVersion = "1.0")
-    public BizResult passApply(@AppRequestParam("sid") String sid,@AppRequestParam("applyId")  int applyId) {
+    public BizResult passApply(@AppRequestParam("sid") String sid,@AppRequestParam("applyId")  long applyId) {
         if(applyId<1 || !StringUtils.hasText(sid)){
             return BizResultHelper.newResultCode(CommonResultCode.PARAM_MISS);
         }
@@ -332,6 +342,7 @@ public class TeamServiceImpl implements TeamService{
             TeamMemberDO teamMemberDO = new TeamMemberDO();
             teamMemberDO.setUserId(teamApplyDO.getUserId());
             teamMemberDO.setTeamId(teamApplyDO.getTeamId());
+            teamMemberDO.setCreator(0);
             teamMemberDO.setGmtCreate(new Date());
             teamMemberDO.setGmtModify(new Date());
             teamMemberDOMapper.insert(teamMemberDO);
@@ -343,7 +354,7 @@ public class TeamServiceImpl implements TeamService{
     }
 
     @AppRequestMapping(apiName = "team.rejectApply", apiVersion = "1.0")
-    public BizResult rejectApply(@AppRequestParam("sid") String sid, @AppRequestParam("applyId") int applyId) {
+    public BizResult rejectApply(@AppRequestParam("sid") String sid, @AppRequestParam("applyId") long applyId) {
         if(applyId<1 || !StringUtils.hasText(sid)){
             return BizResultHelper.newResultCode(CommonResultCode.PARAM_MISS);
         }
@@ -399,9 +410,9 @@ public class TeamServiceImpl implements TeamService{
             bizResult1.data.put("query",baseQuery);
             return bizResult1;
         }
-        List<Integer> teamIdList = CollectionHelper.transformList(teamDOs,new Transformer<TeamDO, Integer>() {
+        List<Long> teamIdList = CollectionHelper.transformList(teamDOs,new Transformer<TeamDO, Long>() {
             @Override
-            public Integer transform(TeamDO object) {
+            public Long transform(TeamDO object) {
                 return object.getId();
             }
         });
@@ -476,7 +487,7 @@ public class TeamServiceImpl implements TeamService{
     }
 
     @AppRequestMapping(apiName = "team.removeMember", apiVersion = "1.0")
-    public BizResult removeMember(@AppRequestParam("sid") String sid,@AppRequestParam("removeUserId")  int removeUserId) {
+    public BizResult removeMember(@AppRequestParam("sid") String sid,@AppRequestParam("removeUserId")  long removeUserId) {
         if( !StringUtils.hasText(sid) || removeUserId <1){
             return BizResultHelper.newResultCode(CommonResultCode.PARAM_MISS);
         }
@@ -510,7 +521,7 @@ public class TeamServiceImpl implements TeamService{
         return BizResultHelper.newCommonError();
     }
     @AppRequestMapping(apiName = "team.queryMemberList", apiVersion = "1.0")
-    public BizResult queryMemberList(@AppRequestParam("sid") String sid ,@AppRequestParam("teamId") int teamId ,@AppRequestParam("pageNo")int pageNo,@AppRequestParam("pageSize")int pageSize) {
+    public BizResult queryMemberList(@AppRequestParam("sid") String sid ,@AppRequestParam("teamId") long teamId ,@AppRequestParam("pageNo")int pageNo,@AppRequestParam("pageSize")int pageSize) {
         if( !StringUtils.hasText(sid)){
             return BizResultHelper.newResultCode(CommonResultCode.PARAM_MISS);
         }
@@ -594,7 +605,7 @@ public class TeamServiceImpl implements TeamService{
     }
     @AppRequestMapping(apiName = "team.queryTeamInfo", apiVersion = "1.0")
     @Override
-    public BizResult queryTeamInfo(@AppRequestParam("sid") String sid,@AppRequestParam("teamId")  int teamId) {
+    public BizResult queryTeamInfo(@AppRequestParam("sid") String sid,@AppRequestParam("teamId")  long teamId) {
         if( !StringUtils.hasText(sid)){
             return BizResultHelper.newResultCode(CommonResultCode.PARAM_MISS);
         }
@@ -620,7 +631,7 @@ public class TeamServiceImpl implements TeamService{
         teamVO.setApplyBallCount(challengeApplyDOMapper.countByExample(challengeApplyDOCriteria));
         //查询约战次数
         ChallengeDOCriteria challengeDOCriteria = new ChallengeDOCriteria();
-        challengeDOCriteria.createCriteria().andTeamIdEqualTo(teamDO.getId());
+       // challengeDOCriteria.createCriteria().andTeamIdEqualTo(teamDO.getId());
         teamVO.setBallCount(challengeDOMapper.countByExample(challengeDOCriteria));
         bizResult1.data.put("teamInfo", teamVO);
         bizResult1.success=true;

@@ -1,23 +1,9 @@
 $!challengeApply详情
   <table class="table">
                 <tr>
-              <td>约战ID</td>
+              <td>是否接受</td>
               <td>
-                  $!challengeApplyDO.challengeId
-              </td>
-          </tr>
-
-                <tr>
-              <td>球队ID</td>
-              <td>
-                  $!challengeApplyDO.teamId
-              </td>
-          </tr>
-
-                <tr>
-              <td>比赛进球数</td>
-              <td>
-                  $!challengeApplyDO.goalCount
+                  $!challengeApplyDO.accept
               </td>
           </tr>
 
@@ -29,9 +15,23 @@ $!challengeApply详情
           </tr>
 
                 <tr>
-              <td>是否接受</td>
+              <td>比赛进球数</td>
               <td>
-                  $!challengeApplyDO.accept
+                  $!challengeApplyDO.goalCount
+              </td>
+          </tr>
+
+                <tr>
+              <td>球队ID</td>
+              <td>
+                  $!challengeApplyDO.teamId
+              </td>
+          </tr>
+
+                <tr>
+              <td>约战ID</td>
+              <td>
+                  $!challengeApplyDO.challengeId
               </td>
           </tr>
 

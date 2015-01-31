@@ -135,52 +135,52 @@ public class ChallengeApplyDOCriteria {
             return (Criteria) this;
         }
 
-        public Criteria andIdEqualTo(Integer value) {
+        public Criteria andIdEqualTo(Long value) {
             addCriterion("id =", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotEqualTo(Integer value) {
+        public Criteria andIdNotEqualTo(Long value) {
             addCriterion("id <>", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdGreaterThan(Integer value) {
+        public Criteria andIdGreaterThan(Long value) {
             addCriterion("id >", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdGreaterThanOrEqualTo(Integer value) {
+        public Criteria andIdGreaterThanOrEqualTo(Long value) {
             addCriterion("id >=", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdLessThan(Integer value) {
+        public Criteria andIdLessThan(Long value) {
             addCriterion("id <", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdLessThanOrEqualTo(Integer value) {
+        public Criteria andIdLessThanOrEqualTo(Long value) {
             addCriterion("id <=", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdIn(List<Integer> values) {
+        public Criteria andIdIn(List<Long> values) {
             addCriterion("id in", values, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotIn(List<Integer> values) {
+        public Criteria andIdNotIn(List<Long> values) {
             addCriterion("id not in", values, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdBetween(Integer value1, Integer value2) {
+        public Criteria andIdBetween(Long value1, Long value2) {
             addCriterion("id between", value1, value2, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotBetween(Integer value1, Integer value2) {
+        public Criteria andIdNotBetween(Long value1, Long value2) {
             addCriterion("id not between", value1, value2, "id");
             return (Criteria) this;
         }
@@ -195,52 +195,52 @@ public class ChallengeApplyDOCriteria {
             return (Criteria) this;
         }
 
-        public Criteria andChallengeIdEqualTo(Integer value) {
+        public Criteria andChallengeIdEqualTo(Long value) {
             addCriterion("challenge_id =", value, "challengeId");
             return (Criteria) this;
         }
 
-        public Criteria andChallengeIdNotEqualTo(Integer value) {
+        public Criteria andChallengeIdNotEqualTo(Long value) {
             addCriterion("challenge_id <>", value, "challengeId");
             return (Criteria) this;
         }
 
-        public Criteria andChallengeIdGreaterThan(Integer value) {
+        public Criteria andChallengeIdGreaterThan(Long value) {
             addCriterion("challenge_id >", value, "challengeId");
             return (Criteria) this;
         }
 
-        public Criteria andChallengeIdGreaterThanOrEqualTo(Integer value) {
+        public Criteria andChallengeIdGreaterThanOrEqualTo(Long value) {
             addCriterion("challenge_id >=", value, "challengeId");
             return (Criteria) this;
         }
 
-        public Criteria andChallengeIdLessThan(Integer value) {
+        public Criteria andChallengeIdLessThan(Long value) {
             addCriterion("challenge_id <", value, "challengeId");
             return (Criteria) this;
         }
 
-        public Criteria andChallengeIdLessThanOrEqualTo(Integer value) {
+        public Criteria andChallengeIdLessThanOrEqualTo(Long value) {
             addCriterion("challenge_id <=", value, "challengeId");
             return (Criteria) this;
         }
 
-        public Criteria andChallengeIdIn(List<Integer> values) {
+        public Criteria andChallengeIdIn(List<Long> values) {
             addCriterion("challenge_id in", values, "challengeId");
             return (Criteria) this;
         }
 
-        public Criteria andChallengeIdNotIn(List<Integer> values) {
+        public Criteria andChallengeIdNotIn(List<Long> values) {
             addCriterion("challenge_id not in", values, "challengeId");
             return (Criteria) this;
         }
 
-        public Criteria andChallengeIdBetween(Integer value1, Integer value2) {
+        public Criteria andChallengeIdBetween(Long value1, Long value2) {
             addCriterion("challenge_id between", value1, value2, "challengeId");
             return (Criteria) this;
         }
 
-        public Criteria andChallengeIdNotBetween(Integer value1, Integer value2) {
+        public Criteria andChallengeIdNotBetween(Long value1, Long value2) {
             addCriterion("challenge_id not between", value1, value2, "challengeId");
             return (Criteria) this;
         }
@@ -255,52 +255,52 @@ public class ChallengeApplyDOCriteria {
             return (Criteria) this;
         }
 
-        public Criteria andTeamIdEqualTo(Integer value) {
+        public Criteria andTeamIdEqualTo(Long value) {
             addCriterion("team_id =", value, "teamId");
             return (Criteria) this;
         }
 
-        public Criteria andTeamIdNotEqualTo(Integer value) {
+        public Criteria andTeamIdNotEqualTo(Long value) {
             addCriterion("team_id <>", value, "teamId");
             return (Criteria) this;
         }
 
-        public Criteria andTeamIdGreaterThan(Integer value) {
+        public Criteria andTeamIdGreaterThan(Long value) {
             addCriterion("team_id >", value, "teamId");
             return (Criteria) this;
         }
 
-        public Criteria andTeamIdGreaterThanOrEqualTo(Integer value) {
+        public Criteria andTeamIdGreaterThanOrEqualTo(Long value) {
             addCriterion("team_id >=", value, "teamId");
             return (Criteria) this;
         }
 
-        public Criteria andTeamIdLessThan(Integer value) {
+        public Criteria andTeamIdLessThan(Long value) {
             addCriterion("team_id <", value, "teamId");
             return (Criteria) this;
         }
 
-        public Criteria andTeamIdLessThanOrEqualTo(Integer value) {
+        public Criteria andTeamIdLessThanOrEqualTo(Long value) {
             addCriterion("team_id <=", value, "teamId");
             return (Criteria) this;
         }
 
-        public Criteria andTeamIdIn(List<Integer> values) {
+        public Criteria andTeamIdIn(List<Long> values) {
             addCriterion("team_id in", values, "teamId");
             return (Criteria) this;
         }
 
-        public Criteria andTeamIdNotIn(List<Integer> values) {
+        public Criteria andTeamIdNotIn(List<Long> values) {
             addCriterion("team_id not in", values, "teamId");
             return (Criteria) this;
         }
 
-        public Criteria andTeamIdBetween(Integer value1, Integer value2) {
+        public Criteria andTeamIdBetween(Long value1, Long value2) {
             addCriterion("team_id between", value1, value2, "teamId");
             return (Criteria) this;
         }
 
-        public Criteria andTeamIdNotBetween(Integer value1, Integer value2) {
+        public Criteria andTeamIdNotBetween(Long value1, Long value2) {
             addCriterion("team_id not between", value1, value2, "teamId");
             return (Criteria) this;
         }
@@ -492,66 +492,6 @@ public class ChallengeApplyDOCriteria {
 
         public Criteria andAcceptNotBetween(Integer value1, Integer value2) {
             addCriterion("accept not between", value1, value2, "accept");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsDeletedIsNull() {
-            addCriterion("is_deleted is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsDeletedIsNotNull() {
-            addCriterion("is_deleted is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsDeletedEqualTo(Integer value) {
-            addCriterion("is_deleted =", value, "isDeleted");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsDeletedNotEqualTo(Integer value) {
-            addCriterion("is_deleted <>", value, "isDeleted");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsDeletedGreaterThan(Integer value) {
-            addCriterion("is_deleted >", value, "isDeleted");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsDeletedGreaterThanOrEqualTo(Integer value) {
-            addCriterion("is_deleted >=", value, "isDeleted");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsDeletedLessThan(Integer value) {
-            addCriterion("is_deleted <", value, "isDeleted");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsDeletedLessThanOrEqualTo(Integer value) {
-            addCriterion("is_deleted <=", value, "isDeleted");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsDeletedIn(List<Integer> values) {
-            addCriterion("is_deleted in", values, "isDeleted");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsDeletedNotIn(List<Integer> values) {
-            addCriterion("is_deleted not in", values, "isDeleted");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsDeletedBetween(Integer value1, Integer value2) {
-            addCriterion("is_deleted between", value1, value2, "isDeleted");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsDeletedNotBetween(Integer value1, Integer value2) {
-            addCriterion("is_deleted not between", value1, value2, "isDeleted");
             return (Criteria) this;
         }
 

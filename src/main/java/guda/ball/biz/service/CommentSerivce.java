@@ -8,7 +8,7 @@ import guda.tools.web.page.BizResult;
  */
 public interface CommentSerivce {
 
-    BizResult comment(String sid, int commentId, String commentType, String msg);
+    BizResult comment(String sid, long commentId, String commentType, String msg);
 
-    BizResult queryCommentList(String sid, int commentId, String commentType, int pageNo, int pageSize);
+    BizResult queryCommentList(String sid, long commentId, String commentType, int pageNo, int pageSize);
 }

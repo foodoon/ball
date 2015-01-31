@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="guda.ball.dao.CourtSiteSectionDOMapper">
+  <resultMap id="BaseResultMap" type="guda.ball.dao.domain.CourtSiteSectionDO">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="court_site_id" jdbcType="BIGINT" property="courtSiteId" />
+    <result column="date_info" jdbcType="DATE" property="dateInfo" />
+    <result column="time_info" jdbcType="VARCHAR" property="timeInfo" />
+    <result column="price" jdbcType="BIGINT" property="price" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="gmt_modify" jdbcType="TIMESTAMP" property="gmtModify" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, court_site_id, date_info, time_info, price, status, gmt_create, gmt_modify
+  </sql>
+  <select id="selectByExample" parameterType="guda.ball.dao.domain.CourtSiteSectionDOCriteria" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from court_site_section
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    <if test="startRow &gt;= 0">
+      limit ${startRow} , ${pageSize}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from court_site_section
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from court_site_section
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="guda.ball.dao.domain.CourtSiteSectionDO">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into court_site_section (court_site_id, date_info, time_info, 
+      price, status, gmt_create, 
+      gmt_modify)
+    values (#{courtSiteId,jdbcType=BIGINT}, #{dateInfo,jdbcType=DATE}, #{timeInfo,jdbcType=VARCHAR}, 
+      #{price,jdbcType=BIGINT}, #{status,jdbcType=INTEGER}, #{gmtCreate,jdbcType=TIMESTAMP}, 
+      #{gmtModify,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="guda.ball.dao.domain.CourtSiteSectionDO">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into court_site_section
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="courtSiteId != null">
+        court_site_id,
+      </if>
+      <if test="dateInfo != null">
+        date_info,
+      </if>
+      <if test="timeInfo != null">
+        time_info,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create,
+      </if>
+      <if test="gmtModify != null">
+        gmt_modify,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="courtSiteId != null">
+        #{courtSiteId,jdbcType=BIGINT},
+      </if>
+      <if test="dateInfo != null">
+        #{dateInfo,jdbcType=DATE},
+      </if>
+      <if test="timeInfo != null">
+        #{timeInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="gmtCreate != null">
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModify != null">
+        #{gmtModify,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="guda.ball.dao.domain.CourtSiteSectionDOCriteria" resultType="java.lang.Integer">
+    select count(*) from court_site_section
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByPrimaryKeySelective" parameterType="guda.ball.dao.domain.CourtSiteSectionDO">
+    update court_site_section
+    <set>
+      <if test="courtSiteId != null">
+        court_site_id = #{courtSiteId,jdbcType=BIGINT},
+      </if>
+      <if test="dateInfo != null">
+        date_info = #{dateInfo,jdbcType=DATE},
+      </if>
+      <if test="timeInfo != null">
+        time_info = #{timeInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModify != null">
+        gmt_modify = #{gmtModify,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="guda.ball.dao.domain.CourtSiteSectionDO">
+    update court_site_section
+    set court_site_id = #{courtSiteId,jdbcType=BIGINT},
+      date_info = #{dateInfo,jdbcType=DATE},
+      time_info = #{timeInfo,jdbcType=VARCHAR},
+      price = #{price,jdbcType=BIGINT},
+      status = #{status,jdbcType=INTEGER},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modify = #{gmtModify,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+</mapper>

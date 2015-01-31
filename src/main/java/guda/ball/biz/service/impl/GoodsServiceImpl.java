@@ -25,8 +25,8 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Created by well on 2014/8/9.
- */
+* Created by well on 2014/8/9.
+*/
 @Service
 public class GoodsServiceImpl implements GoodsService{
     private final static Logger log = LoggerFactory.getLogger(GoodsServiceImpl.class);
@@ -111,7 +111,7 @@ public class GoodsServiceImpl implements GoodsService{
         return BizResultHelper.newCommonError();
     }
     @AppRequestMapping(apiName = "goods.delete", apiVersion = "1.0")
-    public BizResult delete(@AppRequestParam("sid") String sid, @AppRequestParam("id") int id) {
+    public BizResult delete(@AppRequestParam("sid") String sid, @AppRequestParam("id") long id) {
         if (!StringUtils.hasText(sid) || id<1) {
             return BizResultHelper.newResultCode(CommonResultCode.PARAM_MISS);
         }
@@ -145,7 +145,7 @@ public class GoodsServiceImpl implements GoodsService{
         return BizResultHelper.newCommonError();
     }
     @AppRequestMapping(apiName = "goods.queryListByCourtId", apiVersion = "1.0")
-    public BizResult queryListByCourtId(@AppRequestParam("sid") int courtId,@AppRequestParam("pageNo") int pageNo,@AppRequestParam("pageSize") int pageSize) {
+    public BizResult queryListByCourtId(@AppRequestParam("sid") long courtId,@AppRequestParam("pageNo") int pageNo,@AppRequestParam("pageSize") int pageSize) {
         if (courtId<1) {
             return BizResultHelper.newResultCode(CommonResultCode.PARAM_MISS);
         }
@@ -223,7 +223,7 @@ public class GoodsServiceImpl implements GoodsService{
         return bizResult;
     }
     @AppRequestMapping(apiName = "goods.buy", apiVersion = "1.0")
-    public BizResult buy(@AppRequestParam("sid") String sid,@AppRequestParam("goodsId")  int goodsId,@AppRequestParam("deliveryTime") Date deliveryTime,@AppRequestParam("leaveMsg") String leaveMsg) {
+    public BizResult buy(@AppRequestParam("sid") String sid,@AppRequestParam("goodsId")  long goodsId,@AppRequestParam("deliveryTime") Date deliveryTime,@AppRequestParam("leaveMsg") String leaveMsg) {
         if (!StringUtils.hasText(sid)) {
             return BizResultHelper.newResultCode(CommonResultCode.PARAM_MISS);
         }
@@ -252,7 +252,6 @@ public class GoodsServiceImpl implements GoodsService{
         orderDO.setGmtCreate(new Date());
         orderDO.setGmtModify(new Date());
         orderDO.setGoodsId(goodsId);
-        orderDO.setIsDeleted(0);
         orderDO.setStatus(OrderStatusEnum.INIT.value);
         orderDO.setDeliveryTime(deliveryTime);
         orderDO.setLeaveMsg(leaveMsg);
@@ -266,7 +265,7 @@ public class GoodsServiceImpl implements GoodsService{
         return BizResultHelper.newCommonError();
     }
     @AppRequestMapping(apiName = "goods.cancelBuy", apiVersion = "1.0")
-    public BizResult cancelBuy(@AppRequestParam("sid") String sid,@AppRequestParam("orderId")  int orderId) {
+    public BizResult cancelBuy(@AppRequestParam("sid") String sid,@AppRequestParam("orderId")  long orderId) {
         if (!StringUtils.hasText(sid)) {
             return BizResultHelper.newResultCode(CommonResultCode.PARAM_MISS);
         }
@@ -299,7 +298,7 @@ public class GoodsServiceImpl implements GoodsService{
         return BizResultHelper.newCommonError();
     }
     @AppRequestMapping(apiName = "goods.confirmBuy", apiVersion = "1.0")
-    public BizResult confirmBuy(@AppRequestParam("sid") String sid, @AppRequestParam("orderId") int orderId) {
+    public BizResult confirmBuy(@AppRequestParam("sid") String sid, @AppRequestParam("orderId") long orderId) {
         if (!StringUtils.hasText(sid)) {
             return BizResultHelper.newResultCode(CommonResultCode.PARAM_MISS);
         }
@@ -333,7 +332,7 @@ public class GoodsServiceImpl implements GoodsService{
     }
 
     @AppRequestMapping(apiName = "goods.confirmGoods", apiVersion = "1.0")
-    public BizResult confirmGoods(@AppRequestParam("sid") String sid, @AppRequestParam("orderId") int orderId) {
+    public BizResult confirmGoods(@AppRequestParam("sid") String sid, @AppRequestParam("orderId") long orderId) {
         if (!StringUtils.hasText(sid)) {
             return BizResultHelper.newResultCode(CommonResultCode.PARAM_MISS);
         }

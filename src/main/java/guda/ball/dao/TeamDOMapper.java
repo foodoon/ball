@@ -7,15 +7,15 @@ import java.util.List;
 public interface TeamDOMapper {
     int countByExample(TeamDOCriteria example);
 
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(Long id);
 
-    int insert(TeamDO record);
+    long insert(TeamDO record);
 
-    int insertSelective(TeamDO record);
+    long insertSelective(TeamDO record);
 
     List<TeamDO> selectByExample(TeamDOCriteria example);
 
-    TeamDO selectByPrimaryKey(Integer id);
+    TeamDO selectByPrimaryKey(Long id);
 
     int updateByPrimaryKeySelective(TeamDO record);
 

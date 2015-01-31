@@ -1,0 +1,24 @@
+$!teamMember详情
+  <table class="table">
+                <tr>
+              <td>是否创建者</td>
+              <td>
+                  $!teamMemberDO.creator
+              </td>
+          </tr>
+
+                <tr>
+              <td>球员ID</td>
+              <td>
+                  $!teamMemberDO.userId
+              </td>
+          </tr>
+
+                <tr>
+              <td>球队ID</td>
+              <td>
+                  $!teamMemberDO.teamId
+              </td>
+          </tr>
+
+        </table>

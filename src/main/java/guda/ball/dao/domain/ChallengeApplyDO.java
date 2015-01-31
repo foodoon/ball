@@ -1,19 +1,17 @@
 package guda.ball.dao.domain;
 
-
-
 import guda.gen.GenField;
 
 import java.util.Date;
 
 public class ChallengeApplyDO {
-    private Integer id;
+    private Long id;
 
     @GenField(cn="约战ID",order=1,inSearchForm = false,canNull = false)
-    private Integer challengeId;
+    private Long challengeId;
 
     @GenField(cn="球队ID",order=1,inSearchForm = false,canNull = false)
-    private Integer teamId;
+    private Long teamId;
 
     @GenField(cn="比赛进球数",order=1,inSearchForm = false,canNull = false)
     private Integer goalCount;
@@ -24,33 +22,31 @@ public class ChallengeApplyDO {
     @GenField(cn="是否接受",order=1,inSearchForm = false,canNull = false)
     private Integer accept;
 
-    private Integer isDeleted;
-
     private Date gmtModify;
 
     private Date gmtCreate;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public Integer getChallengeId() {
+    public Long getChallengeId() {
         return challengeId;
     }
 
-    public void setChallengeId(Integer challengeId) {
+    public void setChallengeId(Long challengeId) {
         this.challengeId = challengeId;
     }
 
-    public Integer getTeamId() {
+    public Long getTeamId() {
         return teamId;
     }
 
-    public void setTeamId(Integer teamId) {
+    public void setTeamId(Long teamId) {
         this.teamId = teamId;
     }
 
@@ -76,14 +72,6 @@ public class ChallengeApplyDO {
 
     public void setAccept(Integer accept) {
         this.accept = accept;
-    }
-
-    public Integer getIsDeleted() {
-        return isDeleted;
-    }
-
-    public void setIsDeleted(Integer isDeleted) {
-        this.isDeleted = isDeleted;
     }
 
     public Date getGmtModify() {

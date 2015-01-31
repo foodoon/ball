@@ -1,17 +1,17 @@
 package guda.ball.biz.impl;
 
-import guda.tools.web.page.BaseQuery;
-import guda.tools.web.page.BizResult;
-import guda.ball.biz.GoodsBiz;
-import guda.ball.dao.GoodsDOMapper;
-import guda.ball.dao.domain.GoodsDO;
-import guda.ball.dao.domain.GoodsDOCriteria;
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.Date;
-import java.util.List;
+import guda.ball.biz.GoodsBiz;
+import guda.ball.dao.GoodsDOMapper;
+import guda.ball.dao.domain.GoodsDO;
+import guda.ball.dao.domain.GoodsDOCriteria;
+import guda.tools.web.page.BaseQuery;
+import guda.tools.web.page.BizResult;
 
 public class GoodsBizImpl implements GoodsBiz{
 
@@ -20,7 +20,7 @@ public class GoodsBizImpl implements GoodsBiz{
     @Autowired
     private GoodsDOMapper goodsDOMapper;
 
-    public BizResult detail(int id) {
+    public BizResult detail(long id) {
         BizResult bizResult = new BizResult();
         try{
             GoodsDO goodsDO = goodsDOMapper.selectByPrimaryKey(id);
@@ -50,7 +50,7 @@ public class GoodsBizImpl implements GoodsBiz{
             return bizResult;
      }
 
-    public BizResult delete(int id) {
+    public BizResult delete(long id) {
         BizResult bizResult = new BizResult();
         try {
             goodsDOMapper.deleteByPrimaryKey(id);
@@ -63,12 +63,9 @@ public class GoodsBizImpl implements GoodsBiz{
 
     public BizResult create(GoodsDO goodsDO) {
         BizResult bizResult = new BizResult();
-        goodsDO.setGmtModify(new Date());
-        goodsDO.setGmtCreate(new Date());
-        goodsDO.setIsDeleted(0);
         try {
-            int id = goodsDOMapper.insert(goodsDO);
-            bizResult.data.put("count", id);
+            int count = goodsDOMapper.insert(goodsDO);
+            bizResult.data.put("count", count);
             bizResult.success = true;
         } catch (Exception e) {
             logger.error("create Goods error", e);
@@ -79,8 +76,8 @@ public class GoodsBizImpl implements GoodsBiz{
     public BizResult update(GoodsDO goodsDO) {
         BizResult bizResult = new BizResult();
         try {
-            int id = goodsDOMapper.updateByPrimaryKeySelective(goodsDO);
-            bizResult.data.put("count", id);
+            int count = goodsDOMapper.updateByPrimaryKeySelective(goodsDO);
+            bizResult.data.put("count", count);
             bizResult.success = true;
         } catch (Exception e) {
             logger.error("update Goods error", e);

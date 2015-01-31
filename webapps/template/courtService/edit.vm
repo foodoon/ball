@@ -1,0 +1,28 @@
+编辑
+
+<form name="courtServiceEditForm" action="$!homeServer.getURI("courtService/doUpdate.htm")" method="post">
+  <table class="table">
+  #springBind("courtServiceEditForm.id")
+  <input type="hidden" name="${status.expression}" value="$!status.value" />
+                #springBind("courtServiceEditForm.serviceName")
+          <tr>
+              <td>服务名称</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("courtServiceEditForm.courtId")
+          <tr>
+              <td>场地ID</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+      	  <tr>
+	  <td colspan="2">
+	  <input type="submit" class="btn" value="提交"/></td>
+	  </tr>
+  </table>
+</form>

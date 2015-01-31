@@ -5,7 +5,7 @@ import guda.gen.GenField;
 import java.util.Date;
 
 public class GoodsDO {
-    private Integer id;
+    private Long id;
 
     @GenField(cn="名称",order=1,inSearchForm = false,canNull = false)
     private String goodsName;
@@ -17,19 +17,18 @@ public class GoodsDO {
     private Long price;
 
     @GenField(cn="所在场地",order=1,inSearchForm = false,canNull = false)
-    private Integer courtId;
+    private Long courtId;
 
-    private Integer isDeleted;
 
     private Date gmtModify;
 
     private Date gmtCreate;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -57,20 +56,12 @@ public class GoodsDO {
         this.price = price;
     }
 
-    public Integer getCourtId() {
+    public Long getCourtId() {
         return courtId;
     }
 
-    public void setCourtId(Integer courtId) {
+    public void setCourtId(Long courtId) {
         this.courtId = courtId;
-    }
-
-    public Integer getIsDeleted() {
-        return isDeleted;
-    }
-
-    public void setIsDeleted(Integer isDeleted) {
-        this.isDeleted = isDeleted;
     }
 
     public Date getGmtModify() {

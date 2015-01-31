@@ -1,0 +1,11 @@
+新增
+
+<form name="challengeMemberForm" action="$!homeServer.getURI("challengeMember/doCreate.htm")" method="post">
+  <table class="table">
+
+	  <tr>
+	  <td colspan="2">
+	  <input type="submit" class="btn" value="提交"/></td>
+	  </tr>
+  </table>
+</form>

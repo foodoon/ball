@@ -1,29 +1,72 @@
 package guda.ball.biz.entity;
 
-import guda.ball.dao.domain.ChallengeDO;
-import guda.ball.dao.domain.CourtDO;
-import guda.ball.dao.domain.TeamDO;
+import guda.ball.dao.domain.*;
+
+import java.util.List;
 
 /**
  * Created by well on 2014/8/7.
  */
-public class ChallengeVO extends ChallengeDO{
+public class ChallengeVO extends ChallengeDO {
 
-
-    private String courtName;
-
-    private String courtAddr;
-
-    private String teamName;
 
     private String challengeTimeCN;
 
     private String statusCN;
 
     private TeamDO challengeTeam;
-    private TeamDO applyTeam;
+    private List<TeamMemberVO> challengeMemberList;
+
     private CourtDO court;
+    private CourtSiteDO courtSite;
+    private List<CourtServiceDO> serviceList;
+    private CourtApplyDO courtApply;
+
     private ChallengeDO challenge;
+
+    private List<ChallengeApplyVO> challengeApplyList;
+
+    public List<ChallengeApplyVO> getChallengeApplyList() {
+        return challengeApplyList;
+    }
+
+    public void setChallengeApplyList(List<ChallengeApplyVO> challengeApplyList) {
+        this.challengeApplyList = challengeApplyList;
+    }
+
+    public CourtSiteDO getCourtSite() {
+        return courtSite;
+    }
+
+    public void setCourtSite(CourtSiteDO courtSite) {
+        this.courtSite = courtSite;
+    }
+
+    public List<CourtServiceDO> getServiceList() {
+        return serviceList;
+    }
+
+    public void setServiceList(List<CourtServiceDO> serviceList) {
+        this.serviceList = serviceList;
+    }
+
+    public CourtApplyDO getCourtApply() {
+        return courtApply;
+    }
+
+    public void setCourtApply(CourtApplyDO courtApply) {
+        this.courtApply = courtApply;
+    }
+
+    public List<TeamMemberVO> getChallengeMemberList() {
+        return challengeMemberList;
+    }
+
+    public void setChallengeMemberList(List<TeamMemberVO> challengeMemberList) {
+        this.challengeMemberList = challengeMemberList;
+    }
+
+
 
     public ChallengeDO getChallenge() {
         return challenge;
@@ -49,13 +92,6 @@ public class ChallengeVO extends ChallengeDO{
         this.challengeTeam = challengeTeam;
     }
 
-    public TeamDO getApplyTeam() {
-        return applyTeam;
-    }
-
-    public void setApplyTeam(TeamDO applyTeam) {
-        this.applyTeam = applyTeam;
-    }
 
     public String getStatusCN() {
         return statusCN;
@@ -63,30 +99,6 @@ public class ChallengeVO extends ChallengeDO{
 
     public void setStatusCN(String statusCN) {
         this.statusCN = statusCN;
-    }
-
-    public String getCourtAddr() {
-        return courtAddr;
-    }
-
-    public void setCourtAddr(String courtAddr) {
-        this.courtAddr = courtAddr;
-    }
-
-    public String getCourtName() {
-        return courtName;
-    }
-
-    public void setCourtName(String courtName) {
-        this.courtName = courtName;
-    }
-
-    public String getTeamName() {
-        return teamName;
-    }
-
-    public void setTeamName(String teamName) {
-        this.teamName = teamName;
     }
 
     public String getChallengeTimeCN() {
