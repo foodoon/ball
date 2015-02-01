@@ -542,6 +542,7 @@ public class TeamServiceImpl implements TeamService{
             bizResult1.data.put("teamDO",teamDO);
             bizResult1.data.put("list", Collections.emptyList());
             bizResult1.data.put("query",baseQuery);
+            bizResult1.success = true;
             return bizResult1;
         }
         TeamMemberDOCriteria teamMemberDOCriteria = new TeamMemberDOCriteria();

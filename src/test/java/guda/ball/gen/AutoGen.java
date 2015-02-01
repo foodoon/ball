@@ -22,7 +22,7 @@ public class AutoGen {
 //        demoGen.genDAOWithDir("court_site_section", "ball", "guda",baseDir);
 //        demoGen.genDaoXMLWithDir("court_site_section","ball","guda",baseDir);
 //      demoGen.genBizWithDir(baseDir,"court_site_section","ball","guda");
-//        demoGen.genActionWithDir(baseDir,"court_site","ball","guda","/webapps/template/");
+//       demoGen.genActionWithDir(baseDir,"user","ball","guda","/webapps/template/");
 
 
 

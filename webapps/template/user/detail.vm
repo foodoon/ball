@@ -1,65 +1,58 @@
 $!user详情
   <table class="table">
                 <tr>
-              <td>登录名</td>
+              <td>性别</td>
               <td>
-                  $!userDO.userName
+                  $!userDO.sex
               </td>
           </tr>
 
                 <tr>
-              <td>真实姓名</td>
+              <td>个性签名</td>
               <td>
-                  $!userDO.realName
+                  $!userDO.sign
               </td>
           </tr>
 
                 <tr>
-              <td>电子邮箱</td>
+              <td>擅长哪只脚</td>
               <td>
-                  $!userDO.email
+                  $!userDO.expertFooter
               </td>
           </tr>
 
                 <tr>
-              <td>住址</td>
+              <td>家乡</td>
               <td>
-                  $!userDO.address
+                  $!userDO.hometown
               </td>
           </tr>
 
                 <tr>
-              <td>密码</td>
+              <td>体重</td>
               <td>
-                  $!userDO.password
+                  $!userDO.weight
               </td>
           </tr>
 
                 <tr>
-              <td>手机号码</td>
+              <td>身高</td>
               <td>
-                  $!userDO.phone
+                  $!userDO.height
               </td>
           </tr>
 
                 <tr>
-              <td>喜欢的场地类型</td>
+              <td>擅长的位置</td>
               <td>
-                  $!userDO.groundTypeOfEnjoy
+                  $!userDO.expertLocation
               </td>
           </tr>
 
                 <tr>
-              <td>特长</td>
+              <td>头像</td>
               <td>
-                  $!userDO.special
-              </td>
-          </tr>
-
-                <tr>
-              <td>经常比赛的场地</td>
-              <td>
-                  $!userDO.groundOfDaily
+                  $!userDO.img
               </td>
           </tr>
 
@@ -71,9 +64,65 @@ $!user详情
           </tr>
 
                 <tr>
-              <td>头像</td>
+              <td>经常去的场地</td>
               <td>
-                  $!userDO.img
+                  $!userDO.groundOfDaily
+              </td>
+          </tr>
+
+                <tr>
+              <td>特长</td>
+              <td>
+                  $!userDO.special
+              </td>
+          </tr>
+
+                <tr>
+              <td>喜欢的场地</td>
+              <td>
+                  $!userDO.groundTypeOfEnjoy
+              </td>
+          </tr>
+
+                <tr>
+              <td>手机号</td>
+              <td>
+                  $!userDO.phone
+              </td>
+          </tr>
+
+                <tr>
+              <td>密码</td>
+              <td>
+                  $!userDO.password
+              </td>
+          </tr>
+
+                <tr>
+              <td>地址</td>
+              <td>
+                  $!userDO.address
+              </td>
+          </tr>
+
+                <tr>
+              <td>邮箱</td>
+              <td>
+                  $!userDO.email
+              </td>
+          </tr>
+
+                <tr>
+              <td>用户名</td>
+              <td>
+                  $!userDO.realName
+              </td>
+          </tr>
+
+                <tr>
+              <td>登录名</td>
+              <td>
+                  $!userDO.userName
               </td>
           </tr>
 

@@ -3,33 +3,47 @@
 <table  class="table">
     <thead>
  <tr>
-              <th>登录名</th>
-              <th>真实姓名</th>
-              <th>电子邮箱</th>
-              <th>住址</th>
-              <th>密码</th>
-              <th>手机号码</th>
-              <th>喜欢的场地类型</th>
-              <th>特长</th>
-              <th>经常比赛的场地</th>
-              <th>状态</th>
+              <th>性别</th>
+              <th>个性签名</th>
+              <th>擅长哪只脚</th>
+              <th>家乡</th>
+              <th>体重</th>
+              <th>身高</th>
+              <th>擅长的位置</th>
               <th>头像</th>
+              <th>状态</th>
+              <th>经常去的场地</th>
+              <th>特长</th>
+              <th>喜欢的场地</th>
+              <th>手机号</th>
+              <th>密码</th>
+              <th>地址</th>
+              <th>邮箱</th>
+              <th>用户名</th>
+              <th>登录名</th>
           <th>操作</th>
  </tr>
     </thead>
 #foreach($f in $userDOList)
   <tr>
-               <td> $!f.userName</td>
-               <td> $!f.realName</td>
-               <td> $!f.email</td>
-               <td> $!f.address</td>
-               <td> $!f.password</td>
-               <td> $!f.phone</td>
-               <td> $!f.groundTypeOfEnjoy</td>
-               <td> $!f.special</td>
-               <td> $!f.groundOfDaily</td>
-               <td> $!f.status</td>
+               <td> $!f.sex</td>
+               <td> $!f.sign</td>
+               <td> $!f.expertFooter</td>
+               <td> $!f.hometown</td>
+               <td> $!f.weight</td>
+               <td> $!f.height</td>
+               <td> $!f.expertLocation</td>
                <td> $!f.img</td>
+               <td> $!f.status</td>
+               <td> $!f.groundOfDaily</td>
+               <td> $!f.special</td>
+               <td> $!f.groundTypeOfEnjoy</td>
+               <td> $!f.phone</td>
+               <td> $!f.password</td>
+               <td> $!f.address</td>
+               <td> $!f.email</td>
+               <td> $!f.realName</td>
+               <td> $!f.userName</td>
           <td><a href="$!homeServer.getURI("user/edit.htm").addQueryData('id',"$!f.id")" >编辑</a></td>
     <td><a href="$!homeServer.getURI("user/detail.htm").addQueryData('id',"$!f.id")" >查看详情</a></td>
       <td><a href="$!homeServer.getURI("user/doDelete.htm").addQueryData('id',"$!f.id")" onclick="return confirm('确定删除吗?')">删除</a></td>
@@ -37,4 +51,4 @@
 #end
 </table>
 
-$tile.load('/template/common/page.vm').param('query',$query).param('path',"user/list.htm")
+$tile.load('home/common/page.vm').param('query',$query).param('path','${doNameLower}/list.htm')
