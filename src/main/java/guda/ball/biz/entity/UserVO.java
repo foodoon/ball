@@ -43,6 +43,7 @@ public class UserVO extends UserDO {
         this.setHometown(userDO.getHometown());
         this.setHeight(userDO.getHeight());
         this.setWeight(userDO.getWeight());
+        this.setSign(userDO.getSign());
         CourtTypeEnum byValue = CourtTypeEnum.getByValue(getGroundTypeOfEnjoy());
         if (byValue != null) {
             this.setGroundTypeOfEnjoy(byValue.msg);

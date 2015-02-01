@@ -111,7 +111,9 @@ public class UserServiceImpl implements UserService {
             UserDO userDO = userDOMapper.selectByPrimaryKey(sessionDO.getUserId());
             BizResult bizResult = new BizResult();
             UserVO userVO = new UserVO(userDO);
-            userVO.setImg(fileHelper.getFileSever() + userDO.getImg());
+            if(userDO.getImg()!=null) {
+                userVO.setImg(fileHelper.getFileSever() + userDO.getImg());
+            }
             bizResult.data.put("user",userVO);
             bizResult.success = true;
             return bizResult;
